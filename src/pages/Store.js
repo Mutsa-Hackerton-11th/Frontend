@@ -1,5 +1,10 @@
 import { styled } from "styled-components";
 
 export default function Store() {
-  return <div>Store</div>;
+  return (
+    <>
+      <br></br>
+      <h1>Store</h1>
+    </>
+  );
 }
