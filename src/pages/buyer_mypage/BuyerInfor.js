@@ -1,10 +1,10 @@
 import { styled } from "styled-components";
 
-export default function Store() {
+export default function BuyerInfor() {
     return(
       <>
         <br></br>
-        <h1>Store</h1>
+        <h1>Buyer Information</h1>
       </>
     )
 }
