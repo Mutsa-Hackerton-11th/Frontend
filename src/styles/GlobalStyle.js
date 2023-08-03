@@ -32,6 +32,23 @@ const GlobalStyles = createGlobalStyle`
         background: transparent;
         cursor: pointer;
     }
+
+    html {
+        font-size: 10px; /* Default font size */
+        
+        /* Media query for tablet */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            font-size: 8px;
+        }
+
+        /* Media query for mobile */
+        @media (min-width: 400px) and (max-width: 767px) {
+            font-size: 6px;
+        }
+        @media (max-width: 399px) {
+            font-size: 4px;
+        }
+    }
 `;
 
 export default GlobalStyles;
