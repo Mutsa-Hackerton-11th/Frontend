@@ -1,15 +1,14 @@
 import { styled } from "styled-components";
 import { webName } from "./sitename/WebName";
 import HeaderLogo from "../../icons/logo/HeaderLogo";
-import SearchIcon from "../../icons/search/SearchIcon";
-import SmallCart from "../../icons/cart/SmallCart";
-import SmallUserIcon from "../../icons/user/SmallUserIcon";
 import { useNavigate } from "react-router-dom";
-import { headerState } from "./state/HeaderState";
-import { useRef, useState } from "react";
+import { headerIconState, headerState } from "./state/HeaderState";
+import { useState } from "react";
+import HeaderIconButton from "./headerIcon/HeaderIconButton";
 
 export default function Header() {
   const [headerStateIndex, setHeaderStateIndex] = useState(0);
+  const [headerIconId, setHeaderIconId] = useState(-1);
   const navigate = useNavigate();
   const headerStateClicked = (index) => {
     navigate(headerState[index].route);
@@ -26,10 +25,10 @@ export default function Header() {
       <Services>
         {headerState.map((nowState, index) => (
           <span
-            key={index}
+            key={nowState.id}
             onClick={() => headerStateClicked(index)}
             style={{
-              color: headerStateIndex === index ? "#000000" : "#9F9F9F",
+              color: headerStateIndex === nowState.id ? "#000000" : "#9F9F9F",
             }}
           >
             {nowState.text}
@@ -37,15 +36,17 @@ export default function Header() {
         ))}
       </Services>
       <HeaderIcons>
-        <span>
-          <SearchIcon />
-        </span>
-        <span>
-          <SmallCart />
-        </span>
-        <span>
-          <SmallUserIcon />
-        </span>
+        {headerIconState.map((iconState, index) => (
+          <HeaderIconButton
+            key={iconState.id}
+            iconState={iconState}
+            nowIconState={headerIconId}
+            index={index}
+            handleIconClick={setHeaderIconId}
+          >
+            {iconState.icon}
+          </HeaderIconButton>
+        ))}
       </HeaderIcons>
     </HeaderWrapper>
   );
@@ -96,8 +97,4 @@ const HeaderIcons = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  span {
-    cursor: pointer;
-    margin-right: 3rem;
-  }
 `;
