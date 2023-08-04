@@ -10,7 +10,9 @@ import { useRef, useState } from "react";
 
 export default function Header() {
   const [headerStateIndex, setHeaderStateIndex] = useState(0);
+  const navigate = useNavigate();
   const headerStateClicked = (index) => {
+    navigate(headerState[index].route);
     setHeaderStateIndex(index);
   };
   return (
