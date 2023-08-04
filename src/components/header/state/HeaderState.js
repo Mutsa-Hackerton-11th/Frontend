@@ -1,6 +1,17 @@
+import SmallCart from "../../../icons/cart/SmallCart";
+import SearchIcon from "../../../icons/search/SearchIcon";
+import SmallUserLoggedIcon from "../../../icons/user/SmallUserLoggedIcon";
+import ShoppingListModal from "../headerModal/ShoppingListModal";
+
 export const headerState = [
-  { text: "Home", route: "/" },
-  { text: "Store", route: "/store" },
-  { text: "Category", route: "/category" },
-  { text: "About", route: "/about" },
+  { id: 0, text: "Home", route: "/" },
+  { id: 1, text: "Store", route: "/store" },
+  { id: 2, text: "Category", route: "/category" },
+  { id: 3, text: "About", route: "/about" },
+];
+
+export const headerIconState = [
+  { id: 0, icon: <SearchIcon />, modal: null },
+  { id: 1, icon: <SmallCart />, modal: <ShoppingListModal /> },
+  { id: 2, icon: <SmallUserLoggedIcon />, modal: null },
 ];
