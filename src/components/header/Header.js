@@ -5,16 +5,14 @@ import SearchIcon from "../../icons/search/SearchIcon";
 import SmallCart from "../../icons/cart/SmallCart";
 import SmallUserIcon from "../../icons/user/SmallUserIcon";
 import { useNavigate } from "react-router-dom";
-import {
-  AboutClicked,
-  CategoryClicked,
-  PickClicked,
-  StoreClicked,
-  homeClicked,
-} from "./control/HeaderController";
+import { headerState } from "./state/HeaderState";
+import { useRef, useState } from "react";
 
 export default function Header() {
-  const navigate = useNavigate();
+  const [headerStateIndex, setHeaderStateIndex] = useState(0);
+  const headerStateClicked = (index) => {
+    setHeaderStateIndex(index);
+  };
   return (
     <HeaderWrapper>
       <LogoAndName>
@@ -24,10 +22,17 @@ export default function Header() {
         <WebName>{webName}</WebName>
       </LogoAndName>
       <Services>
-        <span onClick={() => homeClicked(navigate)}>Home</span>
-        <span onClick={() => StoreClicked(navigate)}>Store</span>
-        <span onClick={() => CategoryClicked(navigate)}>Category </span>
-        <span onClick={() => AboutClicked(navigate)}>About</span>
+        {headerState.map((nowState, index) => (
+          <span
+            key={index}
+            onClick={() => headerStateClicked(index)}
+            style={{
+              color: headerStateIndex === index ? "#000000" : "#9F9F9F",
+            }}
+          >
+            {nowState.text}
+          </span>
+        ))}
       </Services>
       <HeaderIcons>
         <span>
