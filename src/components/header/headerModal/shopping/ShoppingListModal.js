@@ -1,10 +1,16 @@
-import { useState } from "react";
-import HeaderModalWrapper from "./HeaderModalWrapper";
-import ModalBorder from "./ModalBorder";
+import { useNavigate } from "react-router-dom";
+import FormButton from "../../../button/FormButton";
+import HeaderModalWrapper from "../HeaderModalWrapper";
+import ModalBorder from "../ModalBorder";
 import ShoppingListBox from "./ShoppingListBox";
-import FormButton from "../../button/FormButton";
+import { useRef } from "react";
 
 export default function ShoppingListModal() {
+  const navigate = useNavigate();
+  const formButtonClicked = () => {
+    navigate("/shoppingcart");
+  };
+  const abc = useRef();
   const listData = [
     {
       image:
@@ -43,7 +49,7 @@ export default function ShoppingListModal() {
     },
   ];
   return (
-    <HeaderModalWrapper>
+    <HeaderModalWrapper height="74.6rem">
       <ModalBorder
         addClass={"height:10%; display:flex; justify-content:center;"}
       >
@@ -82,6 +88,7 @@ export default function ShoppingListModal() {
         }}
       >
         <FormButton
+          onClick={formButtonClicked}
           addClass={"width:13.7rem; height:4rem; font-size:2rem;"}
           text="장바구니"
         />

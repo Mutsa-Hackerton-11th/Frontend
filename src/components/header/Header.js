@@ -3,7 +3,7 @@ import { webName } from "./sitename/WebName";
 import HeaderLogo from "../../icons/logo/HeaderLogo";
 import { useNavigate } from "react-router-dom";
 import { headerIconState, headerState } from "./state/HeaderState";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import HeaderIconButton from "./headerIcon/HeaderIconButton";
 
 export default function Header() {
@@ -57,6 +57,7 @@ const HeaderWrapper = styled.div`
   height: 10rem;
   display: flex;
   justify-content: center;
+  position: fixed;
 `;
 
 const LogoAndName = styled.div`
