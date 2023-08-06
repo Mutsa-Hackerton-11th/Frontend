@@ -1,8 +1,10 @@
 import { styled } from "styled-components";
 
-export default function ModalBorder({ children, addClass }) {
+export default function ModalBorder({ children, addClass, onClick }) {
   return (
-    <ModalBorderWrapper addClass={addClass}>{children}</ModalBorderWrapper>
+    <ModalBorderWrapper addClass={addClass} onClick={onClick}>
+      {children}
+    </ModalBorderWrapper>
   );
 }
 

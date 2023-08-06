@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import PropTypes from "prop-types";
-import DeleteShoppingList from "../../../icons/delete/DeleteShoppingList";
+import DeleteShoppingList from "../../../../icons/delete/DeleteShoppingList";
 
 export default function ShoppingListBox({ listInfo }) {
   return (

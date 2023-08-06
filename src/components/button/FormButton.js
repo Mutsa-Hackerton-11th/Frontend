@@ -6,8 +6,13 @@ export default function FormButton({
   state = btnState.DEFAULT,
   text,
   addClass,
+  onClick,
 }) {
-  return <Button addClass={addClass}>{text}</Button>;
+  return (
+    <Button addClass={addClass} onClick={onClick}>
+      {text}
+    </Button>
+  );
 }
 
 FormButton.propTypes = {

@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import PropTypes from "prop-types";
+import { useEffect, useRef } from "react";
 
 export default function HeaderIconButton({
   children,
@@ -11,15 +12,16 @@ export default function HeaderIconButton({
   const headerIconClicked = () => {
     handleIconClick(index);
   };
+
   return (
     <HeaderIconWrapper
       onClick={headerIconClicked}
       clicked={nowIconState === iconState.id}
     >
       {children}
-      {nowIconState === iconState.id && iconState.modal
-        ? iconState.modal
-        : null}
+      {nowIconState === iconState.id && iconState.modal ? (
+        <iconState.modal />
+      ) : null}
     </HeaderIconWrapper>
   );
 }

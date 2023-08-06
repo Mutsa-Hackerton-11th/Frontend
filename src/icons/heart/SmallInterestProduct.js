@@ -1,6 +1,12 @@
 export default function SmallInterestProduct() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="23" fill="none">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="2.6rem"
+      height="2.3rem"
+      fill="none"
+      viewBox="0 0 26 23"
+    >
       <path
         stroke="#000"
         stroke-linecap="round"
