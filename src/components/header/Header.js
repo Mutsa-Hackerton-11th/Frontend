@@ -57,7 +57,6 @@ const HeaderWrapper = styled.div`
   height: 10rem;
   display: flex;
   justify-content: center;
-  position: fixed;
 `;
 
 const LogoAndName = styled.div`
