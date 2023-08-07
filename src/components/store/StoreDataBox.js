@@ -30,20 +30,26 @@ export default function StoreDataBox({ data }) {
       >
         <HotOrNewLabel state={data.hotOrNew} />
       </span>
-      <DataBoxInfo>
+      <DataBoxInfo
+        style={{
+          height: !data.likes ? "20%" : null,
+        }}
+      >
         <span>{data.name}</span>
         <span>{data.introduce}</span>
-        <div>
-          <span
-            style={{
-              cursor: "pointer",
-              marginRight: "0.2rem",
-            }}
-          >
-            <Likes />
-          </span>
-          <span>{data.likes}</span>
-        </div>
+        {data.likes ? (
+          <div>
+            <span
+              style={{
+                cursor: "pointer",
+                marginRight: "0.2rem",
+              }}
+            >
+              <Likes />
+            </span>
+            <span>{data.likes}</span>
+          </div>
+        ) : null}
       </DataBoxInfo>
     </StoreDataBoxWrapper>
   );
