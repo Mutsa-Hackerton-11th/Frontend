@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import { styled } from "styled-components";
 
-export default function BannerButton({ clicked = false }) {
+export default function BannerButton({ clicked = false, onClick, addClass }) {
   return (
-    <ButtonWrapper clicked={clicked}>
+    <ButtonWrapper clicked={clicked} addClass={addClass} onClick={onClick}>
       <SmallCircle clicked={clicked} />
     </ButtonWrapper>
   );
@@ -20,6 +20,8 @@ const ButtonWrapper = styled.div`
   border-radius: 1.35rem;
   border: ${(props) =>
     props.clicked ? `1px solid ${props.theme.colors.buttonColor.brown}` : null};
+  ${(props) => props.addClass}
+  cursor: pointer;
 `;
 
 const SmallCircle = styled.div`
