@@ -71,7 +71,7 @@ export default function Store() {
   ];
   return (
     <>
-      <StoreBanner />
+      <StoreBanner text="Store" subText="Home > Store" />
       <StoreBody storeData={storeData} />
     </>
   );

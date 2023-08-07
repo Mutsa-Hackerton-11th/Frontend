@@ -4,7 +4,7 @@ import SearchIcon from "../../icons/search/SearchIcon";
 import React, { useState } from "react";
 import MediaQuery from "../../assets/mediaQuery";
 
-export default function StoreBanner({ categories }) {
+export default function StoreBanner({ categories, text, subText }) {
   const [searchValue, setSearchValue] = useState("");
   const [categoryState, setCategoryState] = useState(0);
   const inputChanged = (e) => {
@@ -19,8 +19,8 @@ export default function StoreBanner({ categories }) {
       <StoreBannerWrapper>
         <img alt="스토어 배너 사진" src={StoreBannerImage} />
         <BannerText>
-          <span>Store</span>
-          <span>Home {">"} Store</span>
+          <span>{text}</span>
+          <span>{subText}</span>
         </BannerText>
       </StoreBannerWrapper>
       <StoreBannerSearch>
