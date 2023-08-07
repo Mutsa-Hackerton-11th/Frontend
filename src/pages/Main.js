@@ -58,8 +58,11 @@ export default function Main() {
     <>
       <MainBanner>
         <BannerText>
-          <span>50+ Beautiful room inspiration</span>
-          <p>Our designer already made a lot of beautiful prototype of rooms</p>
+          <span>나만 알기 아까운 떠오르는 신생 쇼핑몰</span>
+          <p>
+            올 여름을 책임질 라이징 상품부터 꾸준히 사랑받는 스테디 상품까지
+            한번에 모아보기
+          </p>
         </BannerText>
         <BannerPhoto>
           <img
