@@ -2,12 +2,18 @@ import { styled } from "styled-components";
 import StoreBannerImage from "./StoreBanner.jpg";
 import SearchIcon from "../../icons/search/SearchIcon";
 import React, { useState } from "react";
+import MediaQuery from "../../assets/mediaQuery";
 
-export default function StoreBanner() {
+export default function StoreBanner({ categories }) {
   const [searchValue, setSearchValue] = useState("");
+  const [categoryState, setCategoryState] = useState(0);
   const inputChanged = (e) => {
     setSearchValue(e.target.value);
   };
+  const storeCategoryClicked = (index) => {
+    setCategoryState(index);
+  };
+  const { isBigMobile, isSmallMobile } = MediaQuery();
   return (
     <>
       <StoreBannerWrapper>
@@ -18,6 +24,24 @@ export default function StoreBanner() {
         </BannerText>
       </StoreBannerWrapper>
       <StoreBannerSearch>
+        <StoreBannerCategories>
+          {categories
+            ? categories.map((category, index) => {
+                return (
+                  <span
+                    style={{
+                      color: index === categoryState ? "#000000" : null,
+                      width: isBigMobile | isSmallMobile ? "25%" : null,
+                      padding: isBigMobile | isSmallMobile ? "1rem 0" : null,
+                    }}
+                    onClick={() => storeCategoryClicked(index)}
+                  >
+                    {category}
+                  </span>
+                );
+              })
+            : null}
+        </StoreBannerCategories>
         <SearchWrapper onChange={inputChanged} value={searchValue} />
         <span
           style={{
@@ -61,7 +85,8 @@ const BannerText = styled.div`
 `;
 
 const StoreBannerSearch = styled.div`
-  height: 10rem;
+  height: auto;
+  padding: 3rem 0;
   background-color: ${(props) => props.theme.colors.mainBackground};
   display: flex;
   justify-content: flex-end;
@@ -69,8 +94,25 @@ const StoreBannerSearch = styled.div`
   position: relative;
 `;
 
+const StoreBannerCategories = styled.div`
+  width: 70%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  span {
+    ${(props) => props.theme.fontStyles.text};
+    color: ${(props) => props.theme.colors.fontColor.gray};
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+  }
+`;
+
 const SearchWrapper = styled.input`
-  width: 31.1rem;
+  width: 30%;
   height: 5.8rem;
   border-radius: 1rem;
   background-color: white;
