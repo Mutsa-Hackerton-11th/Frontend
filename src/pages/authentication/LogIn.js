@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import KakaoLogin from "../../icons/socialLogin/KakaoLogin";
-import HeaderLogo from "../../icons/logo/HeaderLogo";
+import Banner from "../../components/Banner";
 
 import theme from "../../styles/theme";
 import { useNavigate } from "react-router-dom/dist";
@@ -10,11 +10,8 @@ export default function LogIn() {
   const navigate = useNavigate();
   return (
     <LogIn_page_wrapper>
-      <Banner>
-        <HeaderLogo />
-        <p>로그인</p>
-        <span>Home > 로그인</span>
-      </Banner>
+      <Banner title="로그인" subtitle="Home > 로그인" />
+
       <Login_wrapper>
         <Login_box_wrapper>
           <Login_box_Text>
@@ -51,22 +48,6 @@ const Login_box_Text = styled.div`
 const LogIn_page_wrapper = styled.div`
   width: 100%;
   height: 100%;
-`;
-
-const Banner = styled.div`
-  background: url(/img/bannerImg.png);
-  height: 30rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5%;
-  p {
-    ${(props) => props.theme.fontStyles.title}
-  }
-  span {
-    ${(props) => props.theme.fontStyles.text}
-  }
 `;
 
 const Login_wrapper = styled.div`
