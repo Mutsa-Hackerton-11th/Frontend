@@ -10,7 +10,6 @@ import FeeInfor from "./pages/informaion/FeeInfor";
 import LogIn from "./pages/authentication/LogIn";
 import SignUp from "./pages/authentication/SignUp";
 import BuyerMyPage from "./pages/buyer_mypage/BuyerMyPage";
-import BuyerInfor from "./pages/buyer_mypage/BuyerInfor";
 import ShoppingCart from "./pages/buyer_mypage/ShoppingCart";
 import OrderList from "./pages/buyer_mypage/OrderList";
 import InterestProduct from "./pages/buyer_mypage/InterestProduct";
@@ -38,7 +37,6 @@ function App() {
         <Route path="/Signup" element={<SignUp />}></Route>
 
         <Route path="/buyermypage" element={<BuyerMyPage />}></Route>
-        <Route path="/buyerinfor" element={<BuyerInfor />}></Route>
         <Route path="/shoppingcart" element={<ShoppingCart />}></Route>
         <Route path="/orderlist" element={<OrderList />}></Route>
         <Route path="/interestproduct" element={<InterestProduct />}></Route>
