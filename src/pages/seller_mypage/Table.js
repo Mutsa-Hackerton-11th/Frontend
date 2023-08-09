@@ -1,6 +1,7 @@
 import React from "react";
 import { useTable } from "react-table";
 import styled from "styled-components";
+import theme from "../../styles/theme";
 
 const TableSheet = styled.table`
   border-collapse: collapse;
@@ -9,13 +10,18 @@ const TableSheet = styled.table`
 `;
 
 const Header = styled.th`
-  padding: 8px;
+  padding: 2rem;
   border: 1px solid #ddd;
+
+  ${(props) => props.theme.fontStyles.text}
+
+  background-color:${(props) => props.theme.colors.buttonColor.gray}
 `;
 
 const Cell = styled.td`
-  padding: 8px;
+  padding: 1rem;
   border: 1px solid #ddd;
+  ${(props) => props.theme.fontStyles.subText}
 `;
 
 function Table({ columns, data }) {
@@ -38,6 +44,7 @@ function Table({ columns, data }) {
           </tr>
         ))}
       </thead>
+
       <tbody {...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row);

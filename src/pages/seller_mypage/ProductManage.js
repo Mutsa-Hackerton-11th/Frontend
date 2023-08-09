@@ -52,23 +52,61 @@ export default function ProductManage() {
       goodsCategory: "상의",
     },
   ];
+
   return (
     <>
       <Banner title="상품관리" subtitle="마이페이지 > 상품관리" />
       <Wrapper>
-        <Title>상품관리</Title>
-        <GoodsList></GoodsList>
-        <Link to="/productupload">상품등록</Link>
-        <Table columns={columns} data={data} />
+        <InnerWrapper>
+          <InnerWrapperHeader>
+            <Title>상품관리</Title>
+            <NavigateBut
+              onClick={() => {
+                navigate("/productupload");
+              }}
+            >
+              상품등록
+            </NavigateBut>
+          </InnerWrapperHeader>
+
+          <Table columns={columns} data={data} />
+        </InnerWrapper>
       </Wrapper>
     </>
   );
 }
 
 const Wrapper = styled.div`
-  width: 80%;
-
-  padding-left: 15%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
-const Title = styled.div``;
-const GoodsList = styled.div``;
+const InnerWrapper = styled.div`
+  width: 80%;
+`;
+const Title = styled.div`
+  ${(props) => props.theme.fontStyles.subTitle}
+`;
+
+const InnerWrapperHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-left: 1%;
+  padding-right: 1%;
+
+  padding-bottom: 5%;
+  padding-top: 5%;
+`;
+
+const NavigateBut = styled.button`
+  border: 2px solid ${(props) => props.theme.colors.fontColor.black};
+  border-radius: 10px;
+  ${(props) => props.theme.fontStyles.text}
+  padding:1rem;
+  background-color: ${(props) => props.theme.colors.buttonColor.gray};
+`;
