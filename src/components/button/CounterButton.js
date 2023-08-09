@@ -18,7 +18,6 @@ CounterButton.propTypes = {
 };
 
 const CounterWrapper = styled.div`
-  width: 14rem;
   height: 7.5rem;
   background-color: ${(props) => props.theme.colors.buttonColor.gray};
   border: 1px solid black;

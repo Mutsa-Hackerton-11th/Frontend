@@ -25,6 +25,8 @@ export default function StoreProducts() {
       likes: 3,
       hotOrNew: hotOrNew.HOT,
       id: 23,
+      category: "상의",
+      mallName: { state },
     },
     {
       image:
@@ -34,6 +36,8 @@ export default function StoreProducts() {
       likes: 45,
       hotOrNew: hotOrNew.HOT,
       id: 24,
+      category: "상의",
+      mallName: { state },
     },
     {
       image:
@@ -43,6 +47,8 @@ export default function StoreProducts() {
       likes: 193,
       hotOrNew: hotOrNew.NEW,
       id: 25,
+      category: "악세서리",
+      mallName: { state },
     },
     {
       image:
@@ -52,6 +58,8 @@ export default function StoreProducts() {
       likes: 450,
       hotOrNew: hotOrNew.HOT,
       id: 26,
+      category: "상의",
+      mallName: { state },
     },
     {
       image:
@@ -61,6 +69,8 @@ export default function StoreProducts() {
       likes: 193,
       hotOrNew: hotOrNew.NEW,
       id: 27,
+      category: "하의",
+      mallName: { state },
     },
     {
       image:
@@ -70,6 +80,8 @@ export default function StoreProducts() {
       likes: 450,
       hotOrNew: hotOrNew.NEW,
       id: 28,
+      category: "가방",
+      mallName: { state },
     },
     {
       image:
@@ -79,6 +91,8 @@ export default function StoreProducts() {
       likes: 193,
       hotOrNew: hotOrNew.HOT,
       id: 29,
+      category: "신발",
+      mallName: { state },
     },
     {
       image:
@@ -88,6 +102,8 @@ export default function StoreProducts() {
       likes: 450,
       hotOrNew: hotOrNew.NEW,
       id: 30,
+      category: "아우터",
+      mallName: { state },
     },
   ];
   return (

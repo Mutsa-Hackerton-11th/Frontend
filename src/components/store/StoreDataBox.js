@@ -9,9 +9,17 @@ export default function StoreDataBox({ data }) {
   const { isSmallMobile, isBigMobile } = MediaQuery();
   const navigate = useNavigate();
   const shoppingMallClicked = () => {
-    navigate(`/store/${data.id}`, {
-      state: data.name,
-    });
+    !data.likes
+      ? navigate(`/store/${data.id}`, {
+          state: data.name,
+        })
+      : navigate(`/productdetail/${data.id}`, {
+          state: {
+            productName: data.name,
+            category: data.category,
+            mallName: data.mallName.state,
+          },
+        });
   };
   return (
     <StoreDataBoxWrapper
