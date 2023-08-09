@@ -3,27 +3,6 @@ import { useTable } from "react-table";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 
-const TableSheet = styled.table`
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #ddd;
-`;
-
-const Header = styled.th`
-  padding: 2rem;
-  border: 1px solid #ddd;
-
-  ${(props) => props.theme.fontStyles.text}
-
-  background-color:${(props) => props.theme.colors.buttonColor.gray}
-`;
-
-const Cell = styled.td`
-  padding: 1rem;
-  border: 1px solid #ddd;
-  ${(props) => props.theme.fontStyles.subText}
-`;
-
 function Table({ columns, data }) {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({
@@ -62,5 +41,26 @@ function Table({ columns, data }) {
     </TableSheet>
   );
 }
+
+const TableSheet = styled.table`
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+`;
+
+const Header = styled.th`
+  padding: 2rem;
+  border: 1px solid #ddd;
+
+  ${(props) => props.theme.fontStyles.text}
+
+  background-color:${(props) => props.theme.colors.buttonColor.gray}
+`;
+
+const Cell = styled.td`
+  padding: 1rem;
+  border: 1px solid #ddd;
+  ${(props) => props.theme.fontStyles.subText}
+`;
 
 export default Table;

@@ -3,7 +3,6 @@ import { styled } from "styled-components";
 import Banner from "../../components/Banner";
 import { useNavigate } from "react-router-dom/dist";
 import React, { useMemo } from "react";
-import theme from "../../styles/theme";
 
 import Table from "./Table";
 
