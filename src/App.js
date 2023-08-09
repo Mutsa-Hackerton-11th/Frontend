@@ -10,7 +10,7 @@ import FeeInfor from "./pages/informaion/FeeInfor";
 import LogIn from "./pages/authentication/LogIn";
 import SignUp from "./pages/authentication/SignUp";
 import BuyerMyPage from "./pages/buyer_mypage/BuyerMyPage";
-import ShoppingCart from "./pages/buyer_mypage/ShoppingCart";
+import ShoppingCart from "./pages/buyer_mypage/shoppingcart/ShoppingCart";
 import OrderList from "./pages/buyer_mypage/OrderList";
 import InterestProduct from "./pages/buyer_mypage/InterestProduct";
 import SellerMyPage from "./pages/seller_mypage/SellerMyPage";
