@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { webName } from "./sitename/WebName";
 import HeaderLogo from "../../icons/logo/HeaderLogo";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { headerIconState, headerState } from "./state/HeaderState";
 import { useEffect, useRef, useState } from "react";
 import HeaderIconButton from "./headerIcon/HeaderIconButton";
@@ -10,10 +10,18 @@ export default function Header() {
   const [headerStateIndex, setHeaderStateIndex] = useState(0);
   const [headerIconId, setHeaderIconId] = useState(-1);
   const navigate = useNavigate();
+  const location = useLocation();
   const headerStateClicked = (index) => {
     navigate(headerState[index].route);
     setHeaderStateIndex(index);
   };
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const activeStateIndex = headerState.findIndex(
+      (state) => state.route === currentPath
+    );
+    setHeaderStateIndex(activeStateIndex >= 0 ? activeStateIndex : 0);
+  }, []);
   return (
     <HeaderWrapper>
       <LogoAndName>
