@@ -15,6 +15,7 @@ export default function Header() {
   const [headerIconId, setHeaderIconId] = useState(-1);
   const navigate = useNavigate();
   const location = useLocation();
+
   useEffect(() => {
     const index = headerState.findIndex(
       (state) => state.route === location.pathname
@@ -22,6 +23,8 @@ export default function Header() {
     if (index !== -1) {
       setHeaderStateIndex(index);
       sessionStorage.setItem("activeMenuIndex", index.toString());
+    } else {
+      setHeaderStateIndex(-1);
     }
   }, [location]);
 
