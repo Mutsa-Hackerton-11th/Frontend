@@ -16,11 +16,7 @@ export default function Header() {
     setHeaderStateIndex(index);
   };
   useEffect(() => {
-    const currentPath = location.pathname;
-    const activeStateIndex = headerState.findIndex(
-      (state) => state.route === currentPath
-    );
-    setHeaderStateIndex(activeStateIndex >= 0 ? activeStateIndex : 0);
+    navigate("/");
   }, []);
   return (
     <HeaderWrapper>
