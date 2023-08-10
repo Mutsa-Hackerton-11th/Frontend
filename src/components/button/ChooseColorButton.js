@@ -23,5 +23,6 @@ const Button = styled.div`
   border-radius: 1.5rem;
   border: ${(props) =>
     props.state === btnState.DEFAULT ? "none" : "0.3rem solid black"};
+  margin-right: 1rem;
   cursor: pointer;
 `;

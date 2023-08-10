@@ -1,9 +1,8 @@
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
 import Store from "./pages/Store";
 import About from "./pages/About";
 import Header from "./components/header/Header";
-import { Desktop } from "./assets/mediaQuery";
 import ServiceInfor from "./pages/informaion/ServiceInfor";
 import EntryInfor from "./pages/informaion/EntryInfor";
 import FeeInfor from "./pages/informaion/FeeInfor";
@@ -21,6 +20,7 @@ import ProductManage from "./pages/seller_mypage/ProductManage";
 import OrderMange from "./pages/seller_mypage/OrderManage";
 import ProductUpload from "./pages/seller_mypage/ProductUpload";
 import StoreProducts from "./pages/StoreProducts";
+import ProductDetail from "./pages/ProductDetail";
 
 function App() {
   return (
@@ -30,6 +30,8 @@ function App() {
         <Route path="/" element={<Main />}></Route>
         <Route path="/store" element={<Store />}></Route>
         <Route path="/store/:id" element={<StoreProducts />}></Route>
+        <Route path="/productdetail/:id" element={<ProductDetail />}></Route>
+
         <Route path="/about" element={<About />}></Route>
 
         <Route path="/serviceinfor" element={<ServiceInfor />}></Route>

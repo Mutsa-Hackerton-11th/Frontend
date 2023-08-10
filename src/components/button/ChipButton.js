@@ -35,9 +35,10 @@ const Button = styled.div`
   width: ${(props) => (props.size === btnSize.S ? "3rem" : "5rem")};
   font-size: 1.3rem;
   height: 3rem;
-  border-radius: 1rem;
+  border-radius: ${(props) => (props.size === btnSize.S ? "0.5rem" : "1rem")};
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  margin-right: 1rem;
 `;

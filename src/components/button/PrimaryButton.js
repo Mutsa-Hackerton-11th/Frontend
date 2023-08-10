@@ -30,7 +30,6 @@ const Button = styled.div`
     props.state === btnState.DEFAULT
       ? props.theme.colors.fontColor.white
       : props.theme.colors.fontColor.gray};
-  width: 21.5rem;
   height: 6.4rem;
   border-radius: 1rem;
   display: flex;
