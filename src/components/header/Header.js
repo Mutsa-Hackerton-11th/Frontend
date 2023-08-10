@@ -23,6 +23,9 @@ export default function Header() {
     navigate(headerState[index].route);
     setHeaderStateIndex(index);
   };
+  useEffect(() => {
+    navigate("/");
+  }, []);
   return (
     <HeaderWrapper>
       <LogoAndName>
