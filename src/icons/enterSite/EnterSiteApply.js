@@ -1,6 +1,6 @@
 export default function EnterSiteApply() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="81" height="80" fill="none">
+    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none">
       <path
         stroke="#000"
         stroke-linecap="round"
