@@ -1,6 +1,7 @@
 import SmallCart from "../../../icons/cart/SmallCart";
 import SearchIcon from "../../../icons/search/SearchIcon";
 import SmallUserLoggedIcon from "../../../icons/user/SmallUserLoggedIcon";
+import SearchModal from "../headerModal/search/SearchModal";
 import ShoppingListModal from "../headerModal/shopping/ShoppingListModal";
 import UserModal from "../headerModal/user/UserModal";
 
@@ -12,7 +13,7 @@ export const headerState = [
 ];
 
 export const headerIconState = [
-  { id: 0, icon: <SearchIcon />, modal: null },
+  { id: 0, icon: <SearchIcon />, modal: SearchModal },
   { id: 1, icon: <SmallCart />, modal: ShoppingListModal },
   { id: 2, icon: <SmallUserLoggedIcon />, modal: UserModal },
 ];

@@ -2,10 +2,14 @@ import PropTypes from "prop-types";
 import { styled } from "styled-components";
 import SearchIcon from "../../icons/search/SearchIcon";
 
-export default function SearchBar({ placeholder }) {
+export default function SearchBar({ placeholder, value, onChange }) {
   return (
     <SearchWrapper>
-      <SearchInput placeholder={placeholder} />
+      <SearchInput
+        placeholder={placeholder}
+        onChange={onChange}
+        value={value}
+      />
       <span
         style={{
           position: "absolute",
