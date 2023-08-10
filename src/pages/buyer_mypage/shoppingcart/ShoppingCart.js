@@ -1,10 +1,17 @@
+import { useNavigate } from "react-router-dom/dist";
 import WebBanner from "../../../components/banner/WebBanner";
 import FormButton from "../../../components/button/FormButton";
 import PrimaryButton from "../../../components/button/PrimaryButton";
-import ProductList from "./ProductList";
+import SelectedProductList from "./SelectedProductList";
 import { styled } from "styled-components";
 
 export default function ShoppingCart() {
+  const navigate = useNavigate();
+
+  const buyProductClicked = () => {
+    navigate("/buyproduct");
+  };
+
   const listData = [
     {
       image: "/img/productImg.png",
@@ -54,7 +61,7 @@ export default function ShoppingCart() {
             </Props>
           </PropsWrapper>
           {listData.map((listInfo) => (
-            <ProductList listInfo={listInfo} />
+            <SelectedProductList listInfo={listInfo} />
           ))}
           <TotalAmount>
             <span>총 결제금액 : 65,000 원</span>
@@ -79,8 +86,16 @@ export default function ShoppingCart() {
           <p>65,000 원</p>
         </FinalAmount>
         <OrderButton>
-          <PrimaryButton text="전체상품주문" />
-          <PrimaryButton text="선택상품주문" />
+          <PrimaryButton 
+            text="전체상품주문"
+            addClass={"width: 22rem"}
+            onClick={buyProductClicked}
+          />
+          <PrimaryButton 
+            text="선택상품주문"
+            addClass={"width: 22rem"}
+            onClick={buyProductClicked} 
+          />
         </OrderButton>
       </ProductManageWrapper>
     </ShoppingCartWrapper>
@@ -154,7 +169,7 @@ const FinalAmount = styled.div`
 `;
 
 const OrderButton = styled.div`
-  width: 53rem;
+  width: 55rem;
   height: 8rem;
   margin: 4rem 0;
   padding-right: 8rem;

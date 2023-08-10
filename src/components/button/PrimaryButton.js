@@ -5,10 +5,11 @@ import { btnState } from "../../state/ButtonState";
 export default function PrimaryButton({
   state = btnState.DEFAULT,
   text,
+  addClass,
   onClick,
 }) {
   return (
-    <Button state={state} onClick={onClick}>
+    <Button addClass={addClass} state={state} onClick={onClick}>
       {text}
     </Button>
   );
@@ -36,4 +37,5 @@ const Button = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  ${(props) => props.addClass}
 `;
