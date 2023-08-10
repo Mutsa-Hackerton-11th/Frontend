@@ -14,10 +14,16 @@ export default function Header() {
 
   const [headerIconId, setHeaderIconId] = useState(-1);
   const navigate = useNavigate();
-
+  const location = useLocation();
   useEffect(() => {
-    sessionStorage.setItem("activeMenuIndex", headerStateIndex.toString());
-  }, [headerStateIndex]);
+    const index = headerState.findIndex(
+      (state) => state.route === location.pathname
+    );
+    if (index !== -1) {
+      setHeaderStateIndex(index);
+      sessionStorage.setItem("activeMenuIndex", index.toString());
+    }
+  }, [location]);
 
   const headerStateClicked = (index) => {
     navigate(headerState[index].route);
