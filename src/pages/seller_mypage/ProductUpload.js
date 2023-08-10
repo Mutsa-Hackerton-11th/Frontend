@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
-import Banner from "../../components/Banner";
 import Input from "../../components/input/Input";
+import WebBanner from "../../components/banner/WebBanner";
 
 export default function ProductUpload() {
   /**{
@@ -14,7 +14,7 @@ export default function ProductUpload() {
 } */
   return (
     <>
-      <Banner title="상품등록" subtitle="마이페이지 > 상품관리 > 상품등록" />
+      <WebBanner text="상품등록" subText="마이페이지 > 상품관리 > 상품등록" />
 
       <Wrapper>
         <InnerWrapper>
@@ -95,20 +95,20 @@ const FileBox = styled.div`
   padding-bottom: 5%;
 
   label {
-    display:flex;
-    flex-direction:row;
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 
     color: #000000;
     background-color: ${(props) => props.theme.colors.buttonColor.gray};
-    border-radius:1rem;
+    border-radius: 1rem;
     cursor: pointer;
 
     ${(props) => props.theme.fontStyles.text}
 
     margin-left: 5%;
-    width:15%;
+    width: 15%;
     height: 7.5rem;
   }
 
@@ -119,6 +119,7 @@ const FileBox = styled.div`
     padding: 0;
     overflow: hidden;
     border: 0;
+  }
 `;
 
 const Button = styled.button`

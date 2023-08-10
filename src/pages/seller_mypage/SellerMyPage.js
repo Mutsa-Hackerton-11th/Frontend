@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
-import Banner from "../../components/Banner";
 import { useNavigate } from "react-router-dom/dist";
 
 import BigUserIcon from "../../icons/user/BigUserIcon";
 import BigManageOrder from "../../icons/manageOrder/BigManageOrder";
 import ManageProduct from "../../icons/manageProduct/ManageProduct";
 import EnterSiteApply from "../../icons/enterSite/EnterSiteApply";
+import WebBanner from "../../components/banner/WebBanner";
 
 export default function SellerMyPage() {
   const navigate = useNavigate();
   const dummyData = "이은비";
   return (
     <>
-      <Banner title="마이페이지" subtitle="Home > 마이페이지" />
+      <WebBanner text="마이페이지" subText="Home > 마이페이지" />
 
       <NavigationWrapper>
         <NavigationHeader onClick={() => navigate("/sellerinfor")}>

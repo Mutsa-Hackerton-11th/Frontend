@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
-import Banner from "../../components/Banner";
 import { useNavigate } from "react-router-dom/dist";
 import React, { useMemo } from "react";
 
 import Table from "./Table";
+import WebBanner from "../../components/banner/WebBanner";
 
 export default function ProductManage() {
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ export default function ProductManage() {
 
   return (
     <>
-      <Banner title="상품관리" subtitle="마이페이지 > 상품관리" />
+      <WebBanner text="상품관리" subText="마이페이지 > 상품관리" />
       <Wrapper>
         <InnerWrapper>
           <InnerWrapperHeader>
