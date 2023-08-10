@@ -6,8 +6,8 @@ import UserModal from "../headerModal/user/UserModal";
 
 export const headerState = [
   { id: 0, text: "Home", route: "/" },
-  { id: 1, text: "Store", route: "/store" },
-  { id: 2, text: "Category", route: "/category" },
+  { id: 1, text: "Category", route: "/category" },
+  { id: 2, text: "Store", route: "/store" },
   { id: 3, text: "About", route: "/about" },
 ];
 
