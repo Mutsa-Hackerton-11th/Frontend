@@ -3,9 +3,10 @@ export default function KakaoLogin() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="75"
-      height="75"
+      width="7.5rem"
+      height="7.5rem"
       fill="none"
+      viewBox="0 0 75 75"
     >
       <path fill="url(#a)" d="M0 0h75v75H0z" />
       <defs>
