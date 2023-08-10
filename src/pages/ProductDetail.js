@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import MediaQuery from "../assets/mediaQuery";
 import ProductInfoImageBox from "../components/product/ProductInfoImageBox";
@@ -14,6 +14,7 @@ import ProductDetailFooterImage from "../components/product/ProductDetailFooterI
 import ReviewBox from "../components/product/ReviewBox";
 
 export default function ProductDetail() {
+  const navigate = useNavigate();
   const smallImageWrapperClass =
     "width:7.6rem; height:8rem; border-radius:1rem; background-color:#F9F1E7; display:flex; justify-content:center; align-items:center;";
   const productIntroduce =
@@ -54,6 +55,10 @@ export default function ProductDetail() {
       reviewRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const buyProductClicked = () => {
+    navigate("/buyproduct");
+  };
+
   return (
     <div>
       <ProductDetailTop>
@@ -199,7 +204,7 @@ export default function ProductDetail() {
                   width: "35%",
                 }}
               >
-                <PrimaryButton text="바로 구매" />
+                <PrimaryButton onClick={buyProductClicked} text="바로 구매" />
               </div>
             </div>
             <ProductDetailFooter

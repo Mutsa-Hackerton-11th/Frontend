@@ -1,4 +1,4 @@
-import StoreBanner from "../components/store/StoreBanner";
+import WebBanner from "../components/banner/WebBanner";
 import StoreBody from "../components/store/StoreBody";
 import { hotOrNew } from "../state/LabelState";
 
@@ -71,7 +71,7 @@ export default function Store() {
   ];
   return (
     <>
-      <StoreBanner text="Store" subText="Home > Store" />
+      <WebBanner text="Store" subText="Home > Store" />
       <StoreBody storeData={storeData} />
     </>
   );
