@@ -1,9 +1,27 @@
 import { useEffect, useRef } from "react";
 import { styled } from "styled-components";
 
-export default function HeaderModalWrapper({ children, height, addClass }) {
+export default function HeaderModalWrapper({
+  children,
+  height,
+  handleIconClick,
+  addClass,
+}) {
+  const modalRef = useRef(null);
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      handleIconClick(-1);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
-    <ModalWrapper height={height} addClass={addClass}>
+    <ModalWrapper height={height} addClass={addClass} ref={modalRef}>
       {children}
     </ModalWrapper>
   );
@@ -21,5 +39,5 @@ const ModalWrapper = styled.div`
   position: absolute;
   top: 6rem;
   right: 2rem;
-  ${(props) => props.addClass}
+  ${(props) => props.addClass};
 `;

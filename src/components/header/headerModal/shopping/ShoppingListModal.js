@@ -3,14 +3,13 @@ import FormButton from "../../../button/FormButton";
 import HeaderModalWrapper from "../HeaderModalWrapper";
 import ModalBorder from "../ModalBorder";
 import ShoppingListBox from "./ShoppingListBox";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
-export default function ShoppingListModal() {
+export default function ShoppingListModal({ handleIconClick }) {
   const navigate = useNavigate();
   const formButtonClicked = () => {
     navigate("/shoppingcart");
   };
-  const abc = useRef();
   const listData = [
     {
       image:
@@ -49,7 +48,7 @@ export default function ShoppingListModal() {
     },
   ];
   return (
-    <HeaderModalWrapper height="74.6rem">
+    <HeaderModalWrapper height="74.6rem" handleIconClick={handleIconClick}>
       <ModalBorder
         addClass={"height:10%; display:flex; justify-content:center;"}
       >
