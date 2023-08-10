@@ -7,9 +7,13 @@ import { useEffect, useRef } from "react";
 
 export default function ShoppingListModal({ handleIconClick }) {
   const navigate = useNavigate();
-  const formButtonClicked = () => {
+  const goToCartClicked = () => {
     handleIconClick(-1);
     navigate("/shoppingcart");
+  };
+  const buyProductsClicked = () => {
+    handleIconClick(-1);
+    navigate("/buyproduct");
   };
   const listData = [
     {
@@ -88,11 +92,12 @@ export default function ShoppingListModal({ handleIconClick }) {
         }}
       >
         <FormButton
-          onClick={formButtonClicked}
+          onClick={goToCartClicked}
           addClass={"width:13.7rem; height:4rem; font-size:2rem;"}
           text="장바구니"
         />
         <FormButton
+          onClick={buyProductsClicked}
           addClass={
             "width:13.7rem; height:4rem; margin-left:1.5rem; font-size:2rem;"
           }
