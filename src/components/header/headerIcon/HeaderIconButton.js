@@ -20,7 +20,7 @@ export default function HeaderIconButton({
     >
       {children}
       {nowIconState === iconState.id && iconState.modal ? (
-        <iconState.modal />
+        <iconState.modal handleIconClick={handleIconClick} />
       ) : null}
     </HeaderIconWrapper>
   );
