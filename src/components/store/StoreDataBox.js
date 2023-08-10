@@ -3,14 +3,22 @@ import MediaQuery from "../../assets/mediaQuery";
 import PropTypes from "prop-types";
 import Likes from "../../icons/heart/Likes";
 import HotOrNewLabel from "../../icons/label/HotOrNewLabel";
+import { useNavigate } from "react-router-dom";
 
 export default function StoreDataBox({ data }) {
   const { isSmallMobile, isBigMobile } = MediaQuery();
+  const navigate = useNavigate();
+  const shoppingMallClicked = () => {
+    navigate(`/store/${data.id}`, {
+      state: data.name,
+    });
+  };
   return (
     <StoreDataBoxWrapper
       style={{
         width: isSmallMobile ? "50%" : isBigMobile ? "33.3%" : null,
       }}
+      onClick={shoppingMallClicked}
     >
       <img alt="쇼핑몰 박스 사진" src={data.image} />
       <span

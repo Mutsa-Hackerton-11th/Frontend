@@ -18,7 +18,7 @@ export default function ArrowButton({ onClick, color, bgColor }) {
 
 ArrowButton.propTypes = {
   onClick: PropTypes.func,
-  clir: PropTypes.string,
+  color: PropTypes.string,
 };
 
 const Button = styled.div`

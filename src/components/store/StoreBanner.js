@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import StoreBannerImage from "./StoreBanner.jpg";
 import SearchIcon from "../../icons/search/SearchIcon";
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import MediaQuery from "../../assets/mediaQuery";
 
 export default function StoreBanner({ categories, text, subText }) {
@@ -55,6 +56,12 @@ export default function StoreBanner({ categories, text, subText }) {
     </>
   );
 }
+
+StoreBanner.propTypes = {
+  categories: PropTypes.array,
+  text: PropTypes.string.isRequired,
+  subText: PropTypes.string,
+};
 
 const StoreBannerWrapper = styled.div`
   height: 31.6rem;

@@ -20,6 +20,7 @@ import StoreEntry from "./pages/seller_mypage/StoreEntry";
 import ProductManage from "./pages/seller_mypage/ProductManage";
 import OrderMange from "./pages/seller_mypage/OrderManage";
 import ProductUpload from "./pages/seller_mypage/ProductUpload";
+import StoreProducts from "./pages/StoreProducts";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />}></Route>
         <Route path="/store" element={<Store />}></Route>
+        <Route path="/store/:id" element={<StoreProducts />}></Route>
         <Route path="/about" element={<About />}></Route>
 
         <Route path="/serviceinfor" element={<ServiceInfor />}></Route>
