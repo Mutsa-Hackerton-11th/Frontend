@@ -7,21 +7,22 @@ import { useEffect, useRef, useState } from "react";
 import HeaderIconButton from "./headerIcon/HeaderIconButton";
 
 export default function Header() {
-  const [headerStateIndex, setHeaderStateIndex] = useState(0);
+  const [headerStateIndex, setHeaderStateIndex] = useState(() => {
+    const storedIndex = sessionStorage.getItem("activeMenuIndex");
+    return storedIndex !== null ? parseInt(storedIndex, 10) : 0;
+  });
+
   const [headerIconId, setHeaderIconId] = useState(-1);
   const navigate = useNavigate();
-  const location = useLocation();
+
+  useEffect(() => {
+    sessionStorage.setItem("activeMenuIndex", headerStateIndex.toString());
+  }, [headerStateIndex]);
+
   const headerStateClicked = (index) => {
     navigate(headerState[index].route);
     setHeaderStateIndex(index);
   };
-  useEffect(() => {
-    const currentPath = location.pathname;
-    const activeStateIndex = headerState.findIndex(
-      (state) => state.route === currentPath
-    );
-    setHeaderStateIndex(activeStateIndex >= 0 ? activeStateIndex : 0);
-  }, []);
   return (
     <HeaderWrapper>
       <LogoAndName>
