@@ -39,5 +39,7 @@ const ModalWrapper = styled.div`
   position: absolute;
   top: 6rem;
   right: 2rem;
+  z-index: 1;
+  background-color: white;
   ${(props) => props.addClass};
 `;
