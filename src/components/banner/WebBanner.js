@@ -3,13 +3,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import HeaderLogo from "../../icons/logo/HeaderLogo";
 
-export default function WebBanner({ categories, text, subText }) {
+export default function WebBanner({ text, subText }) {
   return (
     <>
       <BannerWrapper>
         <img
           alt="스토어 배너 사진"
-          src={process.env.PUBLIC_URL + "/assets/StoreBanner.png"}
+          src={process.env.PUBLIC_URL + "/img/StoreBanner.png"}
         />
         <BannerIcon>
           <HeaderLogo />
@@ -24,7 +24,6 @@ export default function WebBanner({ categories, text, subText }) {
 }
 
 WebBanner.propTypes = {
-  categories: PropTypes.array,
   text: PropTypes.string.isRequired,
   subText: PropTypes.string,
 };

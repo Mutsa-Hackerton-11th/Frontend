@@ -1,8 +1,7 @@
-import Banner from "../../../components/Banner";
+import WebBanner from "../../../components/banner/WebBanner";
 import FormButton from "../../../components/button/FormButton";
 import PrimaryButton from "../../../components/button/PrimaryButton";
-import ProductList from "./ProductList"
-import theme from "../../../styles/theme";
+import ProductList from "./ProductList";
 import { styled } from "styled-components";
 
 export default function ShoppingCart() {
@@ -23,49 +22,69 @@ export default function ShoppingCart() {
       price: "30,000",
       delivery: "2,500",
     },
-  ]
+  ];
 
-    return(
-      <ShoppingCartWrapper>
-        <Banner title="장바구니" subtitle="마이페이지 > 장바구니" />
-        <ProductManageWrapper>
-          <h1 style={{marginLeft: "4rem"}}>상품관리</h1>
-          <div>
-            <PropsWrapper>
-              <Props style={{width: "2rem"}}><span>○</span></Props>
-              <Props style={{width: "12rem"}}><span>이미지</span></Props>
-              <Props style={{width: "25rem"}}><span>상품명</span></Props>
-              <Props style={{width: "15rem"}}><span>옵션</span></Props>
-              <Props style={{width: "10.5rem"}}><span>수량</span></Props>
-              <Props style={{width: "8.5rem"}}><span>판매가</span></Props>
-              <Props style={{width: "8rem"}}><span>배송비</span></Props>
-            </PropsWrapper>
-            {listData.map((listInfo) => (<ProductList listInfo={listInfo} />))}
-            <TotalAmount>
-              <span>총 결제금액 : 65,000 원</span>
-            </TotalAmount>
-          </div>
-          <DeleteButton>
-            <FormButton 
-              text="삭제"
-              addClass={"width: 9rem; height: 4.5rem; border: 0.15rem solid black;"} 
-            />
-            <FormButton 
-              text="비우기"
-              addClass={"width: 9rem; height: 4.5rem; border: 0.15rem solid black;"}
-            />
-          </DeleteButton>
-          <FinalAmount>
-            <span>최종 결제 금액</span>
-            <p>65,000 원</p>
-          </FinalAmount>
-          <OrderButton>
-            <PrimaryButton text="전체상품주문" />
-            <PrimaryButton text="선택상품주문" />
-          </OrderButton>
-        </ProductManageWrapper>
-      </ShoppingCartWrapper>
-    )
+  return (
+    <ShoppingCartWrapper>
+      <WebBanner text="장바구니" subText="마이페이지 > 장바구니" />
+      <ProductManageWrapper>
+        <h1 style={{ marginLeft: "4rem" }}>상품관리</h1>
+        <div>
+          <PropsWrapper>
+            <Props style={{ width: "2rem" }}>
+              <span>○</span>
+            </Props>
+            <Props style={{ width: "12rem" }}>
+              <span>이미지</span>
+            </Props>
+            <Props style={{ width: "25rem" }}>
+              <span>상품명</span>
+            </Props>
+            <Props style={{ width: "15rem" }}>
+              <span>옵션</span>
+            </Props>
+            <Props style={{ width: "10.5rem" }}>
+              <span>수량</span>
+            </Props>
+            <Props style={{ width: "8.5rem" }}>
+              <span>판매가</span>
+            </Props>
+            <Props style={{ width: "8rem" }}>
+              <span>배송비</span>
+            </Props>
+          </PropsWrapper>
+          {listData.map((listInfo) => (
+            <ProductList listInfo={listInfo} />
+          ))}
+          <TotalAmount>
+            <span>총 결제금액 : 65,000 원</span>
+          </TotalAmount>
+        </div>
+        <DeleteButton>
+          <FormButton
+            text="삭제"
+            addClass={
+              "width: 9rem; height: 4.5rem; border: 0.15rem solid black;"
+            }
+          />
+          <FormButton
+            text="비우기"
+            addClass={
+              "width: 9rem; height: 4.5rem; border: 0.15rem solid black;"
+            }
+          />
+        </DeleteButton>
+        <FinalAmount>
+          <span>최종 결제 금액</span>
+          <p>65,000 원</p>
+        </FinalAmount>
+        <OrderButton>
+          <PrimaryButton text="전체상품주문" />
+          <PrimaryButton text="선택상품주문" />
+        </OrderButton>
+      </ProductManageWrapper>
+    </ShoppingCartWrapper>
+  );
 }
 
 const ShoppingCartWrapper = styled.div`
@@ -92,7 +111,7 @@ const PropsWrapper = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  border-bottom: solid 0.15rem #E8E8E8
+  border-bottom: solid 0.15rem #e8e8e8;
 `;
 
 const Props = styled.div`
@@ -108,7 +127,7 @@ const TotalAmount = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  border-bottom: solid 0.15rem #E8E8E8
+  border-bottom: solid 0.15rem #e8e8e8;
 `;
 
 const DeleteButton = styled.div`

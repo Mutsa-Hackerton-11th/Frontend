@@ -1,16 +1,15 @@
-import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import KakaoLogin from "../../icons/socialLogin/KakaoLogin";
-import Banner from "../../components/Banner";
 
 import theme from "../../styles/theme";
 import { useNavigate } from "react-router-dom/dist";
+import WebBanner from "../../components/banner/WebBanner";
 
 export default function LogIn() {
   const navigate = useNavigate();
   return (
     <LogIn_page_wrapper>
-      <Banner title="로그인" subtitle="Home > 로그인" />
+      <WebBanner text="로그인" subText="Home > 로그인" />
 
       <Login_wrapper>
         <Login_box_wrapper>

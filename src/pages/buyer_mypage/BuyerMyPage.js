@@ -1,29 +1,27 @@
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom/dist";
-import Banner from "../../components/Banner";
-import BigUserIcon from "../../icons/user/BigUserIcon"
-import BigCart from "../../icons/cart/BigCart"
-import Orderlist from "../../icons/orderList/OrderList"
-import BigInterestProduct from "../../icons/heart/BigInterestProduct"
-import theme from "../../styles/theme";
+import BigUserIcon from "../../icons/user/BigUserIcon";
+import BigCart from "../../icons/cart/BigCart";
+import Orderlist from "../../icons/orderList/OrderList";
+import BigInterestProduct from "../../icons/heart/BigInterestProduct";
 import { styled } from "styled-components";
+import WebBanner from "../../components/banner/WebBanner";
 
 export default function BuyerMyPage() {
   const navigate = useNavigate();
 
   const onCartClick = () => {
     navigate("/shoppingcart");
-  }
+  };
   const onOrderListClick = () => {
     navigate("/orderlist");
-  }
+  };
   const onInterestProductClick = () => {
     navigate("/interestproduct");
-  }
+  };
 
-  return(
+  return (
     <BuyerMyPageWrapper>
-      <Banner title="마이페이지" subtitle="Home > 마이페이지" />
+      <WebBanner text="마이페이지" subText="Home > 마이페이지" />
       <BoxWrapper>
         <MyPageBox>
           <BigUserIcon />
@@ -51,13 +49,13 @@ export default function BuyerMyPage() {
         </FunctionBoxWrapper>
       </BoxWrapper>
     </BuyerMyPageWrapper>
-  )
+  );
 }
 
 const BuyerMyPageWrapper = styled.div`
   width: 100%;
   height: 100%;
-`
+`;
 
 const BoxWrapper = styled.div`
   background-color: ${(props) => props.theme.colors.mainBackground};
@@ -73,7 +71,7 @@ const BoxWrapper = styled.div`
     ${(props) => props.theme.fontStyles.title}
     font-weigth: 600;
   }
-`
+`;
 
 const MyPageBox = styled.div`
   width: 100%;
@@ -86,7 +84,7 @@ const MyPageBox = styled.div`
   p {
     margin-left: 5rem;
   }
-`
+`;
 
 const FunctionBoxWrapper = styled.div`
   width: 100%;
@@ -98,7 +96,7 @@ const FunctionBoxWrapper = styled.div`
   p {
     margin-top: 5rem;
   }
-`
+`;
 
 const FunctionBox = styled.div`
   width: 33.3%;
@@ -107,7 +105,7 @@ const FunctionBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
+`;
 
 const FunctionMiddleBox = styled.div`
   width: 33.3%;
@@ -118,7 +116,7 @@ const FunctionMiddleBox = styled.div`
   align-items: center;
   border-right: solid 0.5rem white;
   border-left: solid 0.5rem white;
-`
+`;
 
 const Function = styled.div`
   display: flex;
@@ -126,4 +124,4 @@ const Function = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-`
+`;
