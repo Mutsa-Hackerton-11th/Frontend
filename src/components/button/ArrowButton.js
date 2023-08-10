@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
 import PropTypes from "prop-types";
-import RightArrow from "../icon/arrow/SmallRightArrow";
+import SmallRightArrow from "../../icons/arrow/SmallRightArrow";
 
-export default function ArrowButton({ onClick, color }) {
+export default function ArrowButton({ onClick, color, bgColor }) {
   return (
-    <Button onClick={onClick}>
-      <RightArrow
+    <Button onClick={onClick} bgColor={bgColor}>
+      <SmallRightArrow
         color={color}
         style={{
           width: "50px",
@@ -22,6 +22,7 @@ ArrowButton.propTypes = {
 };
 
 const Button = styled.div`
+  background-color: ${(props) => props.bgColor};
   width: 4.8rem;
   height: 4.8rem;
   border-radius: 2.4rem;

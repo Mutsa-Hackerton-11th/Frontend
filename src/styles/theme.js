@@ -16,12 +16,12 @@ const theme = {
     title: `
       font-family: "Poppins", sans-serif;
       font-size: 4.8rem;
-      font-weight: 500;
+      font-weight: 600;
     `,
     subTitle: `
       font-family: "Poppins", sans-serif;
       font-size: 3.6rem;
-      font-weight: 600;
+      font-weight: 500;
     `,
     text: `
       font-family: "Poppins", sans-serif;
