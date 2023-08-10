@@ -60,7 +60,11 @@ export default function ProductDetail() {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        paddingTop: "10rem",
+      }}
+    >
       <ProductDetailTop>
         <div>
           <span>{state.mallName}</span>

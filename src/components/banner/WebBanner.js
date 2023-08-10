@@ -5,7 +5,11 @@ import HeaderLogo from "../../icons/logo/HeaderLogo";
 
 export default function WebBanner({ text, subText }) {
   return (
-    <>
+    <div
+      style={{
+        paddingTop: "10rem",
+      }}
+    >
       <BannerWrapper>
         <img
           alt="스토어 배너 사진"
@@ -19,7 +23,7 @@ export default function WebBanner({ text, subText }) {
           <span>{subText}</span>
         </BannerText>
       </BannerWrapper>
-    </>
+    </div>
   );
 }
 

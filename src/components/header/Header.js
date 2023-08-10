@@ -12,9 +12,25 @@ export default function Header() {
     return storedIndex !== null ? parseInt(storedIndex, 10) : 0;
   });
 
+  const headerRef = useRef();
   const [headerIconId, setHeaderIconId] = useState(-1);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        headerRef.current.style.backgroundColor = "#F9F1E7";
+      } else {
+        headerRef.current.style.backgroundColor = "transparent";
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const index = headerState.findIndex(
@@ -34,7 +50,7 @@ export default function Header() {
   };
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper ref={headerRef}>
       <LogoAndName>
         <div>
           <HeaderLogo />
@@ -76,6 +92,8 @@ const HeaderWrapper = styled.div`
   height: 10rem;
   display: flex;
   justify-content: center;
+  position: fixed;
+  z-index: 1;
 `;
 
 const LogoAndName = styled.div`

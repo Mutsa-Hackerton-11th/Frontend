@@ -3,8 +3,11 @@ import ArrowButton from "../components/button/ArrowButton";
 import BannerButton from "../components/button/BannerButton";
 import { useState } from "react";
 import BestOrNewProduct from "../components/main/BestOrNewProduct";
+import PrimaryButton from "../components/button/PrimaryButton";
+import { useNavigate } from "react-router-dom";
 
 export default function Main() {
+  const navigate = useNavigate();
   const [bannerNum, setBannerNum] = useState(0);
   const [bestOrNew, setBestOrNew] = useState(0);
   const arrowBtnClicked = () => {
@@ -15,6 +18,9 @@ export default function Main() {
   };
   const bestOrNewClicked = (index) => {
     setBestOrNew(index);
+  };
+  const seeMoreClicked = () => {
+    navigate("/store");
   };
   const data = [
     {
@@ -55,7 +61,11 @@ export default function Main() {
     },
   ];
   return (
-    <>
+    <div
+      style={{
+        paddingTop: "10rem",
+      }}
+    >
       <MainBanner>
         <BannerText>
           <span>나만 알기 아까운 떠오르는 신생 쇼핑몰</span>
@@ -63,6 +73,11 @@ export default function Main() {
             올 여름을 책임질 라이징 상품부터 꾸준히 사랑받는 스테디 상품까지
             한번에 모아보기
           </p>
+          <PrimaryButton
+            text="더보기"
+            addClass="width:21.5rem; height:6.4rem;"
+            onClick={seeMoreClicked}
+          />
         </BannerText>
         <BannerPhoto>
           <img
@@ -149,7 +164,7 @@ export default function Main() {
           </HotProducts>
         </MainCategory>
       </MainBody>
-    </>
+    </div>
   );
 }
 
@@ -184,6 +199,7 @@ const BannerText = styled.div`
     color: #616161;
     display: flex;
     align-items: center;
+    margin-bottom: 2rem;
   }
 `;
 
