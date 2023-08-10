@@ -1,12 +1,9 @@
-import { useLocation, useParams } from "react-router-dom";
+import BannerSearch from "../components/banner/BannerSearch";
 import WebBanner from "../components/banner/WebBanner";
 import StoreBody from "../components/store/StoreBody";
 import { hotOrNew } from "../state/LabelState";
-import BannerSearch from "../components/banner/BannerSearch";
 
-export default function StoreProducts() {
-  const { id } = useParams();
-  const { state } = useLocation();
+export default function Category() {
   const storeCategories = [
     "New",
     "Best",
@@ -27,7 +24,7 @@ export default function StoreProducts() {
       hotOrNew: hotOrNew.HOT,
       id: 23,
       category: "상의",
-      mallName: { state },
+      mallName: "아디다스",
     },
     {
       image:
@@ -38,7 +35,7 @@ export default function StoreProducts() {
       hotOrNew: hotOrNew.HOT,
       id: 24,
       category: "상의",
-      mallName: { state },
+      mallName: "아디다스",
     },
     {
       image:
@@ -49,7 +46,7 @@ export default function StoreProducts() {
       hotOrNew: hotOrNew.NEW,
       id: 25,
       category: "악세서리",
-      mallName: { state },
+      mallName: "나이키",
     },
     {
       image:
@@ -60,7 +57,7 @@ export default function StoreProducts() {
       hotOrNew: hotOrNew.HOT,
       id: 26,
       category: "상의",
-      mallName: { state },
+      mallName: "NewBalance",
     },
     {
       image:
@@ -71,7 +68,7 @@ export default function StoreProducts() {
       hotOrNew: hotOrNew.NEW,
       id: 27,
       category: "하의",
-      mallName: { state },
+      mallName: "구찌",
     },
     {
       image:
@@ -82,7 +79,7 @@ export default function StoreProducts() {
       hotOrNew: hotOrNew.NEW,
       id: 28,
       category: "가방",
-      mallName: { state },
+      mallName: "무신사",
     },
     {
       image:
@@ -93,7 +90,7 @@ export default function StoreProducts() {
       hotOrNew: hotOrNew.HOT,
       id: 29,
       category: "신발",
-      mallName: { state },
+      mallName: "발렌시아가",
     },
     {
       image:
@@ -104,7 +101,7 @@ export default function StoreProducts() {
       hotOrNew: hotOrNew.NEW,
       id: 30,
       category: "아우터",
-      mallName: { state },
+      mallName: "뉴플",
     },
   ];
   const categories = [
@@ -119,7 +116,7 @@ export default function StoreProducts() {
   ];
   return (
     <>
-      <WebBanner text={state} />
+      <WebBanner text="Category" />
       <BannerSearch categories={categories} />
       <StoreBody storeData={productData} />
     </>

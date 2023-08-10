@@ -21,6 +21,7 @@ import ProductUpload from "./pages/seller_mypage/ProductUpload";
 import StoreProducts from "./pages/StoreProducts";
 import ProductDetail from "./pages/ProductDetail";
 import BuyProduct from "./pages/BuyProduct";
+import Category from "./pages/Category";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Main />}></Route>
+        <Route path="/category" element={<Category />}></Route>
         <Route path="/store" element={<Store />}></Route>
         <Route path="/store/:id" element={<StoreProducts />}></Route>
         <Route path="/productdetail/:id" element={<ProductDetail />}></Route>
