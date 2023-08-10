@@ -1,5 +1,5 @@
 import { useLocation, useParams } from "react-router-dom";
-import StoreBanner from "../components/store/StoreBanner";
+import WebBanner from "../components/banner/WebBanner";
 import StoreBody from "../components/store/StoreBody";
 import { hotOrNew } from "../state/LabelState";
 
@@ -108,7 +108,7 @@ export default function StoreProducts() {
   ];
   return (
     <>
-      <StoreBanner categories={storeCategories} text={state} />
+      <WebBanner categories={storeCategories} text={state} />
       <StoreBody storeData={productData} />
     </>
   );

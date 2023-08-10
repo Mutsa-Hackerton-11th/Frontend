@@ -42,10 +42,10 @@ const GlobalStyles = createGlobalStyle`
         }
 
         /* Media query for mobile */
-        @media (min-width: 400px) and (max-width: 767px) {
+        @media (min-width: 450px) and (max-width: 768px) {
             font-size: 6px;
         }
-        @media (max-width: 399px) {
+        @media (max-width: 450px) {
             font-size: 4px;
         }
     }

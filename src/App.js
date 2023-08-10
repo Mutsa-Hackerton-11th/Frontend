@@ -21,6 +21,7 @@ import OrderMange from "./pages/seller_mypage/OrderManage";
 import ProductUpload from "./pages/seller_mypage/ProductUpload";
 import StoreProducts from "./pages/StoreProducts";
 import ProductDetail from "./pages/ProductDetail";
+import BuyProduct from "./pages/BuyProduct";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/store" element={<Store />}></Route>
         <Route path="/store/:id" element={<StoreProducts />}></Route>
         <Route path="/productdetail/:id" element={<ProductDetail />}></Route>
+        <Route path="/buyproduct" element={<BuyProduct />}></Route>
 
         <Route path="/about" element={<About />}></Route>
 
