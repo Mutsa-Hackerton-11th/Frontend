@@ -1,14 +1,27 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom/dist";
 import FormButton from "../../../components/button/FormButton";
 import theme from "../../../styles/theme";
 import { styled } from "styled-components";
 import PropTypes from "prop-types";
 
-export default function SelectedProductList({ listInfo }) {
+export default function InterestProductList({ listInfo }) {
+    const navigate = useNavigate();
     const [isChecked, setIsChecked] = useState(false);
 
     const handleCheckboxChange = () => {
       setIsChecked(!isChecked);
+    };
+
+    const buyProductClicked = () => {
+      navigate("/buyproduct");
+    };
+
+    const addCartClicked = () => {
+        const ok = window.confirm("상품이 장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?")
+        if (ok) {
+            navigate("/shoppingcart");
+        }    
     };
 
     return (
@@ -30,23 +43,9 @@ export default function SelectedProductList({ listInfo }) {
             >
                 {listInfo.productName}
             </span>
-            <ProductOption>
-                <span>{listInfo.option}</span>
-                <FormButton
-                    text="변경"
-                    addClass={"width: 9rem; height: 4.5rem; border: 0.15rem solid black;"}
-                />
-            </ProductOption>
-            <ProductCount>
-                <span>{listInfo.count}</span>
-                <FormButton
-                    text="변경"
-                    addClass={"width: 9rem; height: 4.5rem; border: 0.15rem solid black;"}
-                />
-            </ProductCount>
             <span
                 style={{
-                    width: "8.5rem",
+                    width: "9rem",
                     display: "flex",
                     justifyContent: "center",
                 }}
@@ -62,17 +61,37 @@ export default function SelectedProductList({ listInfo }) {
             >
                 {listInfo.delivery}
             </span>
+            <SelectButton>
+                <FormButton
+                    text="주문하기"
+                    addClass={
+                    "width: 18rem; height: 4.5rem; border: 0.15rem solid black;"
+                    }
+                    onClick={buyProductClicked}
+                />
+                <FormButton
+                    text="장바구니담기"
+                    addClass={
+                    "width: 18rem; height: 4.5rem; border: 0.15rem solid black;"
+                    }
+                    onClick={addCartClicked}
+                />
+                <FormButton
+                    text="삭제"
+                    addClass={
+                    "width: 18rem; height: 4.5rem; border: 0.15rem solid black;"
+                    }
+                />
+            </SelectButton>
         </ListWrapper>
     );
 }
 
-SelectedProductList.propTypes = {
+InterestProductList.propTypes = {
     classes: PropTypes.string,
     listInfo: PropTypes.shape({
         image: PropTypes.string,
         productName: PropTypes.string,
-        option: PropTypes.string,
-        count: PropTypes.number,
         price: PropTypes.number,
         delivery: PropTypes.number,
     }),
@@ -135,28 +154,11 @@ const ProductImg = styled.img`
     width: 12rem;
 `;
 
-const ProductOption = styled.div`
+const SelectButton = styled.div`
+    height: 15rem;
+    width: 20rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    span {
-        width: 15rem;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 3rem;
-    }
-`;
-
-const ProductCount = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    span {
-        width: 10.5rem;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 3rem;
-    }
-`;
+`
