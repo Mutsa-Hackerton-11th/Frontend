@@ -73,11 +73,13 @@ export default function Main() {
             올 여름을 책임질 라이징 상품부터 꾸준히 사랑받는 스테디 상품까지
             한번에 모아보기
           </p>
-          <PrimaryButton
-            text="더보기"
-            addClass="width:21.5rem; height:6.4rem;"
-            onClick={seeMoreClicked}
-          />
+          <div
+            style={{
+              width: "21.5rem",
+            }}
+          >
+            <PrimaryButton text="더보기" onClick={seeMoreClicked} />
+          </div>
         </BannerText>
         <BannerPhoto>
           <img
@@ -200,6 +202,7 @@ const BannerText = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
+    line-height: 1.3;
   }
 `;
 

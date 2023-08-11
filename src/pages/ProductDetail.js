@@ -289,7 +289,7 @@ export default function ProductDetail() {
         >
           <FooterCategoryText>Detail</FooterCategoryText>
           <img
-            src={process.env.PUBLIC_URL + "/assets/Detail.png"}
+            src={process.env.PUBLIC_URL + "/img/Detail.png"}
             alt="Detail"
             style={{
               width: "100%",
