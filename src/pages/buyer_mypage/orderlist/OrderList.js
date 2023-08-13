@@ -1,8 +1,10 @@
 import WebBanner from "../../../components/banner/WebBanner";
 import { styled } from "styled-components";
 import OrderedProductList from "./OrderedProductList";
+import withAuth from "../../../authHoc/WithAuth";
+import { pageBlock } from "../../../state/pageBlockState";
 
-export default function OrderList() {
+function OrderList() {
   const listData = [
     {
       orderNumber: "20230803-38493",
@@ -24,7 +26,7 @@ export default function OrderList() {
     },
   ];
 
-  return(
+  return (
     <OrderListWrapper>
       <WebBanner text="주문내역" subText="마이페이지 > 주문내역" />
       <OrderHistoryWrapper>
@@ -59,12 +61,12 @@ export default function OrderList() {
         </div>
       </OrderHistoryWrapper>
     </OrderListWrapper>
-  )
+  );
 }
 
 const OrderListWrapper = styled.div`
   width: 100%;
-  height: 100%; 
+  height: 100%;
 `;
 
 const OrderHistoryWrapper = styled.div`
@@ -95,3 +97,4 @@ const Props = styled.div`
   align-items: center;
 `;
 
+export default withAuth(OrderList, { block: pageBlock.UNAUTHENTICATED });

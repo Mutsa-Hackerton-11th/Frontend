@@ -9,8 +9,10 @@ import FormButton from "../components/button/FormButton";
 import BuyProductForm from "../components/buyproduct/BuyProductForm";
 import MediaQuery from "../assets/mediaQuery";
 import PrimaryButton from "../components/button/PrimaryButton";
+import withAuth from "../authHoc/WithAuth";
+import { pageBlock } from "../state/pageBlockState";
 
-export default function BuyProduct() {
+function BuyProduct() {
   const [selectClicked, setSelectClicked] = useState(false);
   const selectBtnClicked = () => {
     setSelectClicked((prev) => !prev);
@@ -213,3 +215,5 @@ const FinalPrice = styled.div`
     }
   }
 `;
+
+export default withAuth(BuyProduct, { block: pageBlock.UNAUTHENTICATED });
