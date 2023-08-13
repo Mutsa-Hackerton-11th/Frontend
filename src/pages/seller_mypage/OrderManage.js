@@ -1,5 +1,4 @@
 import WebBanner from '../../components/banner/WebBanner';
-import { useTable } from 'react-table';
 import { styled } from "styled-components";
 
 export default function OrderMange() {
@@ -62,6 +61,16 @@ export default function OrderMange() {
       delivery: "2,500",
       orderStatus: "배송중",
     },
+    {
+      orderNumber: "45324",
+      productName: "스트라이프 맨투맨",
+      option: "블루 / M",
+      count: 1,
+      price: "30,000",
+      delivery: "2,500",
+      orderStatus: "배송완료",
+    },
+    {},{},{},{},
   ];
 
   const headerKey = headers.map((header) => header.accessor);
@@ -70,7 +79,7 @@ export default function OrderMange() {
     <OrderMangeWrapper>
       <WebBanner text="주문관리" subText="마이페이지 > 주문관리" />
       <OrderlistWrapper>
-        <h1 style={{ marginLeft: "4rem" }}>주문관리</h1>
+        <h1 style={{ marginLeft: "4rem" }}>주문내역</h1>
         <Table>
           <thead>
             {
@@ -105,39 +114,39 @@ const OrderMangeWrapper = styled.div`
 
 const OrderlistWrapper = styled.div`
   margin: 8rem 5rem;
-
   h1 {
     ${(props) => props.theme.fontStyles.title}
     justify-content: flex-start;
   }
-
-  span {
-    ${(props) => props.theme.fontStyles.text}
-  }
-
 `;
 
 const Table = styled.table`
   border-collapse: collapse;
   width: 100%;
-  margin: 5rem 0 0 0;
+  margin: 7rem 0 0 0;
   ${(props) => props.theme.fontStyles.text}
 `;
 
 const TableHeader = styled.th`
   height: 8rem;
   border-bottom: solid 0.15rem #e8e8e8;
-`;
-
-const TableRow = styled.tr`
-  height: 8rem;
-  
+  vertical-align: middle;
+  border-right: solid 0.15rem #e8e8e8;
   &:last-child {
     border-right: none;
   }
 `;
 
-const TableData = styled.td`
+const TableRow = styled.tr`
+  height: 8rem;
+`;
 
+const TableData = styled.td`
+  vertical-align: middle;
+  text-align: center;
+  border-right: solid 0.15rem #e8e8e8;
+  &:last-child {
+    border-right: none;
+  }
 `;
 
