@@ -7,8 +7,10 @@ import BigManageOrder from "../../icons/manageOrder/BigManageOrder";
 import ManageProduct from "../../icons/manageProduct/ManageProduct";
 import EnterSiteApply from "../../icons/enterSite/EnterSiteApply";
 import WebBanner from "../../components/banner/WebBanner";
+import withAuth from "../../authHoc/WithAuth";
+import { pageBlock } from "../../state/pageBlockState";
 
-export default function SellerMyPage() {
+function SellerMyPage() {
   const navigate = useNavigate();
   const dummyData = "이은비";
   return (
@@ -106,3 +108,5 @@ const NavigationBox_center = styled.button`
     ${(props) => props.theme.fontStyles.subTitle}
   }
 `;
+
+export default withAuth(SellerMyPage, { block: pageBlock.UNAUTHENTICATED });

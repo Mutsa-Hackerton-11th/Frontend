@@ -1,8 +1,10 @@
 import { styled } from "styled-components";
 import Input from "../../components/input/Input";
 import WebBanner from "../../components/banner/WebBanner";
+import withAuth from "../../authHoc/WithAuth";
+import { pageBlock } from "../../state/pageBlockState";
 
-export default function ProductUpload() {
+function ProductUpload() {
   /**{
   "product_name": "상품명",
   "description": "상품 설명",
@@ -134,3 +136,5 @@ const Button = styled.button`
 
   margin-top: 5%;
 `;
+
+export default withAuth(ProductUpload, { block: pageBlock.UNAUTHENTICATED });

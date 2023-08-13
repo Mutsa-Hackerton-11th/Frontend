@@ -4,8 +4,10 @@ import KakaoLogin from "../../icons/socialLogin/KakaoLogin";
 import theme from "../../styles/theme";
 import { useNavigate } from "react-router-dom/dist";
 import WebBanner from "../../components/banner/WebBanner";
+import withAuth from "../../authHoc/WithAuth";
+import { pageBlock } from "../../state/pageBlockState";
 
-export default function LogIn() {
+function LogIn() {
   const navigate = useNavigate();
   return (
     <LogIn_page_wrapper>
@@ -78,3 +80,5 @@ const Login_box_wrapper = styled.div`
 
   gap: 5rem;
 `;
+
+export default withAuth(LogIn, { block: pageBlock.ACTIVATED });
