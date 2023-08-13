@@ -94,7 +94,7 @@ export default function ShoppingCart() {
           <PrimaryButton 
             text="선택상품주문"
             addClass={"width: 22rem"}
-            onClick={buyProductClicked} 
+            onClick={buyProductClicked}
           />
         </OrderButton>
       </ProductManageWrapper>
