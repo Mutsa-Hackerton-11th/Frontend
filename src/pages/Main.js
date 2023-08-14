@@ -5,13 +5,29 @@ import { useState } from "react";
 import BestOrNewProduct from "../components/main/BestOrNewProduct";
 import PrimaryButton from "../components/button/PrimaryButton";
 import { useNavigate } from "react-router-dom";
+import useGetBestSellers from "../apis/get/useGetBestSellers";
+import useGetNewSellers from "../apis/get/useGetNewSellers";
 
 export default function Main() {
+  const {
+    bestSellers,
+    isLoading: bestSellersLoading,
+    error: bestSellersError,
+  } = useGetBestSellers();
+  const {
+    newSellers,
+    isLoading: newSellersLoading,
+    error: newSellersError,
+  } = useGetNewSellers();
   const navigate = useNavigate();
   const [bannerNum, setBannerNum] = useState(0);
   const [bestOrNew, setBestOrNew] = useState(0);
   const arrowBtnClicked = () => {
-    console.log("clicked");
+    if (bannerNum === 3) {
+      setBannerNum(0);
+      return;
+    }
+    setBannerNum((prev) => prev + 1);
   };
   const bannerButtonClicked = (index) => {
     setBannerNum(index);
@@ -22,44 +38,6 @@ export default function Main() {
   const seeMoreClicked = () => {
     navigate("/store");
   };
-  const data = [
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2016/11/22/22/25/groom-1850932_1280.jpg",
-      name: "크루넥 스웨터",
-      price: "24,000원",
-    },
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2017/02/08/02/56/booties-2047596_1280.jpg",
-      name: "레더 재킷",
-      price: "26,000원",
-    },
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2016/11/21/14/53/man-1845814_1280.jpg",
-      name: "가디건",
-      price: "31,000원",
-    },
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2022/08/04/00/51/woman-7363571_1280.jpg",
-      name: "플리츠 스커트",
-      price: "19,000원",
-    },
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2014/08/26/21/48/sweatshirts-428607_1280.jpg",
-      name: "블레이저",
-      price: "57,000원",
-    },
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2016/11/18/13/48/clothes-1834650_1280.jpg",
-      name: "V넥 티",
-      price: "34,000원",
-    },
-  ];
   return (
     <div
       style={{
@@ -157,11 +135,20 @@ export default function Main() {
                 flexWrap: "wrap",
               }}
             >
-              {data.map((product, index) => {
-                return (
-                  <BestOrNewProduct key={product + index} data={product} />
-                );
-              })}
+              {bestOrNew === 0 && !bestSellersLoading
+                ? bestSellers.popular_products.map((product, index) => {
+                    return (
+                      <BestOrNewProduct key={product + index} data={product} />
+                    );
+                  })
+                : null}
+              {bestOrNew === 1 && !newSellersLoading
+                ? newSellers.new_products.map((product, index) => {
+                    return (
+                      <BestOrNewProduct key={product + index} data={product} />
+                    );
+                  })
+                : null}
             </div>
           </HotProducts>
         </MainCategory>

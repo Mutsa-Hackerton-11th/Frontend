@@ -1,11 +1,11 @@
 import { Navigate } from "react-router-dom";
-import useUser from "../apis/get/useUser";
 import { pageBlock } from "../state/pageBlockState";
+import useGetUser from "../apis/get/useGetUser";
 
 const withAuth =
   (WrappedComponent, { block }) =>
   () => {
-    const { user, isLoading } = useUser();
+    const { user, isLoading } = useGetUser();
     if (isLoading) {
       return null;
     }
