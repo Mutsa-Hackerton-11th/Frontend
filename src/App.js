@@ -50,7 +50,6 @@ function App() {
         <Route path="/interestproduct" element={<InterestProduct />}></Route>
 
         <Route path="/sellermypage" element={<SellerMyPage />}></Route>
-        <Route path="/sellerinfor" element={<SellerInfor />}></Route>
         <Route path="/storeentry" element={<StoreEntry />}></Route>
         <Route path="/productmanage" element={<ProductManage />}></Route>
         <Route path="/ordermanage" element={<OrderMange />}></Route>

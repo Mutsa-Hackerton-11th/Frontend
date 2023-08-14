@@ -6,9 +6,16 @@ import { useNavigate } from "react-router-dom/dist";
 import WebBanner from "../../components/banner/WebBanner";
 import withAuth from "../../authHoc/WithAuth";
 import { pageBlock } from "../../state/pageBlockState";
+import { useCallback } from "react";
 
 function LogIn() {
   const navigate = useNavigate();
+  const handleNavigateToKakaoLogin = useCallback(() => {
+    //base url무시하고 카카오 로그인 페이지로 이동
+    window.location.href =
+      "https://kauth.kakao.com/oauth/authorize?client_id=a1a341e711531afc648d821e7e1129f9&redirect_uri=http://localhost:3000/login&response_type=code";
+  }, [navigate]);
+
   return (
     <LogIn_page_wrapper>
       <WebBanner text="로그인" subText="Home > 로그인" />
@@ -16,19 +23,9 @@ function LogIn() {
       <Login_wrapper>
         <Login_box_wrapper>
           <Login_box_Text>
-            <p>Seller</p>
             <span>회원가입 / 로그인</span>
           </Login_box_Text>
-          <button onClick={() => navigate("/kakakoLogin_temporal")}>
-            <KakaoLogin />
-          </button>
-        </Login_box_wrapper>
-        <Login_box_wrapper>
-          <Login_box_Text>
-            <p>Customer</p>
-            <span>회원가입 / 로그인</span>
-          </Login_box_Text>
-          <button onClick={() => navigate("/kakakoLogin_temporal")}>
+          <button onClick={handleNavigateToKakaoLogin}>
             <KakaoLogin />
           </button>
         </Login_box_wrapper>
@@ -63,8 +60,8 @@ const Login_wrapper = styled.div`
   padding-top: 5%;
 `;
 const Login_box_wrapper = styled.div`
-  width: 30%;
-  height: 30%;
+  width: 40%;
+  height: 40%;
 
   background-color: ${(props) => props.theme.colors.mainBackground};
   border-radius: 5rem;
