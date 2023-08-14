@@ -6,8 +6,8 @@ import PropTypes from "prop-types";
 import withAuth from "../../../authHoc/WithAuth";
 import { pageBlock } from "../../../state/pageBlockState";
 
-export default function SelectedProductList({ listInfo }) {
-    const [isChecked, setIsChecked] = useState(false);
+function SelectedProductList({ listInfo }) {
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
@@ -66,15 +66,15 @@ export default function SelectedProductList({ listInfo }) {
 }
 
 SelectedProductList.propTypes = {
-    classes: PropTypes.string,
-    listInfo: PropTypes.shape({
-        image: PropTypes.string,
-        productName: PropTypes.string,
-        option: PropTypes.string,
-        count: PropTypes.number,
-        price: PropTypes.number,
-        delivery: PropTypes.number,
-    }),
+  classes: PropTypes.string,
+  listInfo: PropTypes.shape({
+    image: PropTypes.string,
+    productName: PropTypes.string,
+    option: PropTypes.string,
+    count: PropTypes.number,
+    price: PropTypes.number,
+    delivery: PropTypes.number,
+  }),
 };
 
 const ListWrapper = styled.div`
@@ -160,4 +160,6 @@ const ProductCount = styled.div`
   }
 `;
 
-export default withAuth(ProductList, { block: pageBlock.UNAUTHENTICATED });
+export default withAuth(SelectedProductList, {
+  block: pageBlock.UNAUTHENTICATED,
+});
