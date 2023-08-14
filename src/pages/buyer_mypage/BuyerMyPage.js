@@ -5,8 +5,10 @@ import Orderlist from "../../icons/orderList/OrderList";
 import BigInterestProduct from "../../icons/heart/BigInterestProduct";
 import { styled } from "styled-components";
 import WebBanner from "../../components/banner/WebBanner";
+import withAuth from "../../authHoc/WithAuth";
+import { pageBlock } from "../../state/pageBlockState";
 
-export default function BuyerMyPage() {
+function BuyerMyPage() {
   const navigate = useNavigate();
 
   const onCartClick = () => {
@@ -125,3 +127,5 @@ const Function = styled.div`
   align-items: center;
   cursor: pointer;
 `;
+
+export default withAuth(BuyerMyPage, { block: pageBlock.UNAUTHENTICATED });

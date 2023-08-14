@@ -4,8 +4,10 @@ import FormButton from "../../../components/button/FormButton";
 import PrimaryButton from "../../../components/button/PrimaryButton";
 import SelectedProductList from "./SelectedProductList";
 import { styled } from "styled-components";
+import withAuth from "../../../authHoc/WithAuth";
+import { pageBlock } from "../../../state/pageBlockState";
 
-export default function ShoppingCart() {
+function ShoppingCart() {
   const navigate = useNavigate();
 
   const buyProductClicked = () => {
@@ -86,15 +88,15 @@ export default function ShoppingCart() {
           <p>65,000 원</p>
         </FinalAmount>
         <OrderButton>
-          <PrimaryButton 
+          <PrimaryButton
             text="전체상품주문"
             addClass={"width: 22rem"}
             onClick={buyProductClicked}
           />
-          <PrimaryButton 
+          <PrimaryButton
             text="선택상품주문"
             addClass={"width: 22rem"}
-            onClick={buyProductClicked} 
+            onClick={buyProductClicked}
           />
         </OrderButton>
       </ProductManageWrapper>
@@ -179,3 +181,5 @@ const OrderButton = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+
+export default withAuth(ShoppingCart, { block: pageBlock.UNAUTHENTICATED });

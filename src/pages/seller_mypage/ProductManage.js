@@ -5,8 +5,10 @@ import React, { useMemo } from "react";
 
 import Table from "./Table";
 import WebBanner from "../../components/banner/WebBanner";
+import withAuth from "../../authHoc/WithAuth";
+import { pageBlock } from "../../state/pageBlockState";
 
-export default function ProductManage() {
+function ProductManage() {
   const navigate = useNavigate();
 
   const columns = [
@@ -109,3 +111,5 @@ const NavigateBut = styled.button`
   padding:1rem;
   background-color: ${(props) => props.theme.colors.buttonColor.gray};
 `;
+
+export default withAuth(ProductManage, { block: pageBlock.UNAUTHENTICATED });

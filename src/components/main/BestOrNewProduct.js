@@ -9,16 +9,23 @@ export default function BestOrNewProduct({ data }) {
         width: isMobile ? "50%" : null,
       }}
     >
-      <img alt={"제품 이미지"} src={data.image} />
+      <img
+        alt={"제품 이미지"}
+        src={
+          data.image
+            ? data.image
+            : "https://cdn.pixabay.com/photo/2016/11/22/22/25/groom-1850932_1280.jpg"
+        }
+      />
       <div>
         <span
           style={{
             marginBottom: "1rem",
           }}
         >
-          {data.name}
+          {data.product_name}
         </span>
-        <span>{data.price}</span>
+        <span>{data.product_price}</span>
       </div>
     </ProductWrapper>
   );

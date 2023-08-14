@@ -1,10 +1,14 @@
 import { styled } from "styled-components";
+import withAuth from "../../authHoc/WithAuth";
+import { pageBlock } from "../../state/pageBlockState";
 
-export default function StoreEntry() {
-    return(
-      <>
-        <br></br>
-        <h1>Store Entry</h1>
-      </>
-    )
+function StoreEntry() {
+  return (
+    <>
+      <br></br>
+      <h1>Store Entry</h1>
+    </>
+  );
 }
+
+export default withAuth(StoreEntry, { block: pageBlock.UNAUTHENTICATED });
