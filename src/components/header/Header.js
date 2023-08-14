@@ -16,6 +16,9 @@ export default function Header() {
   const [headerIconId, setHeaderIconId] = useState(-1);
   const navigate = useNavigate();
   const location = useLocation();
+  const logoClicked = () => {
+    navigate("/");
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,6 +45,8 @@ export default function Header() {
     } else {
       setHeaderStateIndex(-1);
     }
+
+    window.scrollTo(0, 0);
   }, [location]);
 
   const headerStateClicked = (index) => {
@@ -51,7 +56,7 @@ export default function Header() {
 
   return (
     <HeaderWrapper ref={headerRef}>
-      <LogoAndName>
+      <LogoAndName onClick={logoClicked}>
         <div>
           <HeaderLogo />
         </div>

@@ -1,5 +1,7 @@
 import WebBanner from '../../components/banner/WebBanner';
 import { styled } from "styled-components";
+import withAuth from "../../authHoc/WithAuth";
+import { pageBlock } from "../../state/pageBlockState";
 
 export default function OrderMange() {
   const headers = [
@@ -74,6 +76,7 @@ export default function OrderMange() {
   ];
 
   const headerKey = headers.map((header) => header.accessor);
+
 
   return (
     <OrderMangeWrapper>
@@ -150,3 +153,4 @@ const TableData = styled.td`
   }
 `;
 
+export default withAuth(OrderManage, { block: pageBlock.UNAUTHENTICATED });
