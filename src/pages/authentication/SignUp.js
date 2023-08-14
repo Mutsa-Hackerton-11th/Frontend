@@ -6,9 +6,9 @@ import { pageBlock } from "../../state/pageBlockState";
 import FileInput from "../../components/input/FileInput";
 import ItemCategoryInput from "../../components/input/ItemCategoryInput";
 import { useState } from "react";
+import axios from "axios";
 function SignUp() {
   const sizeSampleUrl = process.env.PUBLIC_URL + "/img/SizeSample.png";
-
   const [selectedCategory, setSelectedCategory] = useState("");
 
   const handleCategoryChange = (category) => {
@@ -17,11 +17,46 @@ function SignUp() {
 
   const [selectedOption, setSelectedOption] = useState("Seller");
 
-  // 라디오 버튼을 클릭했을 때 호출되는 함수입니다.
+  // 라디오 버튼을 클릭했을 때 호출되는 함수
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
 
+  //입력값 처리 state
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignUp = () => {
+    const userData = {
+      username: name,
+      email: email,
+      password: password,
+    };
+
+    const userType = selectedOption;
+
+    //seller,customer에 따라 api url 다르게
+    if (userType === "Seller") {
+      //seller
+    } else {
+      //customer
+    }
+
+    // 서버로 데이터 전송
+    axios
+      .post("http://15.164.56.204:8000/api/signup", userData)
+      .then((response) => {
+        // 성공적으로 데이터 전송 후 처리
+        console.log("회원가입 성공:", response.data);
+      })
+      .catch((error) => {
+        // 오류 처리
+        console.error("회원가입 실패:", error);
+      });
+
+    console.log(userData);
+  };
   return (
     <>
       <WebBanner text="회원가입" />
@@ -42,7 +77,7 @@ function SignUp() {
           >
             <label
               style={{
-                fontSize: "5rem",
+                fontSize: "3rem",
                 display: "flex",
                 alignItems: "center",
               }}
@@ -57,7 +92,7 @@ function SignUp() {
             </label>
             <label
               style={{
-                fontSize: "5rem",
+                fontSize: "3rem",
                 display: "flex",
                 alignItems: "center",
               }}
@@ -74,7 +109,7 @@ function SignUp() {
 
           <InputBox>
             <p>이름</p>
-            <Input />
+            <Input value={name} onChange={(e) => setName(e.target.value)} />
           </InputBox>
 
           <InputBox>
@@ -105,11 +140,19 @@ function SignUp() {
 
           <InputBox>
             <p>이메일</p>
-            <Input />
+            <Input value={email} onChange={(e) => setEmail(e.target.value)} />
+          </InputBox>
+
+          <InputBox>
+            <p>비밀번호</p>
+            <Input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </InputBox>
         </InnerWrapper>
 
-        <Button>확인</Button>
+        <Button onClick={handleSignUp}>확인</Button>
       </Wrapper>
     </>
   );
