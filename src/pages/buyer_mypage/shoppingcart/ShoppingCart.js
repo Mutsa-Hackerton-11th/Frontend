@@ -183,3 +183,4 @@ const OrderButton = styled.div`
 `;
 
 export default withAuth(ShoppingCart, { block: pageBlock.UNAUTHENTICATED });
+
