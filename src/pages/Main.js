@@ -14,7 +14,6 @@ export default function Main() {
     isLoading: bestSellersLoading,
     error: bestSellersError,
   } = useGetBestSellers();
-  console.log(bestSellers);
   const {
     newSellers,
     isLoading: newSellersLoading,
