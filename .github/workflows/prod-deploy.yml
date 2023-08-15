@@ -57,6 +57,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }} # EC2 인스턴스의 호스트 주소
           username: ${{ secrets.EC2_USERNAME }} # EC2 인스턴스의 사용자 이름
           key: ${{ secrets.EC2_SSH_KEY }} # EC2 인스턴스에 접속하기 위한 SSH 키
+          passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             # Docker 이미지 가져오기
             sudo docker pull brian990614/hackerton_front:${{ steps.docker_meta.outputs.tags }}
