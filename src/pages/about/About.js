@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import WebBanner from "../../components/banner/WebBanner";
 import { styled } from "styled-components";
 import SearchBar from "../../components/input/SearchBar";
@@ -27,7 +28,7 @@ export default function About() {
               이용자들에게는 취향에 맞는 예쁜 옷이 많은 곳으로, 
               판매자에게는 운영이 편리하고 매출 상승에 도움을 주는 플랫폼입니다.
             </span>
-            <p>더보기</p>
+            <Link to="/serviceintroduction"><p>더보기</p></Link>
           </DetailPage>
           <DetailPage>
             <img 
@@ -38,7 +39,7 @@ export default function About() {
             <span>
               "사이트명"은 정책을 사전 안내하여 투명한 입점 심사를 지향합니다.
             </span>
-            <p>더보기</p>
+            <Link to="/entryprocedure"><p>더보기</p></Link>
           </DetailPage>
           <DetailPage>
             <img 
@@ -50,16 +51,16 @@ export default function About() {
               "사이트명"은 매출 이력 확인을 통한 차등 수수료 지급 방식으로 
               신규 판매자들도 성장할 수 있는 기회를 주는 플랫폼입니다.
             </span>
-            <p>더보기</p>
+            <Link to="/feerating"><p>더보기</p></Link>
           </DetailPage>
         </PageWrapper>
         <SideBarWrapper>
           <SearchBar value={text} onChange={textInputted} />
           <CategoryWrapper>
             <h1>Categories</h1>
-            <span>서비스 소개</span>
-            <span>입점 절차</span>
-            <span>수수료 등급</span>
+            <Link to="/serviceintroduction"><span>서비스 소개</span></Link>
+            <Link to="/entryprocedure"><span>입점 절차</span></Link>
+            <Link to="/feerating"><span>수수료 등급</span></Link>
             <span>FAQ</span>
           </CategoryWrapper>
         </SideBarWrapper>
