@@ -58,9 +58,4 @@ jobs:
             # Docker 이미지 가져오기
             sudo docker pull brian990614/hackerton_front:${{ steps.docker_meta.outputs.tags }}
       
-            # 기존에 실행 중인 컨테이너 중지 및 삭제
-            sudo docker stop hackerton_front || true
-            sudo docker rm hackerton_front || true
-      
-            # 새로운 컨테이너 실행
-            sudo docker run -d --name hackerton_front -p 3000:3000 brian990614/hackerton_front:${{ steps.docker_meta.outputs.tags }}
+            
