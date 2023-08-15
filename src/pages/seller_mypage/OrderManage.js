@@ -1,37 +1,37 @@
-import WebBanner from '../../components/banner/WebBanner';
+import WebBanner from "../../components/banner/WebBanner";
 import { styled } from "styled-components";
 import withAuth from "../../authHoc/WithAuth";
 import { pageBlock } from "../../state/pageBlockState";
 
-export default function OrderMange() {
+function OrderManage() {
   const headers = [
     {
-      Header: '주문번호',
-      accessor: 'orderNumber',
+      Header: "주문번호",
+      accessor: "orderNumber",
     },
     {
-      Header: '상품명',
-      accessor: 'productName',
+      Header: "상품명",
+      accessor: "productName",
     },
     {
-      Header: '옵션',
-      accessor: 'option',
+      Header: "옵션",
+      accessor: "option",
     },
     {
-      Header: '수량',
-      accessor: 'count',
+      Header: "수량",
+      accessor: "count",
     },
     {
-      Header: '판매가',
-      accessor: 'price',
+      Header: "판매가",
+      accessor: "price",
     },
     {
-      Header: '배송비',
-      accessor: 'delivery',
+      Header: "배송비",
+      accessor: "delivery",
     },
     {
-      Header: '주문상태',
-      accessor: 'orderStatus',
+      Header: "주문상태",
+      accessor: "orderStatus",
     },
   ];
 
@@ -72,11 +72,13 @@ export default function OrderMange() {
       delivery: "2,500",
       orderStatus: "배송완료",
     },
-    {},{},{},{},
+    {},
+    {},
+    {},
+    {},
   ];
 
   const headerKey = headers.map((header) => header.accessor);
-
 
   return (
     <OrderMangeWrapper>
@@ -85,24 +87,18 @@ export default function OrderMange() {
         <h1 style={{ marginLeft: "4rem" }}>주문내역</h1>
         <Table>
           <thead>
-            {
-              headers.map((header) =>
-                <TableHeader key={header.Header}>{header.Header}</TableHeader>
-              )
-            }
+            {headers.map((header) => (
+              <TableHeader key={header.Header}>{header.Header}</TableHeader>
+            ))}
           </thead>
           <tbody>
-            {
-              listData.map((item, index) => (
-                <TableRow key={index}>
-                { 
-                  headerKey.map((key) => 
-                    <TableData key={key + index}>{item[key]}</TableData>
-                  )
-                }
-                </TableRow>
-              ))
-            }
+            {listData.map((item, index) => (
+              <TableRow key={index}>
+                {headerKey.map((key) => (
+                  <TableData key={key + index}>{item[key]}</TableData>
+                ))}
+              </TableRow>
+            ))}
           </tbody>
         </Table>
       </OrderlistWrapper>
