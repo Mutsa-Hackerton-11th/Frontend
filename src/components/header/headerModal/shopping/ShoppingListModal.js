@@ -8,12 +8,11 @@ import { useEffect, useRef } from "react";
 export default function ShoppingListModal({ handleIconClick }) {
   const navigate = useNavigate();
   const goToCartClicked = () => {
-    handleIconClick(-1);
     navigate("/shoppingcart");
   };
-  const buyProductsClicked = () => {
+  const buyProductsClicked = async () => {
+    await navigate("/buyproduct");
     handleIconClick(-1);
-    navigate("/buyproduct");
   };
   const listData = [
     {

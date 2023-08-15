@@ -10,8 +10,8 @@ export default function StoreDataBox({ data }) {
   const navigate = useNavigate();
   const shoppingMallClicked = () => {
     !data.likes
-      ? navigate(`/store/${data.id}`, {
-          state: data.name,
+      ? navigate(`/store/${data.seller_id}`, {
+          state: data.company_name,
         })
       : navigate(`/productdetail/${data.id}`, {
           state: {
@@ -28,23 +28,32 @@ export default function StoreDataBox({ data }) {
       }}
       onClick={shoppingMallClicked}
     >
-      <img alt="쇼핑몰 박스 사진" src={data.image} />
-      <span
-        style={{
-          position: "absolute",
-          top: "3.5rem",
-          right: "4rem",
-        }}
-      >
-        <HotOrNewLabel state={data.hotOrNew} />
-      </span>
+      <img
+        alt="박스 사진"
+        src={
+          data.seller_image
+            ? data.seller_image
+            : "https://cdn.pixabay.com/photo/2015/02/14/02/20/wedding-636021_1280.jpg"
+        }
+      />
+      {data.hotOrNew ? (
+        <span
+          style={{
+            position: "absolute",
+            top: "3.5rem",
+            right: "4rem",
+          }}
+        >
+          <HotOrNewLabel state={data.hotOrNew} />
+        </span>
+      ) : null}
       <DataBoxInfo
         style={{
           height: !data.likes ? "20%" : null,
         }}
       >
-        <span>{data.name}</span>
-        <span>{data.introduce}</span>
+        <span>{data.company_name}</span>
+        <span>{data.seller_detail ? data.seller_detail : "회사 소개"}</span>
         {data.likes ? (
           <div>
             <span

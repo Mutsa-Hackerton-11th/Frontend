@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import MediaQuery from "../../assets/mediaQuery";
 
 export default function BestOrNewProduct({ data }) {
+  console.log(data.image);
   const { isMobile } = MediaQuery();
   return (
     <ProductWrapper
@@ -25,7 +26,7 @@ export default function BestOrNewProduct({ data }) {
         >
           {data.product_name}
         </span>
-        <span>{data.product_price}</span>
+        <span>{data.product_price}원</span>
       </div>
     </ProductWrapper>
   );
