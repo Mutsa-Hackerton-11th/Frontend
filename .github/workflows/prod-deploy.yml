@@ -56,6 +56,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             # Docker 이미지 가져오기
+            echo tags: ${{ steps.docker_meta.outputs.tags }}
             sudo docker pull brian990614/hackerton_front:${{ steps.docker_meta.outputs.tags }}
       
             
