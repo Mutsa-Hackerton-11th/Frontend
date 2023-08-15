@@ -57,9 +57,9 @@ jobs:
           script: |
             # Docker 이미지 가져오기
             
-            sudo docker pull brian990614/${{ steps.docker_meta.outputs.tags }}
+            sudo docker pull brian990614/hackerton_front:main
             sudo docker stop hackerton_front || true
             sudo docker rm hackerton_front || true
-            sudo docker run -d --name hackerton_front -p 3000:3000 brian990614/${{ steps.docker_meta.outputs.tags }}
+            sudo docker run -d --name hackerton_front -p 3000:3000 brian990614/hackerton_front:main
       
             
