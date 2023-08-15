@@ -66,15 +66,15 @@ function SelectedProductList({ listInfo }) {
 }
 
 SelectedProductList.propTypes = {
-    classes: PropTypes.string,
-    listInfo: PropTypes.shape({
-        image: PropTypes.string,
-        productName: PropTypes.string,
-        option: PropTypes.string,
-        count: PropTypes.number,
-        price: PropTypes.number,
-        delivery: PropTypes.number,
-    }),
+  classes: PropTypes.string,
+  listInfo: PropTypes.shape({
+    image: PropTypes.string,
+    productName: PropTypes.string,
+    option: PropTypes.string,
+    count: PropTypes.number,
+    price: PropTypes.number,
+    delivery: PropTypes.number,
+  }),
 };
 
 const ListWrapper = styled.div`
@@ -160,4 +160,6 @@ const ProductCount = styled.div`
   }
 `;
 
-export default withAuth(SelectedProductList, { block: pageBlock.UNAUTHENTICATED });
+export default withAuth(SelectedProductList, {
+  block: pageBlock.UNAUTHENTICATED,
+});

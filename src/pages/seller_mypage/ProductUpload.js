@@ -3,6 +3,9 @@ import Input from "../../components/input/Input";
 import WebBanner from "../../components/banner/WebBanner";
 import withAuth from "../../authHoc/WithAuth";
 import { pageBlock } from "../../state/pageBlockState";
+import FileInput from "../../components/input/FileInput";
+import ItemCategoryInput from "../../components/input/ItemCategoryInput";
+import { useState } from "react";
 
 function ProductUpload() {
   /**{
@@ -14,6 +17,15 @@ function ProductUpload() {
   "images": ["이미지 URL1", "이미지 URL2", ...]
   // 기타 상품 정보
 } */
+
+  const sizeSampleUrl = process.env.PUBLIC_URL + "/img/SizeSample.png";
+
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
+
   return (
     <>
       <WebBanner text="상품등록" subText="마이페이지 > 상품관리 > 상품등록" />
@@ -26,30 +38,51 @@ function ProductUpload() {
             <p>상품명</p>
             <Input />
           </InputBox>
+
           <InputBox>
             <p>판매가</p>
             <Input />
           </InputBox>
+
           <InputBox>
             <p>상품 개수</p>
             <Input />
           </InputBox>
+
           <InputBox>
-            <p>상품 설명</p>
+            <p>상품 요약 설명</p>
             <Input size="L" />
           </InputBox>
 
           <FileBox>
             <p>상품 이미지</p>
-            <Input value="첨부파일" placeholder="첨부파일" size="L" />
-            <label for="file">업로드</label>
-            <input type="file" name="Img" />
+            <FileInput />
           </FileBox>
 
-          <InputBox>
+          <FileBox>
+            <p>상품 상세 설명</p>
+            <FileInput />
+          </FileBox>
+
+          <FileBox>
+            <p></p>
+            <img
+              style={{ width: "100%", paddingLeft: "23%" }}
+              src={sizeSampleUrl}
+              alt="SizeSample"
+            />
+          </FileBox>
+
+          <FileBox>
+            <p>상품 상세 사이즈</p>
+            <FileInput />
+          </FileBox>
+
+          <FileBox>
             <p>상품 분류</p>
-            <Input size="L" />
-          </InputBox>
+            <ItemCategoryInput onCategoryChange={handleCategoryChange} />
+            {/* <div>선택한 카테고리: {selectedCategory}</div> */}
+          </FileBox>
         </InnerWrapper>
 
         <Button>확인</Button>
@@ -95,33 +128,6 @@ const FileBox = styled.div`
     width: 25%;
   }
   padding-bottom: 5%;
-
-  label {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
-    color: #000000;
-    background-color: ${(props) => props.theme.colors.buttonColor.gray};
-    border-radius: 1rem;
-    cursor: pointer;
-
-    ${(props) => props.theme.fontStyles.text}
-
-    margin-left: 5%;
-    width: 15%;
-    height: 7.5rem;
-  }
-
-  input[type="file"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
-  }
 `;
 
 const Button = styled.button`

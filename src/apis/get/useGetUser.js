@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { axiosInstance } from "../axios/axios";
 
-export default function useUser() {
+export default function useGetUser() {
   //   const { data, isLoading, error } = useQuery({
   //     queryKey: ["user"],
   //     queryFn: async () => {
@@ -12,7 +12,7 @@ export default function useUser() {
 
   return {
     user: {
-      isUser: false,
+      isUser: true,
     },
   };
 }

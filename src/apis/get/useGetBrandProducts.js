@@ -11,7 +11,7 @@ export default function useGetBrandProducts(id) {
   });
 
   return {
-    bestSellers: data || null,
+    brandProducts: data || null,
     isLoading,
     error,
   };

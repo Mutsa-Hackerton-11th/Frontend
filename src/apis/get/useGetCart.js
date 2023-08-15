@@ -3,7 +3,7 @@ import { axiosInstance } from "../axios/axios";
 
 export default function useGetCart() {
   const { data, isLoading, error } = useQuery({
-    queryKey: ["cart"],
+    queryKey: ["getCart"],
     queryFn: async () => {
       const res = await axiosInstance.get("/api/cart");
       return res.data;
@@ -11,7 +11,7 @@ export default function useGetCart() {
   });
 
   return {
-    cart: data || null,
+    getCart: data || null,
     isLoading,
     error,
   };

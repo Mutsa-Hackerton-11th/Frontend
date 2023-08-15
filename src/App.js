@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
 import Store from "./pages/Store";
-import About from "./pages/About";
+import About from "./pages/about/About";
 import Header from "./components/header/Header";
 import ServiceInfor from "./pages/informaion/ServiceInfor";
 import EntryInfor from "./pages/informaion/EntryInfor";
@@ -22,6 +22,7 @@ import StoreProducts from "./pages/StoreProducts";
 import ProductDetail from "./pages/ProductDetail";
 import BuyProduct from "./pages/BuyProduct";
 import Category from "./pages/Category";
+import EntryRequest from "./pages/seller_mypage/EntryRequest";
 
 function App() {
   return (
@@ -50,11 +51,11 @@ function App() {
         <Route path="/interestproduct" element={<InterestProduct />}></Route>
 
         <Route path="/sellermypage" element={<SellerMyPage />}></Route>
-        <Route path="/sellerinfor" element={<SellerInfor />}></Route>
         <Route path="/storeentry" element={<StoreEntry />}></Route>
         <Route path="/productmanage" element={<ProductManage />}></Route>
         <Route path="/ordermanage" element={<OrderMange />}></Route>
         <Route path="/productupload" element={<ProductUpload />}></Route>
+        <Route path="/entryrequest" element={<EntryRequest />}></Route>
       </Routes>
     </>
   );
