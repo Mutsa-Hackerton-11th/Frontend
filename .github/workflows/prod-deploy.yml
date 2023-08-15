@@ -34,10 +34,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+<<<<<<< HEAD
       
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+=======
+>>>>>>> d6f8d55028d0b18e7b32942d8e524636695aacc5
 
      # 도커이미지 빌드하고 허브로 푸쉬
       - name: Build and push
@@ -49,3 +52,21 @@ jobs:
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+<<<<<<< HEAD
+=======
+
+     # EC2에 Docker 이미지 배포
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }} # EC2 인스턴스의 호스트 주소
+          username: ${{ secrets.EC2_USERNAME }} # EC2 인스턴스의 사용자 이름
+          key: ${{ secrets.EC2_SSH_KEY }} # EC2 인스턴스에 접속하기 위한 SSH 키
+          passphrase: ${{ secrets.PASSPHRASE }}
+          script: |
+            # Docker 이미지 가져오기
+            echo tags: ${{ steps.docker_meta.outputs.tags }}
+            sudo docker pull brian990614/hackerton_front:${{ steps.docker_meta.outputs.tags }}
+      
+            
+>>>>>>> d6f8d55028d0b18e7b32942d8e524636695aacc5
