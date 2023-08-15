@@ -49,3 +49,21 @@ jobs:
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+
+     # EC2에 Docker 이미지 배포
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }} # EC2 인스턴스의 호스트 주소
+          username: ${{ secrets.EC2_USERNAME }} # EC2 인스턴스의 사용자 이름
+          key: ${{ secrets.EC2_SSH_KEY }} # EC2 인스턴스에 접속하기 위한 SSH 키
+          script: |
+            # Docker 이미지 가져오기
+            docker pull brian990614/hackerton_front:${{ steps.docker_meta.outputs.tags }}
+      
+            # 기존에 실행 중인 컨테이너 중지 및 삭제
+            docker stop hackerton_front || true
+            docker rm hackerton_front || true
+      
+            # 새로운 컨테이너 실행
+            docker run -d --name hackerton_front -p 3000:3000 brian990614/hackerton_front:${{ steps.docker_meta.outputs.tags }}
