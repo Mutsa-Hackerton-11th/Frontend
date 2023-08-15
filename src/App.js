@@ -1,7 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
 import Store from "./pages/Store";
-import About from "./pages/About";
+import About from "./pages/about/About";
+import ServiceIntroduction from "./pages/about/ServiceIntroduction";
+import EntryProcedure from "./pages/about/EntryProcedure";
+import FeeRating from "./pages/about/FeeRating";
 import Header from "./components/header/Header";
 import ServiceInfor from "./pages/informaion/ServiceInfor";
 import EntryInfor from "./pages/informaion/EntryInfor";
@@ -37,6 +40,9 @@ function App() {
         <Route path="/buyproduct" element={<BuyProduct />}></Route>
 
         <Route path="/about" element={<About />}></Route>
+        <Route path="/serviceintroduction" element={<ServiceIntroduction />}></Route>
+        <Route path="/entryprocedure" element={<EntryProcedure />}></Route>
+        <Route path="/feerating" element={<FeeRating />}></Route>
 
         <Route path="/serviceinfor" element={<ServiceInfor />}></Route>
         <Route path="/entryinfor" element={<EntryInfor />}></Route>
