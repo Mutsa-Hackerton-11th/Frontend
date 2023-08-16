@@ -52,13 +52,14 @@ const BannerText = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
+  margin: 2rem 0;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   span:first-child {
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 2rem;
     ${(props) => props.theme.fontStyles.title}
   }
   span:nth-child(2) {

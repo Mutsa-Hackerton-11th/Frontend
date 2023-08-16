@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import withAuth from "../../../authHoc/WithAuth";
 import { pageBlock } from "../../../state/pageBlockState";
 
-function ProductList({ listInfo }) {
+function SelectedProductList({ listInfo }) {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = () => {
@@ -65,7 +65,7 @@ function ProductList({ listInfo }) {
   );
 }
 
-ProductList.propTypes = {
+SelectedProductList.propTypes = {
   classes: PropTypes.string,
   listInfo: PropTypes.shape({
     image: PropTypes.string,
@@ -160,4 +160,6 @@ const ProductCount = styled.div`
   }
 `;
 
-export default withAuth(ProductList, { block: pageBlock.UNAUTHENTICATED });
+export default withAuth(SelectedProductList, {
+  block: pageBlock.UNAUTHENTICATED,
+});

@@ -11,7 +11,7 @@ import SignUp from "./pages/authentication/SignUp";
 import BuyerMyPage from "./pages/buyer_mypage/BuyerMyPage";
 import ShoppingCart from "./pages/buyer_mypage/shoppingcart/ShoppingCart";
 import OrderList from "./pages/buyer_mypage/orderlist/OrderList";
-import InterestProduct from "./pages/buyer_mypage/InterestProduct";
+import InterestProduct from "./pages/buyer_mypage/interestproduct/InterestProduct";
 import SellerMyPage from "./pages/seller_mypage/SellerMyPage";
 import SellerInfor from "./pages/seller_mypage/SellerInfor";
 import StoreEntry from "./pages/seller_mypage/StoreEntry";

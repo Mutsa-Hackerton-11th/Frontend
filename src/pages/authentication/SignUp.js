@@ -7,9 +7,13 @@ import FileInput from "../../components/input/FileInput";
 import ItemCategoryInput from "../../components/input/ItemCategoryInput";
 import { useState } from "react";
 import axios from "axios";
+import usePostSignUp from "../../apis/post/usePostSignUp";
+
 function SignUp() {
   const sizeSampleUrl = process.env.PUBLIC_URL + "/img/SizeSample.png";
   const [selectedCategory, setSelectedCategory] = useState("");
+  // 커스텀 훅을 사용함
+  const { signUp, isLoading, isSuccess, error, data } = usePostSignUp();
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -22,16 +26,28 @@ function SignUp() {
     setSelectedOption(event.target.value);
   };
 
+  /**
+name = 10자 이내 string
+address = 글자 수 제한 없는 string
+postal_code = 10자 이내 string
+phone_number = 20자 이내 string
+email = 20자 이내 string
+ */
+
   //입력값 처리 state
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [address, setAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleSignUp = () => {
     const userData = {
-      username: name,
+      name: name,
+      postal_code: postalCode,
+      address: address,
+      phone_number: phoneNumber,
       email: email,
-      password: password,
     };
 
     const userType = selectedOption;
@@ -39,24 +55,13 @@ function SignUp() {
     //seller,customer에 따라 api url 다르게
     if (userType === "Seller") {
       //seller
+      console.log(userData);
+      signUp(userData);
     } else {
       //customer
     }
-
-    // 서버로 데이터 전송
-    axios
-      .post("http://15.164.56.204:8000/api/signup", userData)
-      .then((response) => {
-        // 성공적으로 데이터 전송 후 처리
-        console.log("회원가입 성공:", response.data);
-      })
-      .catch((error) => {
-        // 오류 처리
-        console.error("회원가입 실패:", error);
-      });
-
-    console.log(userData);
   };
+
   return (
     <>
       <WebBanner text="회원가입" />
@@ -114,7 +119,10 @@ function SignUp() {
 
           <InputBox>
             <p>주소</p>
-            <Input />
+            <Input
+              value={postalCode}
+              onChange={(e) => setPostalCode(e.target.value)}
+            />
             <button
               style={{
                 width: "15rem",
@@ -130,25 +138,24 @@ function SignUp() {
           </InputBox>
           <InputBox>
             <p></p>
-            <Input size="L" />
+            <Input
+              size="L"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
           </InputBox>
 
           <InputBox>
             <p>휴대전화</p>
-            <Input />
+            <Input
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
           </InputBox>
 
           <InputBox>
             <p>이메일</p>
             <Input value={email} onChange={(e) => setEmail(e.target.value)} />
-          </InputBox>
-
-          <InputBox>
-            <p>비밀번호</p>
-            <Input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
           </InputBox>
         </InnerWrapper>
 
