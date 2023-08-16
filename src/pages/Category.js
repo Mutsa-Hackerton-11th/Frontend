@@ -1,109 +1,34 @@
+import { useState } from "react";
+import useGetCategoryProducts from "../apis/get/useGetCategoryProducts";
 import BannerSearch from "../components/banner/BannerSearch";
 import WebBanner from "../components/banner/WebBanner";
 import StoreBody from "../components/store/StoreBody";
-import { hotOrNew } from "../state/LabelState";
 
 export default function Category() {
-  const storeCategories = [
-    "New",
-    "Best",
-    "아우터",
-    "상의",
-    "하의",
-    "신발",
-    "가방",
-    "악세서리",
-  ];
-  const productData = [
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2015/02/14/02/20/wedding-636021_1280.jpg",
-      name: "가죽자켓",
-      introduce: "간단 소개",
-      likes: 3,
-      hotOrNew: hotOrNew.HOT,
-      id: 23,
-      category: "상의",
-      mallName: "아디다스",
-    },
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2023/05/13/14/35/white-flower-7990645_1280.jpg",
-      name: "아우터",
-      introduce: "간단 소개",
-      likes: 45,
-      hotOrNew: hotOrNew.HOT,
-      id: 24,
-      category: "상의",
-      mallName: "아디다스",
-    },
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2015/02/14/02/20/wedding-636021_1280.jpg",
-      name: "실크 목도리",
-      introduce: "간단 소개",
-      likes: 193,
-      hotOrNew: hotOrNew.NEW,
-      id: 25,
-      category: "악세서리",
-      mallName: "나이키",
-    },
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2023/05/13/14/35/white-flower-7990645_1280.jpg",
-      name: "원피스",
-      introduce: "간단 소개",
-      likes: 450,
-      hotOrNew: hotOrNew.HOT,
-      id: 26,
-      category: "상의",
-      mallName: "NewBalance",
-    },
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2015/02/14/02/20/wedding-636021_1280.jpg",
-      name: "폴리에스테르",
-      introduce: "간단 소개",
-      likes: 193,
-      hotOrNew: hotOrNew.NEW,
-      id: 27,
-      category: "하의",
-      mallName: "구찌",
-    },
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2023/05/13/14/35/white-flower-7990645_1280.jpg",
-      name: "newProduct",
-      introduce: "간단 소개",
-      likes: 450,
-      hotOrNew: hotOrNew.NEW,
-      id: 28,
-      category: "가방",
-      mallName: "무신사",
-    },
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2015/02/14/02/20/wedding-636021_1280.jpg",
-      name: "나이키 신발",
-      introduce: "간단 소개",
-      likes: 193,
-      hotOrNew: hotOrNew.HOT,
-      id: 29,
-      category: "신발",
-      mallName: "발렌시아가",
-    },
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2023/05/13/14/35/white-flower-7990645_1280.jpg",
-      name: "아디다스 축구화",
-      introduce: "간단 소개",
-      likes: 450,
-      hotOrNew: hotOrNew.NEW,
-      id: 30,
-      category: "아우터",
-      mallName: "뉴플",
-    },
-  ];
+  const [categoryState, setCategoryState] = useState(0);
+  const categoryClicked = (index) => {
+    setCategoryState(index);
+  };
+  const { categoryProducts, isLoading, error } = useGetCategoryProducts(
+    categoryState === 0
+      ? "new"
+      : categoryState === 1
+      ? "best"
+      : categoryState === 2
+      ? "outer"
+      : categoryState === 3
+      ? "top"
+      : categoryState === 4
+      ? "pants"
+      : categoryState === 5
+      ? "shoes"
+      : categoryState === 6
+      ? "bags"
+      : categoryState === 7
+      ? "acc"
+      : null
+  );
+  console.log(categoryProducts);
   const categories = [
     "New",
     "Best",
@@ -117,8 +42,34 @@ export default function Category() {
   return (
     <>
       <WebBanner text="Category" />
-      <BannerSearch categories={categories} />
-      <StoreBody storeData={productData} />
+      <BannerSearch
+        onClick={categoryClicked}
+        categoryState={categoryState}
+        categories={categories}
+      />
+      {!isLoading ? (
+        <StoreBody
+          productData={
+            categoryState === 0
+              ? categoryProducts.new_products
+              : categoryState === 1
+              ? categoryProducts.best_products
+              : categoryState === 2
+              ? categoryProducts.outer_products
+              : categoryState === 3
+              ? categoryProducts.top_products
+              : categoryState === 4
+              ? categoryProducts.pants_products
+              : categoryState === 5
+              ? categoryProducts.shoes_products
+              : categoryState === 6
+              ? categoryProducts.bags_products
+              : categoryState === 7
+              ? categoryProducts.acc_products
+              : null
+          }
+        />
+      ) : null}
     </>
   );
 }

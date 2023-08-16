@@ -3,10 +3,13 @@ import WebBanner from "../components/banner/WebBanner";
 import StoreBody from "../components/store/StoreBody";
 import { hotOrNew } from "../state/LabelState";
 import BannerSearch from "../components/banner/BannerSearch";
+import useGetBrandProducts from "../apis/get/useGetBrandProducts";
 
 export default function StoreProducts() {
   const { id } = useParams();
   const { state } = useLocation();
+  const { brandProducts, isLoading, error } = useGetBrandProducts(id);
+  console.log(brandProducts);
   const storeCategories = [
     "New",
     "Best",

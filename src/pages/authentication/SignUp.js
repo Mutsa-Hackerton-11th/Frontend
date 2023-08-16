@@ -21,7 +21,6 @@ function SignUp() {
 
   const [selectedOption, setSelectedOption] = useState("Seller");
 
-  // 라디오 버튼을 클릭했을 때 호출되는 함수
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
@@ -115,6 +114,7 @@ email = 20자 이내 string
           <InputBox>
             <p>이름</p>
             <Input value={name} onChange={(e) => setName(e.target.value)} />
+
           </InputBox>
 
           <InputBox>
@@ -160,6 +160,7 @@ email = 20자 이내 string
         </InnerWrapper>
 
         <Button onClick={handleSignUp}>확인</Button>
+
       </Wrapper>
     </>
   );

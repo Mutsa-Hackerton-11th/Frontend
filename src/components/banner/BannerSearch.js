@@ -3,15 +3,11 @@ import MediaQuery from "../../assets/mediaQuery";
 import { useState } from "react";
 import SearchIcon from "../../icons/search/SearchIcon";
 
-export default function BannerSearch({ categories }) {
+export default function BannerSearch({ categories, onClick, categoryState }) {
   const { isBigMobile, isSmallMobile } = MediaQuery();
   const [searchValue, setSearchValue] = useState("");
-  const [categoryState, setCategoryState] = useState(0);
   const inputChanged = (e) => {
     setSearchValue(e.target.value);
-  };
-  const storeCategoryClicked = (index) => {
-    setCategoryState(index);
   };
   return (
     <StoreBannerSearch>
@@ -25,7 +21,7 @@ export default function BannerSearch({ categories }) {
                     width: isBigMobile | isSmallMobile ? "25%" : null,
                     padding: isBigMobile | isSmallMobile ? "1rem 0" : null,
                   }}
-                  onClick={() => storeCategoryClicked(index)}
+                  onClick={() => onClick(index)}
                 >
                   {category}
                 </span>

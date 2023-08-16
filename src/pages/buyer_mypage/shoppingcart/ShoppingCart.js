@@ -62,8 +62,8 @@ function ShoppingCart() {
               <span>배송비</span>
             </Props>
           </PropsWrapper>
-          {listData.map((listInfo) => (
-            <SelectedProductList listInfo={listInfo} />
+          {listData.map((listInfo, index) => (
+            <SelectedProductList key={index} listInfo={listInfo} />
           ))}
           <TotalAmount>
             <span>총 결제금액 : 65,000 원</span>
@@ -183,4 +183,3 @@ const OrderButton = styled.div`
 `;
 
 export default withAuth(ShoppingCart, { block: pageBlock.UNAUTHENTICATED });
-

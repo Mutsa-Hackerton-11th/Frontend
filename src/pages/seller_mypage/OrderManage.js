@@ -81,7 +81,7 @@ function OrderManage() {
   const headerKey = headers.map((header) => header.accessor);
 
   return (
-    <OrderMangeWrapper>
+    <OrderManageWrapper>
       <WebBanner text="주문관리" subText="마이페이지 > 주문관리" />
       <OrderlistWrapper>
         <h1 style={{ marginLeft: "4rem" }}>주문내역</h1>
@@ -102,11 +102,11 @@ function OrderManage() {
           </tbody>
         </Table>
       </OrderlistWrapper>
-    </OrderMangeWrapper>
+    </OrderManageWrapper>
   );
 }
 
-const OrderMangeWrapper = styled.div`
+const OrderManageWrapper = styled.div`
   width: 100%;
   height: 100%;
 `;
