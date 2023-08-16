@@ -12,7 +12,7 @@ export default function useGetUser() {
 
   return {
     user: {
-      isUser: true,
+      isUser: false,
     },
   };
 }
