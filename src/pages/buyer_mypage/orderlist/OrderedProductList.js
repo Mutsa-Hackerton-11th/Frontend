@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import withAuth from "../../../authHoc/WithAuth";
 import { pageBlock } from "../../../state/pageBlockState";
 
-function OrderHistoryList({ listInfo }) {
+export default function OrderHistoryList({ listInfo }) {
   return (
     <ListWrapper>
       <span
@@ -97,4 +97,4 @@ const ProductImg = styled.img`
   width: 12rem;
 `;
 
-export default withAuth(OrderHistoryList, { block: pageBlock.UNAUTHENTICATED });
+withAuth(OrderHistoryList, { block: pageBlock.UNAUTHENTICATED });

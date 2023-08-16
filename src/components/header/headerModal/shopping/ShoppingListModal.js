@@ -4,16 +4,20 @@ import HeaderModalWrapper from "../HeaderModalWrapper";
 import ModalBorder from "../ModalBorder";
 import ShoppingListBox from "./ShoppingListBox";
 import { useEffect, useRef } from "react";
+import useGetCart from "../../../../apis/get/useGetCart";
+import calculateTotalShoppingPrice from "./calculateTotalShoppingPrice";
 
 export default function ShoppingListModal({ handleIconClick }) {
   const navigate = useNavigate();
-  const goToCartClicked = () => {
+  const { getCart, isLoading, error } = useGetCart();
+  console.log(getCart);
+  const goToCartClicked = async () => {
+    await navigate("/shoppingcart");
     handleIconClick(-1);
-    navigate("/shoppingcart");
   };
-  const buyProductsClicked = () => {
+  const buyProductsClicked = async () => {
+    await navigate("/buyproduct");
     handleIconClick(-1);
-    navigate("/buyproduct");
   };
   const listData = [
     {
@@ -80,6 +84,7 @@ export default function ShoppingListModal({ handleIconClick }) {
           }}
         >
           120000원
+          {/* {calculateTotalShoppingPrice(getCart)} */}
         </span>
       </ModalBorder>
       <div

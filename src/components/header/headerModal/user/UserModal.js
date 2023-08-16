@@ -6,11 +6,13 @@ import ModalBorder from "../ModalBorder";
 
 export default function UserModal({ handleIconClick }) {
   const navigate = useNavigate();
-  const myPageClicked = () => {
-    navigate("/buyermypage");
+  const myPageClicked = async () => {
+    await navigate("/buyermypage");
+    handleIconClick(-1);
   };
-  const interestProductClicked = () => {
-    navigate("/interestproduct");
+  const interestProductClicked = async () => {
+    await navigate("/interestproduct");
+    handleIconClick(-1);
   };
   return (
     <HeaderModalWrapper
