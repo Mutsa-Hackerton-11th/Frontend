@@ -5,7 +5,7 @@ import theme from "../../../styles/theme";
 import { styled } from "styled-components";
 import PropTypes from "prop-types";
 
-export default function InterestProductList({ listInfo }) {
+export default function InterestProductList({ data }) {
     const navigate = useNavigate();
     const [isChecked, setIsChecked] = useState(false);
 
@@ -33,7 +33,7 @@ export default function InterestProductList({ listInfo }) {
                 />
                 <Checkmark className={isChecked ? 'checked' : ''} />
             </CustomCheckboxLabel>
-            <ProductImg src={listInfo.image} />
+            <ProductImg src={data.image} />
             <span 
                 style={{
                     width: "25rem",
@@ -41,7 +41,7 @@ export default function InterestProductList({ listInfo }) {
                     justifyContent: "center",
                 }}
             >
-                {listInfo.productName}
+                {data.product_name}
             </span>
             <span
                 style={{
@@ -50,7 +50,7 @@ export default function InterestProductList({ listInfo }) {
                     justifyContent: "center",
                 }}
             >
-                {listInfo.price}
+                {data.price}
             </span>
             <span
                 style={{
@@ -59,7 +59,7 @@ export default function InterestProductList({ listInfo }) {
                     justifyContent: "center",
                 }}
             >
-                {listInfo.delivery}
+                2,500
             </span>
             <SelectButton>
                 <FormButton

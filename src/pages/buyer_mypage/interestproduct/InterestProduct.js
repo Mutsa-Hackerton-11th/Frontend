@@ -4,8 +4,14 @@ import FormButton from "../../../components/button/FormButton";
 import PrimaryButton from "../../../components/button/PrimaryButton";
 import InterestProductList from "./InterestProductList";
 import { styled } from "styled-components";
+import useGetWishList from "../../../apis/get/useGetWishList";
 
 export default function InterestProduct() {
+  const {
+    wishList,
+    isLoading: wishListLoading,
+    error: wishListError,
+  } = useGetWishList();
   const navigate = useNavigate();
 
   const buyProductClicked = () => {
@@ -18,21 +24,6 @@ export default function InterestProduct() {
         navigate("/shoppingcart");
     }    
   };
-
-  const listData = [
-    {
-      image: "/img/productImg.png",
-      productName: "스트라이프 맨투맨",
-      price: "30,000",
-      delivery: "2,500",
-    },
-    {
-      image: "/img/productImg.png",
-      productName: "스트라이프 맨투맨",
-      price: "30,000",
-      delivery: "2,500",
-    },
-  ];
 
   return (
     <InterestProductWrapper>
@@ -60,9 +51,9 @@ export default function InterestProduct() {
               <span>선택</span>
             </Props>
           </PropsWrapper>
-          {listData.map((listInfo) => (
-            <InterestProductList listInfo={listInfo} />
-          ))}
+          {!wishListLoading ? wishList.map((product, index) => (
+            <InterestProductList key={product + index} data={product} />
+          )) : null}
         </div>
         <ButtonWrapper>
           <DeleteButton>
