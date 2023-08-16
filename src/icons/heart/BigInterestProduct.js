@@ -1,6 +1,12 @@
 export default function BigInterestProduct() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="81" height="81" fill="none">
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      width="8rem" 
+      height="8.1rem" 
+      fill="none"
+      viewBox="0 0 81 80"
+    >
       <path
         stroke="#000"
         stroke-linecap="round"
