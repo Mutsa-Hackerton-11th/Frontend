@@ -3,7 +3,12 @@ import { styled } from "styled-components";
 export default function ProductInfoImageBox({ addClass, image, imageClass }) {
   return (
     <ImageBoxWrapper addClass={addClass} imageClass={imageClass}>
-      <img alt={"상품 이미지"} src={image} />
+      <img
+        alt={"상품 이미지"}
+        src={
+          image ? image : process.env.PUBLIC_URL + "/img/preparing-image.png"
+        }
+      />
     </ImageBoxWrapper>
   );
 }

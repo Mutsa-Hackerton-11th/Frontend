@@ -7,8 +7,9 @@ import { useEffect, useRef } from "react";
 
 export default function ShoppingListModal({ handleIconClick }) {
   const navigate = useNavigate();
-  const goToCartClicked = () => {
-    navigate("/shoppingcart");
+  const goToCartClicked = async () => {
+    await navigate("/shoppingcart");
+    handleIconClick(-1);
   };
   const buyProductsClicked = async () => {
     await navigate("/buyproduct");

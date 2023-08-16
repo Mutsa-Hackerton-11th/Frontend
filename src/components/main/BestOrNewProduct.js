@@ -2,7 +2,6 @@ import { styled } from "styled-components";
 import MediaQuery from "../../assets/mediaQuery";
 
 export default function BestOrNewProduct({ data }) {
-  console.log(data.image);
   const { isMobile } = MediaQuery();
   return (
     <ProductWrapper
@@ -15,7 +14,7 @@ export default function BestOrNewProduct({ data }) {
         src={
           data.image
             ? data.image
-            : "https://cdn.pixabay.com/photo/2016/11/22/22/25/groom-1850932_1280.jpg"
+            : process.env.PUBLIC_URL + "/img/preparing-image.png"
         }
       />
       <div>

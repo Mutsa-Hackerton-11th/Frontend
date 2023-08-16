@@ -110,7 +110,7 @@ export default function ProductDetail() {
           }}
         >
           <ProductInfoImageBox
-            image="https://cdn.pixabay.com/photo/2018/12/02/10/59/cap-3851017_1280.jpg"
+            image={state.image ? state.image : null}
             addClass="width:100%; height:50rem; border-radius:2rem; background-color:#F9F1E7; display:flex; justify-content:center; align-items:center;"
             imageClass="width:90%; height:42.6rem;"
           />
@@ -130,7 +130,7 @@ export default function ProductDetail() {
               }}
             >
               <DetailProductName>{state.productName}</DetailProductName>
-              <DetailProductPrice>19000원</DetailProductPrice>
+              <DetailProductPrice>{state.price}원</DetailProductPrice>
               <DetailProductReviews>
                 <div
                   style={{

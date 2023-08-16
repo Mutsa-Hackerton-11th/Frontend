@@ -21,4 +21,5 @@ const StoreBodyWrapper = styled.div`
   padding: 6rem;
   display: flex;
   flex-wrap: wrap;
+  gap: 1rem;
 `;
