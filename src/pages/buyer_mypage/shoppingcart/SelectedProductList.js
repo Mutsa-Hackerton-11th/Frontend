@@ -1,14 +1,12 @@
 import { useState } from "react";
 import FormButton from "../../../components/button/FormButton";
-import theme from "../../../styles/theme";
 import { styled } from "styled-components";
 import PropTypes from "prop-types";
 import withAuth from "../../../authHoc/WithAuth";
 import { pageBlock } from "../../../state/pageBlockState";
 
-function SelectedProductList({ listInfo }) {
+export default function SelectedProductList({ listInfo }) {
   const [isChecked, setIsChecked] = useState(false);
-
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
@@ -159,7 +157,3 @@ const ProductCount = styled.div`
     margin-bottom: 3rem;
   }
 `;
-
-export default withAuth(SelectedProductList, {
-  block: pageBlock.UNAUTHENTICATED,
-});

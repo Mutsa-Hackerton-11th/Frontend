@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
 import MediaQuery from "../assets/mediaQuery";
 import ProductInfoImageBox from "../components/product/ProductInfoImageBox";
@@ -12,8 +12,11 @@ import PrimaryButton from "../components/button/PrimaryButton";
 import ProductDetailFooter from "../components/product/ProductDetailFooter";
 import ProductDetailFooterImage from "../components/product/ProductDetailFooterImage";
 import ReviewBox from "../components/product/ReviewBox";
+import usePostCart from "../apis/post/usePostCart";
+import useGetCart from "../apis/get/useGetCart";
 
 export default function ProductDetail() {
+  const { id } = useParams();
   const navigate = useNavigate();
   const smallImageWrapperClass =
     "width:7.6rem; height:8rem; border-radius:1rem; background-color:#F9F1E7; display:flex; justify-content:center; align-items:center;";
@@ -27,6 +30,7 @@ export default function ProductDetail() {
   const [colorState, setColorState] = useState(0);
   const [productNum, setProductNum] = useState(0);
   const [productFooterState, setProductFooterState] = useState(0);
+  const { addCart, isLoading, isSuccess, error } = usePostCart();
   const productFooter = ["Description", "Detail", "Review"];
   const descriptionRef = useRef(null);
   const detailRef = useRef(null);
@@ -57,6 +61,17 @@ export default function ProductDetail() {
   };
   const buyProductClicked = () => {
     navigate("/buyproduct");
+  };
+  const putCartClicked = () => {
+    if (productNum === 0) {
+      alert("담을 상품 개수를 정해주세요.");
+      return;
+    }
+    alert("상품을 담았습니다.");
+    addCart({
+      product_id: id,
+      product_quantity: productNum,
+    });
   };
 
   return (
@@ -110,7 +125,7 @@ export default function ProductDetail() {
           }}
         >
           <ProductInfoImageBox
-            image="https://cdn.pixabay.com/photo/2018/12/02/10/59/cap-3851017_1280.jpg"
+            image={state.image ? state.image : null}
             addClass="width:100%; height:50rem; border-radius:2rem; background-color:#F9F1E7; display:flex; justify-content:center; align-items:center;"
             imageClass="width:90%; height:42.6rem;"
           />
@@ -130,7 +145,7 @@ export default function ProductDetail() {
               }}
             >
               <DetailProductName>{state.productName}</DetailProductName>
-              <DetailProductPrice>19000원</DetailProductPrice>
+              <DetailProductPrice>{state.price}원</DetailProductPrice>
               <DetailProductReviews>
                 <div
                   style={{
@@ -138,6 +153,7 @@ export default function ProductDetail() {
                     borderRight: "1px solid #9F9F9F",
                   }}
                 >
+                  <FullStar />
                   <FullStar />
                   <FullStar />
                   <FullStar />
@@ -201,7 +217,7 @@ export default function ProductDetail() {
                   width: "35%",
                 }}
               >
-                <PrimaryButton text="상품 담기" />
+                <PrimaryButton onClick={putCartClicked} text="상품 담기" />
               </div>
               <div
                 style={{

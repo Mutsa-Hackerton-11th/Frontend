@@ -4,9 +4,14 @@ import StoreDataBox from "./StoreDataBox";
 export default function StoreBody({ storeData, productData }) {
   return (
     <StoreBodyWrapper>
-      {storeData.map((store) => {
-        return <StoreDataBox key={store} data={store} />;
-      })}
+      {storeData &&
+        storeData.map((store) => {
+          return <StoreDataBox key={store} data={store} />;
+        })}
+      {productData &&
+        productData.map((product) => {
+          return <StoreDataBox key={product} data={product} />;
+        })}
     </StoreBodyWrapper>
   );
 }
@@ -16,4 +21,5 @@ const StoreBodyWrapper = styled.div`
   padding: 6rem;
   display: flex;
   flex-wrap: wrap;
+  gap: 1rem;
 `;

@@ -14,7 +14,7 @@ export default function BestOrNewProduct({ data }) {
         src={
           data.image
             ? data.image
-            : "https://cdn.pixabay.com/photo/2016/11/22/22/25/groom-1850932_1280.jpg"
+            : process.env.PUBLIC_URL + "/img/preparing-image.png"
         }
       />
       <div>
@@ -25,7 +25,7 @@ export default function BestOrNewProduct({ data }) {
         >
           {data.product_name}
         </span>
-        <span>{data.product_price}</span>
+        <span>{data.product_price}원</span>
       </div>
     </ProductWrapper>
   );
