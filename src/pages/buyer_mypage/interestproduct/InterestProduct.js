@@ -53,7 +53,11 @@ export default function InterestProduct() {
           </PropsWrapper>
           {!wishListLoading ? wishList.map((product, index) => (
             <InterestProductList key={product + index} data={product} />
-          )) : null}
+          )) : (
+            <EmptyList>
+              <span>관심상품 목록이 비었습니다.</span>
+            </EmptyList>
+          )}
         </div>
         <ButtonWrapper>
           <DeleteButton>
@@ -113,6 +117,20 @@ const Props = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const EmptyList = styled.div`
+  width: 100%;
+  height: 20rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  span {
+      ${(props) => props.theme.fontStyles.text}
+      color: #9E9E9E;
+  }
+  border-bottom: solid 0.15rem #E8E8E8
 `;
 
 const ButtonWrapper = styled.div`
