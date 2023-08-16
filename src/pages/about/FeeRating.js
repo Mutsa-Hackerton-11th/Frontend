@@ -23,7 +23,8 @@ export default function FeeRating() {
                 <img
                     src="/img/AboutImg2.png"
                     style={{
-                        width: "80rem",
+                        width: "50vw",
+                        height: "40vw",
                         float: "right",
                     }}
                 />

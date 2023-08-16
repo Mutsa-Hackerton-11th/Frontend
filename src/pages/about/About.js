@@ -20,7 +20,7 @@ export default function About() {
           <DetailPage>
             <img 
               src="/img/AboutImg.png"
-              style={{width: "100rem"}}
+              style={{width: "55vw"}}
             />
             <h1>서비스 소개</h1>
             <span>
@@ -33,7 +33,7 @@ export default function About() {
           <DetailPage>
             <img 
               src="/img/AboutImg.png"
-              style={{width: "100rem"}}
+              style={{width: "55vw"}}
             />
             <h1>입점 절차</h1>
             <span>
@@ -44,7 +44,7 @@ export default function About() {
           <DetailPage>
             <img 
               src="/img/AboutImg.png"
-              style={{width: "100rem"}}
+              style={{width: "55vw"}}
             />
             <h1>수수료 등급</h1>
             <span>
@@ -75,10 +75,12 @@ const AboutWrapper = styled.div`
 `;
 
 const AboutBoxWrapper = styled.div`
+  width: 100%;
+  height: 100%;
   padding : 12rem 0;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   span {
     ${(props) => props.theme.fontStyles.text}
     color: #9F9F9F;
@@ -87,10 +89,12 @@ const AboutBoxWrapper = styled.div`
 `;
 
 const PageWrapper = styled.div`
-  width: 100rem;
+  width: 55vw;
+  margin-right: 10rem;
 `;
 
 const DetailPage = styled.div`
+  width: 100%;
   h1 {
     ${(props) => props.theme.fontStyles.subTitle}
     margin: 5rem 0 3rem 0;
