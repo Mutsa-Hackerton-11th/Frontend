@@ -6,10 +6,14 @@ import { pageBlock } from "../../state/pageBlockState";
 import FileInput from "../../components/input/FileInput";
 import ItemCategoryInput from "../../components/input/ItemCategoryInput";
 import { useState } from "react";
+import axios from "axios";
+import usePostSignUp from "../../apis/post/usePostSignUp";
+
 function SignUp() {
   const sizeSampleUrl = process.env.PUBLIC_URL + "/img/SizeSample.png";
-
   const [selectedCategory, setSelectedCategory] = useState("");
+  // 커스텀 훅을 사용함
+  const { signUp, isLoading, isSuccess, error, data } = usePostSignUp();
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -17,9 +21,44 @@ function SignUp() {
 
   const [selectedOption, setSelectedOption] = useState("Seller");
 
-  // 라디오 버튼을 클릭했을 때 호출되는 함수입니다.
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
+  };
+
+  /**
+name = 10자 이내 string
+address = 글자 수 제한 없는 string
+postal_code = 10자 이내 string
+phone_number = 20자 이내 string
+email = 20자 이내 string
+ */
+
+  //입력값 처리 state
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [address, setAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const handleSignUp = () => {
+    const userData = {
+      name: name,
+      postal_code: postalCode,
+      address: address,
+      phone_number: phoneNumber,
+      email: email,
+    };
+
+    const userType = selectedOption;
+
+    //seller,customer에 따라 api url 다르게
+    if (userType === "Seller") {
+      //seller
+      console.log(userData);
+      signUp(userData);
+    } else {
+      //customer
+    }
   };
 
   return (
@@ -42,7 +81,7 @@ function SignUp() {
           >
             <label
               style={{
-                fontSize: "5rem",
+                fontSize: "3rem",
                 display: "flex",
                 alignItems: "center",
               }}
@@ -57,7 +96,7 @@ function SignUp() {
             </label>
             <label
               style={{
-                fontSize: "5rem",
+                fontSize: "3rem",
                 display: "flex",
                 alignItems: "center",
               }}
@@ -74,12 +113,16 @@ function SignUp() {
 
           <InputBox>
             <p>이름</p>
-            <Input />
+            <Input value={name} onChange={(e) => setName(e.target.value)} />
+
           </InputBox>
 
           <InputBox>
             <p>주소</p>
-            <Input />
+            <Input
+              value={postalCode}
+              onChange={(e) => setPostalCode(e.target.value)}
+            />
             <button
               style={{
                 width: "15rem",
@@ -95,21 +138,29 @@ function SignUp() {
           </InputBox>
           <InputBox>
             <p></p>
-            <Input size="L" />
+            <Input
+              size="L"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
           </InputBox>
 
           <InputBox>
             <p>휴대전화</p>
-            <Input />
+            <Input
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
           </InputBox>
 
           <InputBox>
             <p>이메일</p>
-            <Input />
+            <Input value={email} onChange={(e) => setEmail(e.target.value)} />
           </InputBox>
         </InnerWrapper>
 
-        <Button>확인</Button>
+        <Button onClick={handleSignUp}>확인</Button>
+
       </Wrapper>
     </>
   );

@@ -2,12 +2,14 @@ import { styled } from "styled-components";
 import PropTypes from "prop-types";
 import { inputSize } from "../../state/InputState";
 
-export default function Input({ size = inputSize.S }) {
-  return <InputWrapper size={size} />;
+export default function Input({ size = inputSize.S, value, onChange }) {
+  return <InputWrapper size={size} value={value} onChange={onChange} />;
 }
 
 Input.propTypes = {
   size: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 const InputWrapper = styled.input`
