@@ -16,11 +16,13 @@ BannerButton.propTypes = {
 const ButtonWrapper = styled.div`
   width: 2.7rem;
   height: 2.7rem;
-  padding: 0.8rem;
   border-radius: 1.35rem;
   border: ${(props) =>
     props.clicked ? `1px solid ${props.theme.colors.buttonColor.brown}` : null};
   ${(props) => props.addClass}
+  display:flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 `;
 
