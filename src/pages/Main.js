@@ -60,53 +60,133 @@ export default function Main() {
             <PrimaryButton text="더보기" onClick={seeMoreClicked} />
           </div>
         </BannerText>
-        <BannerPhoto>
-          <img
-            alt={"메인배너사진"}
-            src="https://cdn.pixabay.com/photo/2016/11/22/22/25/groom-1850932_1280.jpg"
-          />
-          <div
-            style={{
-              width: "40%",
-              height: "100%",
-            }}
-          >
-            <img
-              alt={"메인배너사진2"}
-              src="https://cdn.pixabay.com/photo/2016/11/22/22/25/groom-1850932_1280.jpg"
-              style={{
-                width: "100%",
-                height: "90%",
-              }}
-            />
+        {!bestSellersLoading || !newSellersLoading ? (
+          <BannerPhoto>
+            {bestOrNew === 0 && (
+              <img
+                alt={"메인배너사진"}
+                src={
+                  bannerNum === 0
+                    ? process.env.REACT_APP_SERVER_API +
+                      bestSellers.popular_products[0].images[0]
+                    : bannerNum === 1
+                    ? process.env.REACT_APP_SERVER_API +
+                      bestSellers.popular_products[1].images[0]
+                    : bannerNum === 2
+                    ? process.env.REACT_APP_SERVER_API +
+                      bestSellers.popular_products[2].images[0]
+                    : bannerNum === 3
+                    ? process.env.REACT_APP_SERVER_API +
+                      bestSellers.popular_products[3].images[0]
+                    : null
+                }
+              />
+            )}
+            {bestOrNew === 1 && (
+              <img
+                alt={"메인배너사진"}
+                src={
+                  bannerNum === 0
+                    ? process.env.REACT_APP_SERVER_API +
+                      newSellers.new_products[0].images[0]
+                    : bannerNum === 1
+                    ? process.env.REACT_APP_SERVER_API +
+                      newSellers.new_products[1].images[0]
+                    : bannerNum === 2
+                    ? process.env.REACT_APP_SERVER_API +
+                      newSellers.new_products[2].images[0]
+                    : bannerNum === 3
+                    ? process.env.REACT_APP_SERVER_API +
+                      newSellers.new_products[3].images[0]
+                    : null
+                }
+              />
+            )}
+
             <div
               style={{
-                width: "100%",
-                height: "10%",
-                display: "flex",
-                alignItems: "center",
+                width: "40%",
+                height: "100%",
               }}
             >
-              {[0, 1, 2, 3].map((button, index) => {
-                return (
-                  <BannerButton
-                    key={button}
-                    addClass="margin-right:2rem;"
-                    onClick={() => bannerButtonClicked(index)}
-                    clicked={bannerNum === index}
-                  />
-                );
-              })}
+              {bestOrNew === 0 && (
+                <img
+                  alt={"메인배너사진2"}
+                  src={
+                    bannerNum === 0
+                      ? process.env.REACT_APP_SERVER_API +
+                        bestSellers.popular_products[0].images[1]
+                      : bannerNum === 1
+                      ? process.env.REACT_APP_SERVER_API +
+                        bestSellers.popular_products[1].images[1]
+                      : bannerNum === 2
+                      ? process.env.REACT_APP_SERVER_API +
+                        bestSellers.popular_products[2].images[1]
+                      : bannerNum === 3
+                      ? process.env.REACT_APP_SERVER_API +
+                        bestSellers.popular_products[3].images[1]
+                      : null
+                  }
+                  style={{
+                    width: "100%",
+                    height: "90%",
+                  }}
+                />
+              )}
+              {bestOrNew === 1 && (
+                <img
+                  alt={"메인배너사진2"}
+                  src={
+                    bannerNum === 0
+                      ? process.env.REACT_APP_SERVER_API +
+                        newSellers.new_products[0].images[1]
+                      : bannerNum === 1
+                      ? process.env.REACT_APP_SERVER_API +
+                        newSellers.new_products[1].images[1]
+                      : bannerNum === 2
+                      ? process.env.REACT_APP_SERVER_API +
+                        newSellers.new_products[2].images[1]
+                      : bannerNum === 3
+                      ? process.env.REACT_APP_SERVER_API +
+                        newSellers.new_products[3].images[1]
+                      : null
+                  }
+                  style={{
+                    width: "100%",
+                    height: "90%",
+                  }}
+                />
+              )}
+
+              <div
+                style={{
+                  width: "100%",
+                  height: "10%",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                {[0, 1, 2, 3].map((button, index) => {
+                  return (
+                    <BannerButton
+                      key={button}
+                      addClass="margin-right:2rem;"
+                      onClick={() => bannerButtonClicked(index)}
+                      clicked={bannerNum === index}
+                    />
+                  );
+                })}
+              </div>
             </div>
-          </div>
-          <NextBannerPhoto>
-            <ArrowButton
-              bgColor="#fff"
-              color="#B88E2F"
-              onClick={arrowBtnClicked}
-            />
-          </NextBannerPhoto>
-        </BannerPhoto>
+            <NextBannerPhoto>
+              <ArrowButton
+                bgColor="#fff"
+                color="#B88E2F"
+                onClick={arrowBtnClicked}
+              />
+            </NextBannerPhoto>
+          </BannerPhoto>
+        ) : null}
       </MainBanner>
       <MainBody>
         <MainBodyTitle>Hot Products</MainBodyTitle>
@@ -139,14 +219,22 @@ export default function Main() {
               {bestOrNew === 0 && !bestSellersLoading
                 ? bestSellers.popular_products.map((product, index) => {
                     return (
-                      <BestOrNewProduct key={product + index} data={product} />
+                      <BestOrNewProduct
+                        key={product + index}
+                        data={product}
+                        bestOrNew={bestOrNew}
+                      />
                     );
                   })
                 : null}
               {bestOrNew === 1 && !newSellersLoading
                 ? newSellers.new_products.map((product, index) => {
                     return (
-                      <BestOrNewProduct key={product + index} data={product} />
+                      <BestOrNewProduct
+                        key={product + index}
+                        data={product}
+                        bestOrNew={bestOrNew}
+                      />
                     );
                   })
                 : null}

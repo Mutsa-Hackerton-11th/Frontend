@@ -96,38 +96,23 @@ export default function ProductDetail() {
           >
             {
               <>
-                <ProductInfoImageBox
-                  image={
-                    productDetails.image
-                      ? process.env.REACT_APP_SERVER_API + productDetails.image
-                      : process.env.PUBLIC_URL + "/img/preparing-image.png"
+                {productDetails.images.map((image, index) => {
+                  if (index > 2) {
+                    return null;
                   }
-                  addClass={smallImageWrapperClass}
-                  imageClass="width:6.2rem; height:6.2rem;"
-                  onClick={() => imageBoxClicked(0)}
-                />
-                <ProductInfoImageBox
-                  image={
-                    productDetails.additional_img1
-                      ? process.env.REACT_APP_SERVER_API +
-                        productDetails.additional_img1
-                      : process.env.PUBLIC_URL + "/img/preparing-image.png"
-                  }
-                  addClass={smallImageWrapperClass}
-                  imageClass="width:6.2rem; height:6.2rem; "
-                  onClick={() => imageBoxClicked(1)}
-                />
-                <ProductInfoImageBox
-                  image={
-                    productDetails.additional_img2
-                      ? process.env.REACT_APP_SERVER_API +
-                        productDetails.additional_img2
-                      : process.env.PUBLIC_URL + "/img/preparing-image.png"
-                  }
-                  addClass={smallImageWrapperClass}
-                  imageClass="width:6.2rem; height:6.2rem;"
-                  onClick={() => imageBoxClicked(2)}
-                />
+                  return (
+                    <ProductInfoImageBox
+                      image={
+                        image
+                          ? process.env.REACT_APP_SERVER_API + image
+                          : "/img/preparing-image.png"
+                      }
+                      addClass={smallImageWrapperClass}
+                      imageClass="width:6.2rem; height:6.2rem;"
+                      onClick={() => imageBoxClicked(index)}
+                    />
+                  );
+                })}
               </>
             }
           </div>
@@ -140,8 +125,9 @@ export default function ProductDetail() {
             {imageState === 0 ? (
               <ProductInfoImageBox
                 image={
-                  productDetails.image
-                    ? process.env.REACT_APP_SERVER_API + productDetails.image
+                  productDetails.images[0]
+                    ? process.env.REACT_APP_SERVER_API +
+                      productDetails.images[0]
                     : process.env.PUBLIC_URL + "/img/preparing-image.png"
                 }
                 addClass="width:100%; height:50rem; border-radius:2rem; background-color:#F9F1E7; display:flex; justify-content:center; align-items:center;"
@@ -151,9 +137,9 @@ export default function ProductDetail() {
             {imageState === 1 ? (
               <ProductInfoImageBox
                 image={
-                  productDetails.additional_img1
+                  productDetails.images[1]
                     ? process.env.REACT_APP_SERVER_API +
-                      productDetails.additional_img1
+                      productDetails.images[1]
                     : process.env.PUBLIC_URL + "/img/preparing-image.png"
                 }
                 addClass="width:100%; height:50rem; border-radius:2rem; background-color:#F9F1E7; display:flex; justify-content:center; align-items:center;"
@@ -163,9 +149,9 @@ export default function ProductDetail() {
             {imageState === 2 ? (
               <ProductInfoImageBox
                 image={
-                  productDetails.additional_img2
+                  productDetails.images[2]
                     ? process.env.REACT_APP_SERVER_API +
-                      productDetails.additional_img2
+                      productDetails.images[2]
                     : process.env.PUBLIC_URL + "/img/preparing-image.png"
                 }
                 addClass="width:100%; height:50rem; border-radius:2rem; background-color:#F9F1E7; display:flex; justify-content:center; align-items:center;"
@@ -342,24 +328,21 @@ export default function ProductDetail() {
           >
             <ProductDetailFooterImage
               images={[
-                productDetails.image
-                  ? process.env.REACT_APP_SERVER_API + productDetails.image
+                productDetails.images[0]
+                  ? process.env.REACT_APP_SERVER_API + productDetails.images[0]
                   : process.env.PUBLIC_URL + "/img/preparing-image.png",
-                productDetails.additional_img1
-                  ? process.env.REACT_APP_SERVER_API +
-                    productDetails.additional_img1
+                productDetails.images[1]
+                  ? process.env.REACT_APP_SERVER_API + productDetails.images[1]
                   : process.env.PUBLIC_URL + "/img/preparing-image.png",
               ]}
             />
             <ProductDetailFooterImage
               images={[
-                productDetails.additional_img2
-                  ? process.env.REACT_APP_SERVER_API +
-                    productDetails.additional_img2
+                productDetails.images[2]
+                  ? process.env.REACT_APP_SERVER_API + productDetails.images[2]
                   : process.env.PUBLIC_URL + "/img/preparing-image.png",
-                productDetails.additional_img3
-                  ? process.env.REACT_APP_SERVER_API +
-                    productDetails.additional_img3
+                productDetails.images[3]
+                  ? process.env.REACT_APP_SERVER_API + productDetails.images[3]
                   : process.env.PUBLIC_URL + "/img/preparing-image.png",
               ]}
             />

@@ -3,7 +3,11 @@ import PropTypes from "prop-types";
 import { hotOrNew, labelColor } from "../../state/LabelState";
 
 export default function HotOrNewLabel({ state }) {
-  return <LabelWrapper state={state}>{state}</LabelWrapper>;
+  return (
+    <LabelWrapper state={state}>
+      <span>{state}</span>
+    </LabelWrapper>
+  );
 }
 
 HotOrNewLabel.propTypes = {
@@ -11,8 +15,6 @@ HotOrNewLabel.propTypes = {
 };
 
 const LabelWrapper = styled.div`
-  ${(props) => props.theme.fontStyles.text};
-  font-size: 1.6rem;
   width: 4.8rem;
   height: 4.8rem;
   border-radius: 2.4rem;
@@ -22,4 +24,7 @@ const LabelWrapper = styled.div`
   justify-content: center;
   align-items: center;
   color: ${(props) => props.theme.colors.fontColor.white};
+  span {
+    ${(props) => props.theme.fontStyles.subText};
+  }
 `;

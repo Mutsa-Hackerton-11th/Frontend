@@ -54,11 +54,19 @@ export default function StoreDataBox({ data }) {
       ) : null}
       <DataBoxInfo
         style={{
-          height: !data.like_counts ? "20%" : null,
+          height: !data.like_counts ? "25%" : null,
         }}
       >
         <span>{!data.like_counts ? data.company_name : data.name}</span>
-        <span>{!data.like_counts ? data.seller_detail : "간단 소개 문구"}</span>
+        <span>
+          {!data.like_counts
+            ? data.seller_detail
+              ? data.seller_detail
+              : "브랜드 키워드"
+            : data.keyword
+            ? data.keyword
+            : "상품 키워드"}
+        </span>
         {data.like_counts ? (
           <div
             style={{

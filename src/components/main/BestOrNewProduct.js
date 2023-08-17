@@ -2,9 +2,12 @@ import { styled } from "styled-components";
 import MediaQuery from "../../assets/mediaQuery";
 import { useNavigate } from "react-router-dom";
 import Likes from "../../icons/heart/Likes";
+import HotOrNewLabel from "../../icons/label/HotOrNewLabel";
+import { hotOrNew } from "../../state/LabelState";
 
-export default function BestOrNewProduct({ data }) {
+export default function BestOrNewProduct({ data, bestOrNew }) {
   console.log(data);
+  console.log(bestOrNew);
   const { isMobile } = MediaQuery();
   const navigate = useNavigate();
   const hotProductsClicked = () => {
@@ -16,11 +19,18 @@ export default function BestOrNewProduct({ data }) {
         width: isMobile ? "50%" : null,
       }}
     >
+      <HotOrNew>
+        {bestOrNew === 0 ? (
+          <HotOrNewLabel state={hotOrNew.HOT} />
+        ) : (
+          <HotOrNewLabel state={hotOrNew.NEW} />
+        )}
+      </HotOrNew>
       <img
         alt={"제품 이미지"}
         src={
-          data.image
-            ? process.env.REACT_APP_SERVER_API + data.image
+          data.images
+            ? process.env.REACT_APP_SERVER_API + data.images[0]
             : process.env.PUBLIC_URL + "/img/preparing-image.png"
         }
         onClick={hotProductsClicked}
@@ -57,6 +67,12 @@ export default function BestOrNewProduct({ data }) {
   );
 }
 
+const HotOrNew = styled.div`
+  position: absolute;
+  right: 2rem;
+  top: 4rem;
+`;
+
 const ProductWrapper = styled.div`
   width: 33.3%;
   height: 60rem;
@@ -65,6 +81,7 @@ const ProductWrapper = styled.div`
     width: 100%;
     height: 80%;
   }
+  position: relative;
 `;
 
 const ProductName = styled.div`
