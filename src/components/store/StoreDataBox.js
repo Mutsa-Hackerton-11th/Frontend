@@ -29,15 +29,17 @@ export default function StoreDataBox({ data }) {
       style={{
         width: isSmallMobile ? "49%" : isBigMobile | isTablet ? "32%" : null,
       }}
-      onClick={dataBoxClicked}
     >
       <img
         alt="박스 사진"
         src={
-          data.image
-            ? data.image
+          data.seller_image
+            ? process.env.REACT_APP_SERVER_API + data.seller_image
+            : data.image
+            ? process.env.REACT_APP_SERVER_API + data.image
             : process.env.PUBLIC_URL + "/img/preparing-image.png"
         }
+        onClick={dataBoxClicked}
       />
       {data.hotOrNew ? (
         <span

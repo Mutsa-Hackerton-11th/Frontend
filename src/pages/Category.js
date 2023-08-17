@@ -48,27 +48,7 @@ export default function Category() {
         categories={categories}
       />
       {!isLoading ? (
-        <StoreBody
-          productData={
-            categoryState === 0
-              ? categoryProducts.new_products
-              : categoryState === 1
-              ? categoryProducts.best_products
-              : categoryState === 2
-              ? categoryProducts.outer_products
-              : categoryState === 3
-              ? categoryProducts.top_products
-              : categoryState === 4
-              ? categoryProducts.pants_products
-              : categoryState === 5
-              ? categoryProducts.shoes_products
-              : categoryState === 6
-              ? categoryProducts.bags_products
-              : categoryState === 7
-              ? categoryProducts.acc_products
-              : null
-          }
-        />
+        <StoreBody productData={categoryProducts.products} />
       ) : null}
     </>
   );

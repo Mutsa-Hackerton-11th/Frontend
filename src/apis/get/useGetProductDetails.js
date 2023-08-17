@@ -3,9 +3,9 @@ import { axiosInstance } from "../axios/axios";
 
 export default function useGetProductDetails(pid) {
   const { data, isLoading, error } = useQuery({
-    queryKey: ["productDetails"],
+    queryKey: ["productDetails", pid],
     queryFn: async () => {
-      const res = await axiosInstance.get(`/api/products/${pid}`);
+      const res = await axiosInstance.get(`/api/products/detail/${pid}`);
       return res.data;
     },
   });

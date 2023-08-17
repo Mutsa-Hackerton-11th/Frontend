@@ -12,25 +12,21 @@ import PrimaryButton from "../components/button/PrimaryButton";
 import ProductDetailFooter from "../components/product/ProductDetailFooter";
 import ProductDetailFooterImage from "../components/product/ProductDetailFooterImage";
 import ReviewBox from "../components/product/ReviewBox";
-import usePostCart from "../apis/post/usePostCart";
-import useGetCart from "../apis/get/useGetCart";
+import useGetProductDetails from "../apis/get/useGetProductDetails";
 
 export default function ProductDetail() {
   const { id } = useParams();
+  const { productDetails, isLoading, error } = useGetProductDetails(id);
+  console.log(productDetails);
   const navigate = useNavigate();
   const smallImageWrapperClass =
     "width:7.6rem; height:8rem; border-radius:1rem; background-color:#F9F1E7; display:flex; justify-content:center; align-items:center;";
-  const productIntroduce =
-    "스트라이프 패턴에 크롭 기장감이 더해져 경쾌한 무드가 느껴지며 브이 라인의 시보리 네크라인이 포인트가 되어드립니다. 래글런 라인에 드롭된 숄더 라인이 여리여리한 실루엣까지 연출해 드려요 :)";
-  const description =
-    "[FABRIC] 부드럽고 보송한 터칭감의 원단으로쾌적한 착용감을 느끼실 수 있습니다.[DESIGN] 브이 라인의 시보리 네크라인이 포인트가 되어드리며스트라이프 패턴으로 경쾌한 무드를 더해드립니다.\n[SILHOUETTE] 래글런 라인에 드롭된 숄더 라인으로여리여리한 실루엣을 연출해 드리고루즈한 핏으로 체형 커버 효과를 더해드립니다. 스트라이프 패턴에 세미 크롭 기장감으로경쾌한 무드가 느껴지며브이 라인의 시보리 네크라인으로 포인트를 더했습니다.래글런 라인에 살짝 드롭된 숄더 라인이여리여리한 실루엣을 연출해 드리고루즈한 핏으로 상체 체형 커버 효과를 더해드립니다.통통 튀는 레드, 가을 시즌에 잘 어울릴 오렌지,깔끔하고 단정한 네이비 컬러까지원하시는 무드로 골라 다양한 스타일링을 즐겨보세요 :) ";
-  const { state } = useLocation();
   const { isBigMobile, isSmallMobile } = MediaQuery();
   const [sizeState, setSizeState] = useState(0);
   const [colorState, setColorState] = useState(0);
   const [productNum, setProductNum] = useState(0);
+  const [imageState, setImageState] = useState(0);
   const [productFooterState, setProductFooterState] = useState(0);
-  const { addCart, isLoading, isSuccess, error } = usePostCart();
   const productFooter = ["Description", "Detail", "Review"];
   const descriptionRef = useRef(null);
   const detailRef = useRef(null);
@@ -62,17 +58,10 @@ export default function ProductDetail() {
   const buyProductClicked = () => {
     navigate("/buyproduct");
   };
-  const putCartClicked = () => {
-    if (productNum === 0) {
-      alert("담을 상품 개수를 정해주세요.");
-      return;
-    }
-    alert("상품을 담았습니다.");
-    addCart({
-      product_id: id,
-      product_quantity: productNum,
-    });
+  const imageBoxClicked = (index) => {
+    setImageState(index);
   };
+  console.log(imageState);
 
   return (
     <div
@@ -80,265 +69,355 @@ export default function ProductDetail() {
         paddingTop: "10rem",
       }}
     >
-      <ProductDetailTop>
-        <div>
-          <span>{state.mallName}</span>
-          <span>{">"}</span>
-          <span>{state.category}</span>
-          <span>{">"}</span>
-        </div>
-        <div>
-          <span>{state.productName}</span>
-        </div>
-      </ProductDetailTop>
-      <ProductInfo>
-        <div
-          style={{
-            width: isSmallMobile | isBigMobile ? "20%" : "10%",
-            height: "33.4rem",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <ProductInfoImageBox
-            image="https://cdn.pixabay.com/photo/2015/02/14/02/20/wedding-636021_1280.jpg"
-            addClass={smallImageWrapperClass}
-            imageClass="width:6.2rem; height:6.2rem;"
-          />
-          <ProductInfoImageBox
-            image="https://cdn.pixabay.com/photo/2016/03/27/19/31/fashion-1283863_1280.jpg"
-            addClass={smallImageWrapperClass}
-            imageClass="width:6.2rem; height:6.2rem; "
-          />
-          <ProductInfoImageBox
-            image="https://cdn.pixabay.com/photo/2018/12/02/10/59/cap-3851017_1280.jpg"
-            addClass={smallImageWrapperClass}
-            imageClass="width:6.2rem; height:6.2rem;"
-          />
-        </div>
-        <div
-          style={{
-            width: isSmallMobile | isBigMobile ? "70%" : "33%",
-            height: "55rem",
-          }}
-        >
-          <ProductInfoImageBox
-            image={state.image ? state.image : null}
-            addClass="width:100%; height:50rem; border-radius:2rem; background-color:#F9F1E7; display:flex; justify-content:center; align-items:center;"
-            imageClass="width:90%; height:42.6rem;"
-          />
-        </div>
-        <div
-          style={{
-            width: isSmallMobile | isBigMobile ? "100%" : "55%",
-            height: "auto",
-          }}
-        >
-          <ProductInfoDetail>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-around",
-              }}
-            >
-              <DetailProductName>{state.productName}</DetailProductName>
-              <DetailProductPrice>{state.price}원</DetailProductPrice>
-              <DetailProductReviews>
-                <div
-                  style={{
-                    paddingRight: "2rem",
-                    borderRight: "1px solid #9F9F9F",
-                  }}
-                >
-                  <FullStar />
-                  <FullStar />
-                  <FullStar />
-                  <FullStar />
-                  <HalfStar />
-                </div>
-                <div
-                  style={{
-                    paddingLeft: "2rem",
-                  }}
-                >
-                  204 reviews
-                </div>
-              </DetailProductReviews>
-            </div>
-            <ProductDetailDef
-              style={{
-                padding: "2rem 0",
-                lineHeight: "1.2",
-                maxHeight: "20rem",
-                overflowY: "auto",
-              }}
-            >
-              {productIntroduce}
-            </ProductDetailDef>
-            <SelectSizeOrColor
-              text="Size"
-              size={productSize}
-              nowSize={sizeState}
-              onClick={sizeSelected}
-            />
-            <SelectSizeOrColor
-              text="Color"
-              colors={productColors}
-              nowColor={colorState}
-              onClick={colorSelected}
-            />
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                paddingBottom: "4rem",
-                borderBottom: "1px solid #9F9F9F",
-                width: "100%",
-              }}
-            >
-              <div
-                style={{
-                  marginRight: "1rem",
-                  width: "30%",
-                }}
-              >
-                <CounterButton
-                  increaseNum={increaseNum}
-                  decreaseNum={decreaseNum}
-                  num={productNum}
-                />
-              </div>
-              <div
-                style={{
-                  marginRight: "1rem",
-                  width: "35%",
-                }}
-              >
-                <PrimaryButton onClick={putCartClicked} text="상품 담기" />
-              </div>
-              <div
-                style={{
-                  width: "35%",
-                }}
-              >
-                <PrimaryButton onClick={buyProductClicked} text="바로 구매" />
-              </div>
-            </div>
-            <ProductDetailFooter
-              mallName={state.mallName}
-              category={state.category}
-            />
-          </ProductInfoDetail>
-        </div>
-      </ProductInfo>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <ProductFooterCategory>
+      {!isLoading ? (
+        <ProductDetailTop>
           <div>
-            {productFooter.map((footer, index) => {
-              return (
-                <span
-                  style={{
-                    color: index === productFooterState ? "#000000" : "#9f9f9f",
-                  }}
-                  onClick={() => footerClicked(index)}
-                >
-                  {footer}
-                </span>
-              );
-            })}
+            <span>{productDetails.shop_name}</span>
+            <span>{">"}</span>
+            <span>{productDetails.category}</span>
+            <span>{">"}</span>
           </div>
-        </ProductFooterCategory>
+          <div>
+            <span>{productDetails.product_name}</span>
+          </div>
+        </ProductDetailTop>
+      ) : null}
+      {!isLoading ? (
+        <ProductInfo>
+          <div
+            style={{
+              width: isSmallMobile | isBigMobile ? "20%" : "10%",
+              height: "33.4rem",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            {
+              <>
+                <ProductInfoImageBox
+                  image={
+                    productDetails.image
+                      ? process.env.REACT_APP_SERVER_API + productDetails.image
+                      : process.env.PUBLIC_URL + "/img/preparing-image.png"
+                  }
+                  addClass={smallImageWrapperClass}
+                  imageClass="width:6.2rem; height:6.2rem;"
+                  onClick={() => imageBoxClicked(0)}
+                />
+                <ProductInfoImageBox
+                  image={
+                    productDetails.additional_img1
+                      ? process.env.REACT_APP_SERVER_API +
+                        productDetails.additional_img1
+                      : process.env.PUBLIC_URL + "/img/preparing-image.png"
+                  }
+                  addClass={smallImageWrapperClass}
+                  imageClass="width:6.2rem; height:6.2rem; "
+                  onClick={() => imageBoxClicked(1)}
+                />
+                <ProductInfoImageBox
+                  image={
+                    productDetails.additional_img2
+                      ? process.env.REACT_APP_SERVER_API +
+                        productDetails.additional_img2
+                      : process.env.PUBLIC_URL + "/img/preparing-image.png"
+                  }
+                  addClass={smallImageWrapperClass}
+                  imageClass="width:6.2rem; height:6.2rem;"
+                  onClick={() => imageBoxClicked(2)}
+                />
+              </>
+            }
+          </div>
+          <div
+            style={{
+              width: isSmallMobile | isBigMobile ? "70%" : "33%",
+              height: "55rem",
+            }}
+          >
+            {imageState === 0 ? (
+              <ProductInfoImageBox
+                image={
+                  productDetails.image
+                    ? process.env.REACT_APP_SERVER_API + productDetails.image
+                    : process.env.PUBLIC_URL + "/img/preparing-image.png"
+                }
+                addClass="width:100%; height:50rem; border-radius:2rem; background-color:#F9F1E7; display:flex; justify-content:center; align-items:center;"
+                imageClass="width:90%; height:42.6rem;"
+              />
+            ) : null}
+            {imageState === 1 ? (
+              <ProductInfoImageBox
+                image={
+                  productDetails.additional_img1
+                    ? process.env.REACT_APP_SERVER_API +
+                      productDetails.additional_img1
+                    : process.env.PUBLIC_URL + "/img/preparing-image.png"
+                }
+                addClass="width:100%; height:50rem; border-radius:2rem; background-color:#F9F1E7; display:flex; justify-content:center; align-items:center;"
+                imageClass="width:90%; height:42.6rem;"
+              />
+            ) : null}
+            {imageState === 2 ? (
+              <ProductInfoImageBox
+                image={
+                  productDetails.additional_img2
+                    ? process.env.REACT_APP_SERVER_API +
+                      productDetails.additional_img2
+                    : process.env.PUBLIC_URL + "/img/preparing-image.png"
+                }
+                addClass="width:100%; height:50rem; border-radius:2rem; background-color:#F9F1E7; display:flex; justify-content:center; align-items:center;"
+                imageClass="width:90%; height:42.6rem;"
+              />
+            ) : null}
+          </div>
+          <div
+            style={{
+              width: isSmallMobile | isBigMobile ? "100%" : "55%",
+              height: "auto",
+            }}
+          >
+            <ProductInfoDetail>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-around",
+                }}
+              >
+                <DetailProductName>
+                  {productDetails.product_name}
+                </DetailProductName>
+                <DetailProductPrice>
+                  {productDetails.price}원
+                </DetailProductPrice>
+                <DetailProductReviews>
+                  <div
+                    style={{
+                      paddingRight: "2rem",
+                      borderRight: "1px solid #9F9F9F",
+                    }}
+                  >
+                    <FullStar />
+                    <FullStar />
+                    <FullStar />
+                    <FullStar />
+                    <HalfStar />
+                  </div>
+                  <div
+                    style={{
+                      paddingLeft: "2rem",
+                    }}
+                  >
+                    204 reviews
+                  </div>
+                </DetailProductReviews>
+              </div>
+              <ProductDetailDef
+                style={{
+                  padding: "2rem 0",
+                  lineHeight: "1.2",
+                  maxHeight: "20rem",
+                  overflowY: "auto",
+                }}
+              >
+                {productDetails.details
+                  ? productDetails.details
+                  : "상품 설명 준비중"}
+              </ProductDetailDef>
+              <SelectSizeOrColor
+                text="Size"
+                size={productSize}
+                nowSize={sizeState}
+                onClick={sizeSelected}
+              />
+              <SelectSizeOrColor
+                text="Color"
+                colors={productColors}
+                nowColor={colorState}
+                onClick={colorSelected}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  paddingBottom: "4rem",
+                  borderBottom: "1px solid #9F9F9F",
+                  width: "100%",
+                }}
+              >
+                <div
+                  style={{
+                    marginRight: "1rem",
+                    width: "30%",
+                  }}
+                >
+                  <CounterButton
+                    increaseNum={increaseNum}
+                    decreaseNum={decreaseNum}
+                    num={productNum}
+                  />
+                </div>
+                <div
+                  style={{
+                    marginRight: "1rem",
+                    width: "35%",
+                  }}
+                >
+                  <PrimaryButton text="상품 담기" />
+                </div>
+                <div
+                  style={{
+                    width: "35%",
+                  }}
+                >
+                  <PrimaryButton onClick={buyProductClicked} text="바로 구매" />
+                </div>
+              </div>
+              <ProductDetailFooter
+                mallName={productDetails.shop_name}
+                category={productDetails.category}
+              />
+            </ProductInfoDetail>
+          </div>
+        </ProductInfo>
+      ) : null}
+      {!isLoading ? (
         <div
           style={{
-            width: "100%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
-          ref={descriptionRef}
         >
-          <FooterCategoryText>Description</FooterCategoryText>
-          <Description>
-            {description.split("\n").map((line, index) => (
-              <p key={index}>
-                {line}
-                <br />
-                <br />
-              </p>
-            ))}
-          </Description>
-        </div>
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "space-around",
-          }}
-        >
-          <ProductDetailFooterImage
-            images={[
-              "https://cdn.pixabay.com/photo/2015/03/31/03/30/fabric-700490_1280.jpg",
-              "https://cdn.pixabay.com/photo/2015/03/31/03/30/fabric-700490_1280.jpg",
-            ]}
-          />
-          <ProductDetailFooterImage
-            images={[
-              "https://cdn.pixabay.com/photo/2023/05/13/14/35/white-flower-7990645_1280.jpg",
-              "https://cdn.pixabay.com/photo/2023/05/13/14/35/white-flower-7990645_1280.jpg",
-            ]}
-          />
-        </div>
-        <div
-          style={{
-            width: "100%",
-          }}
-          ref={detailRef}
-        >
-          <FooterCategoryText>Detail</FooterCategoryText>
-          <img
-            src={process.env.PUBLIC_URL + "/img/Detail.png"}
-            alt="Detail"
+          <ProductFooterCategory>
+            <div>
+              {productFooter.map((footer, index) => {
+                return (
+                  <span
+                    style={{
+                      color:
+                        index === productFooterState ? "#000000" : "#9f9f9f",
+                    }}
+                    onClick={() => footerClicked(index)}
+                  >
+                    {footer}
+                  </span>
+                );
+              })}
+            </div>
+          </ProductFooterCategory>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+            ref={descriptionRef}
+          >
+            <FooterCategoryText>Description</FooterCategoryText>
+            <Description>
+              {productDetails.description ? (
+                productDetails.description.split("\n").map((line, index) => (
+                  <p key={index}>
+                    {line}
+                    <br />
+                    <br />
+                  </p>
+                ))
+              ) : (
+                <p>상품 설명 등록 예정</p>
+              )}
+            </Description>
+          </div>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-around",
+            }}
+          >
+            <ProductDetailFooterImage
+              images={[
+                productDetails.image
+                  ? process.env.REACT_APP_SERVER_API + productDetails.image
+                  : process.env.PUBLIC_URL + "/img/preparing-image.png",
+                productDetails.additional_img1
+                  ? process.env.REACT_APP_SERVER_API +
+                    productDetails.additional_img1
+                  : process.env.PUBLIC_URL + "/img/preparing-image.png",
+              ]}
+            />
+            <ProductDetailFooterImage
+              images={[
+                productDetails.additional_img2
+                  ? process.env.REACT_APP_SERVER_API +
+                    productDetails.additional_img2
+                  : process.env.PUBLIC_URL + "/img/preparing-image.png",
+                productDetails.additional_img3
+                  ? process.env.REACT_APP_SERVER_API +
+                    productDetails.additional_img3
+                  : process.env.PUBLIC_URL + "/img/preparing-image.png",
+              ]}
+            />
+          </div>
+          <div
             style={{
               width: "100%",
             }}
-          />
+            ref={detailRef}
+          >
+            <FooterCategoryText>Detail</FooterCategoryText>
+            <img
+              src={process.env.PUBLIC_URL + "/img/Detail.png"}
+              alt="Detail"
+              style={{
+                width: "100%",
+              }}
+            />
+          </div>
+          <div
+            style={{
+              width: "100%",
+            }}
+            ref={reviewRef}
+          >
+            <FooterCategoryText>Review</FooterCategoryText>
+            <ReviewBox
+              reviewText="아주 좋아요"
+              size="S"
+              color="red"
+              images={[
+                productDetails.image
+                  ? process.env.REACT_APP_SERVER_API + productDetails.image
+                  : process.env.PUBLIC_URL + "/img/preparing-image.png",
+                productDetails.additional_img1
+                  ? process.env.REACT_APP_SERVER_API +
+                    productDetails.additional_img1
+                  : process.env.PUBLIC_URL + "/img/preparing-image.png",
+              ]}
+            />
+            <ReviewBox
+              reviewText="착용감이 좋지만 색깔이 좀 아쉬워요."
+              size="M"
+              color="blue"
+              images={[
+                productDetails.additional_img2
+                  ? process.env.REACT_APP_SERVER_API +
+                    productDetails.additional_img2
+                  : process.env.PUBLIC_URL + "/img/preparing-image.png",
+                productDetails.additional_img3
+                  ? process.env.REACT_APP_SERVER_API +
+                    productDetails.additional_img3
+                  : process.env.PUBLIC_URL + "/img/preparing-image.png",
+              ]}
+            />
+          </div>
         </div>
-        <div
-          style={{
-            width: "100%",
-          }}
-          ref={reviewRef}
-        >
-          <FooterCategoryText>Review</FooterCategoryText>
-          <ReviewBox
-            reviewText="아주 좋아요"
-            size="S"
-            color="red"
-            images={[
-              "https://cdn.pixabay.com/photo/2023/05/13/14/35/white-flower-7990645_1280.jpg",
-              "https://cdn.pixabay.com/photo/2023/05/13/14/35/white-flower-7990645_1280.jpg",
-            ]}
-          />
-          <ReviewBox
-            reviewText="착용감이 좋지만 색깔이 좀 아쉬워요."
-            size="M"
-            color="blue"
-            images={[
-              "https://cdn.pixabay.com/photo/2015/03/31/03/30/fabric-700490_1280.jpg",
-              "https://cdn.pixabay.com/photo/2015/03/31/03/30/fabric-700490_1280.jpg",
-            ]}
-          />
-        </div>
-      </div>
+      ) : null}
     </div>
   );
 }
