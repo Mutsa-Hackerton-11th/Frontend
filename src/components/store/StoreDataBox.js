@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Likes from "../../icons/heart/Likes";
 import HotOrNewLabel from "../../icons/label/HotOrNewLabel";
 import { useNavigate } from "react-router-dom";
+import { hotOrNew } from "../../state/LabelState";
 
 export default function StoreDataBox({ data }) {
   console.log(data);
@@ -41,15 +42,36 @@ export default function StoreDataBox({ data }) {
         }
         onClick={dataBoxClicked}
       />
-      {data.hotOrNew ? (
+      {data.hot && data.new ? (
+        <>
+          <span
+            style={{
+              position: "absolute",
+              top: "0rem",
+              right: "0rem",
+            }}
+          >
+            <HotOrNewLabel state={hotOrNew.HOT} />
+          </span>
+          <span
+            style={{
+              position: "absolute",
+              top: "2.5rem",
+              right: "2.5rem",
+            }}
+          >
+            <HotOrNewLabel state={hotOrNew.NEW} />
+          </span>
+        </>
+      ) : data.hot || data.new ? (
         <span
           style={{
             position: "absolute",
-            top: "3.5rem",
-            right: "4rem",
+            top: "1rem",
+            right: "1rem",
           }}
         >
-          <HotOrNewLabel state={data.hotOrNew} />
+          <HotOrNewLabel state={data.hot ? hotOrNew.HOT : hotOrNew.NEW} />
         </span>
       ) : null}
       <DataBoxInfo

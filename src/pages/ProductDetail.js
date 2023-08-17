@@ -186,11 +186,12 @@ export default function ProductDetail() {
                       borderRight: "1px solid #9F9F9F",
                     }}
                   >
-                    <FullStar />
-                    <FullStar />
-                    <FullStar />
-                    <FullStar />
-                    <HalfStar />
+                    {[...Array(Math.floor(productDetails.rating))].map(
+                      (_, index) => (
+                        <FullStar key={index} />
+                      )
+                    )}
+                    {productDetails.rating % 1 !== 0 && <HalfStar />}
                   </div>
                   <div
                     style={{
@@ -221,7 +222,7 @@ export default function ProductDetail() {
               />
               <SelectSizeOrColor
                 text="Color"
-                colors={productColors}
+                colors={productDetails.color}
                 nowColor={colorState}
                 onClick={colorSelected}
               />

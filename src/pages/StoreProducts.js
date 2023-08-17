@@ -13,7 +13,6 @@ export default function StoreProducts() {
     setCategoryState(index);
   };
   const { brandProducts, isLoading, error } = useGetBrandProducts(state);
-  console.log(brandProducts);
   return (
     <>
       <WebBanner text={state} />
@@ -24,7 +23,22 @@ export default function StoreProducts() {
             categories={["HOT", "NEW", ...brandProducts.categorys]}
             categoryState={categoryState}
           />
-          <StoreBody storeData={brandProducts.products} />
+          {!isLoading ? (
+            <StoreBody
+              productData={brandProducts.products.filter((product) => {
+                if (categoryState === 0) {
+                  return product.hot === true;
+                }
+                if (categoryState === 1) {
+                  return product.new === true;
+                }
+                return (
+                  product.category ===
+                  ["HOT", "NEW", ...brandProducts.categorys][categoryState]
+                );
+              })}
+            />
+          ) : null}
         </>
       ) : null}
     </>
