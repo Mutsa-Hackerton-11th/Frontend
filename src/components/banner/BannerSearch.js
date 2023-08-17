@@ -56,7 +56,6 @@ const StoreBannerCategories = styled.div`
   width: 70%;
   height: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;

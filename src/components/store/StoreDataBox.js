@@ -58,7 +58,7 @@ export default function StoreDataBox({ data }) {
         }}
       >
         <span>{!data.like_counts ? data.company_name : data.name}</span>
-        <span>{!data.like_counts ? data.seller_detail : "소개 문구"}</span>
+        <span>{!data.like_counts ? data.seller_detail : "간단 소개 문구"}</span>
         {data.like_counts ? (
           <div
             style={{
