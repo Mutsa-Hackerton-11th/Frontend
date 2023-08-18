@@ -214,12 +214,13 @@ export default function ProductDetail() {
                   ? productDetails.details
                   : "상품 설명 준비중"}
               </ProductDetailDef>
-              <SelectSizeOrColor
+              {productDetails.size ? <SelectSizeOrColor
                 text="Size"
                 size={productDetails.size}
                 nowSize={sizeState}
                 onClick={sizeSelected}
-              />
+              /> : null}
+              
               <SelectSizeOrColor
                 text="Color"
                 colors={productDetails.color}
