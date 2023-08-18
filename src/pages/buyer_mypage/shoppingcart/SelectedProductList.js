@@ -27,20 +27,24 @@ export default function SelectedProductList({ listInfo }) {
       >
         {listInfo.productName}
       </span>
-      <ProductOption>
-        <span>{listInfo.option}</span>
-        <FormButton
-          text="변경"
-          addClass={"width: 9rem; height: 4.5rem; border: 0.15rem solid black;"}
-        />
-      </ProductOption>
-      <ProductCount>
-        <span>{listInfo.count}</span>
-        <FormButton
-          text="변경"
-          addClass={"width: 9rem; height: 4.5rem; border: 0.15rem solid black;"}
-        />
-      </ProductCount>
+      <span
+        style={{
+          width: "15rem",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        {listInfo.option}
+      </span>
+      <span
+        style={{
+          width: "10.5rem",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        {listInfo.count}
+      </span>
       <span
         style={{
           width: "8.5rem",
@@ -130,30 +134,4 @@ const Checkmark = styled.span`
 const ProductImg = styled.img`
   height: 12rem;
   width: 12rem;
-`;
-
-const ProductOption = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  span {
-    width: 15rem;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 3rem;
-  }
-`;
-
-const ProductCount = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  span {
-    width: 10.5rem;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 3rem;
-  }
 `;

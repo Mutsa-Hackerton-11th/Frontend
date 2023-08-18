@@ -16,17 +16,17 @@ function ShoppingCart() {
 
   const listData = [
     {
-      image: "/img/productImg.png",
-      productName: "스트라이프 맨투맨",
-      option: "블루 / M",
+      image: "/img/topImg.png",
+      productName: "sea 반팔티",
+      option: "화이트 / F",
       count: 1,
       price: "30,000",
       delivery: "2,500",
     },
     {
-      image: "/img/productImg.png",
-      productName: "스트라이프 맨투맨",
-      option: "블루 / M",
+      image: "/img/pantsImg.png",
+      productName: "와이드 데님 팬츠",
+      option: "블루 / S",
       count: 1,
       price: "30,000",
       delivery: "2,500",

@@ -40,8 +40,6 @@ export default function ProductDetailFooter({ mallName, category }) {
           }}
         >
           <div>: {<Kakao />}</div>
-          <div>{<Instagram />}</div>
-          <div>{<Kakao />}</div>
         </div>
       </FooterText>
     </FooterWrapper>
