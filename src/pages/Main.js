@@ -217,18 +217,20 @@ export default function Main() {
               }}
             >
               {bestOrNew === 0 && !bestSellersLoading
-                ? bestSellers.popular_products.map((product, index) => {
-                    return (
-                      <BestOrNewProduct
-                        key={product + index}
-                        data={product}
-                        bestOrNew={bestOrNew}
-                      />
-                    );
-                  })
+                ? bestSellers.popular_products
+                    .slice(0, 6)
+                    .map((product, index) => {
+                      return (
+                        <BestOrNewProduct
+                          key={product + index}
+                          data={product}
+                          bestOrNew={bestOrNew}
+                        />
+                      );
+                    })
                 : null}
               {bestOrNew === 1 && !newSellersLoading
-                ? newSellers.new_products.map((product, index) => {
+                ? newSellers.new_products.slice(0, 6).map((product, index) => {
                     return (
                       <BestOrNewProduct
                         key={product + index}
