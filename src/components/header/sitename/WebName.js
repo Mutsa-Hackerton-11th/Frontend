@@ -1,1 +1,1 @@
-export const webName = "해커톤";
+export const webName = "Potential";

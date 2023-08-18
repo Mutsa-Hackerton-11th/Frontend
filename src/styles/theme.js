@@ -33,6 +33,11 @@ const theme = {
       font-size: 2rem;
       font-weight: 400;
     `,
+    logoText:`
+    font-family: "Yeseva One", sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+  `
   },
 };
 

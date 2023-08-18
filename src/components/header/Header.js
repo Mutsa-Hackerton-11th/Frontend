@@ -57,9 +57,14 @@ export default function Header() {
   return (
     <HeaderWrapper ref={headerRef}>
       <LogoAndName onClick={logoClicked}>
-        <div>
-          <HeaderLogo />
-        </div>
+        <img
+          alt={"헤더 로고"}
+          src={process.env.PUBLIC_URL + '/img/HeaderLogo.png'}
+          style={{
+            width:'6rem',
+            height:'6rem'
+          }}
+        />
         <WebName>{webName}</WebName>
       </LogoAndName>
       <Services>
@@ -114,7 +119,7 @@ const LogoAndName = styled.div`
 `;
 
 const WebName = styled.div`
-  ${(props) => props.theme.fontStyles.subTitle}
+  ${(props) => props.theme.fontStyles.logoText}
   font-size: 3rem;
   margin-left: 1rem;
 `;

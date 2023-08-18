@@ -37,7 +37,7 @@ export default function About() {
             />
             <h1>입점 절차</h1>
             <span>
-              "사이트명"은 정책을 사전 안내하여 투명한 입점 심사를 지향합니다.
+              "Potential"은 정책을 사전 안내하여 투명한 입점 심사를 지향합니다.
             </span>
             <Link to="/entryprocedure"><p>더보기</p></Link>
           </DetailPage>
