@@ -1,16 +1,16 @@
 import { styled } from "styled-components";
 import StoreDataBox from "./StoreDataBox";
 
-export default function StoreBody({ storeData, productData }) {
+export default function StoreBody({ storeData, productData, categoryState }) {
   return (
     <StoreBodyWrapper>
       {storeData &&
         storeData.map((store) => {
-          return <StoreDataBox key={store} data={store} />;
+          return <StoreDataBox key={store} data={store} categoryState={categoryState} />;
         })}
       {productData &&
         productData.map((product) => {
-          return <StoreDataBox key={product} data={product} />;
+          return <StoreDataBox key={product} data={product} categoryState={categoryState}/>;
         })}
     </StoreBodyWrapper>
   );

@@ -6,7 +6,7 @@ import HotOrNewLabel from "../../icons/label/HotOrNewLabel";
 import { useNavigate } from "react-router-dom";
 import { hotOrNew } from "../../state/LabelState";
 
-export default function StoreDataBox({ data }) {
+export default function StoreDataBox({ data,categoryState }) {
   console.log(data);
   const { isSmallMobile, isBigMobile, isTablet } = MediaQuery();
   const navigate = useNavigate();
@@ -43,6 +43,24 @@ export default function StoreDataBox({ data }) {
         }
         onClick={dataBoxClicked}
       />
+      {categoryState===0 ? <span
+          style={{
+            position: "absolute",
+            top: "1rem",
+            right: "1rem",
+          }}
+        >
+          <HotOrNewLabel state={ hotOrNew.HOT } />
+        </span> : null}
+        {categoryState===1 ? <span
+          style={{
+            position: "absolute",
+            top: "1rem",
+            right: "1rem",
+          }}
+        >
+          <HotOrNewLabel state={ hotOrNew.NEW } />
+        </span> : null}
       {data.hot && data.new ? (
         <>
           <span

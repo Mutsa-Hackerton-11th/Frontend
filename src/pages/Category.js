@@ -57,10 +57,10 @@ categoryState === 2
         categories={categories}
       />
       {!bestSellersLoading && categoryState===0 ? (
-        <StoreBody productData={bestSellers.popular_products} />
+        <StoreBody productData={bestSellers.popular_products} categoryState={categoryState} />
       ) : null}
       {!newSellersLoading && categoryState===1 ? (
-        <StoreBody productData={newSellers.new_products} />
+        <StoreBody productData={newSellers.new_products} categoryState={categoryState} />
       ) : null}
       {!isLoading && categoryState!==0 && categoryState!==1 ? (
         <StoreBody productData={categoryProducts.products} />
