@@ -3,18 +3,27 @@ import useGetCategoryProducts from "../apis/get/useGetCategoryProducts";
 import BannerSearch from "../components/banner/BannerSearch";
 import WebBanner from "../components/banner/WebBanner";
 import StoreBody from "../components/store/StoreBody";
+import useGetBestSellers from "../apis/get/useGetBestSellers";
+import useGetNewSellers from "../apis/get/useGetNewSellers";
 
 export default function Category() {
   const [categoryState, setCategoryState] = useState(0);
   const categoryClicked = (index) => {
     setCategoryState(index);
   };
+  const {
+    bestSellers,
+    isLoading: bestSellersLoading,
+    error: bestSellersError,
+  } = useGetBestSellers();
+  console.log(bestSellers)
+  const {
+    newSellers,
+    isLoading: newSellersLoading,
+    error: newSellersError,
+  } = useGetNewSellers();
   const { categoryProducts, isLoading, error } = useGetCategoryProducts(
-    categoryState === 0
-      ? "new"
-      : categoryState === 1
-      ? "best"
-      : categoryState === 2
+categoryState === 2
       ? "아우터"
       : categoryState === 3
       ? "상의"
@@ -47,7 +56,13 @@ export default function Category() {
         categoryState={categoryState}
         categories={categories}
       />
-      {!isLoading ? (
+      {!bestSellersLoading && categoryState===0 ? (
+        <StoreBody productData={bestSellers.popular_products} />
+      ) : null}
+      {!newSellersLoading && categoryState===1 ? (
+        <StoreBody productData={newSellers.new_products} />
+      ) : null}
+      {!isLoading && categoryState!==0 && categoryState!==1 ? (
         <StoreBody productData={categoryProducts.products} />
       ) : null}
     </>

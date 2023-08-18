@@ -216,7 +216,7 @@ export default function ProductDetail() {
               </ProductDetailDef>
               <SelectSizeOrColor
                 text="Size"
-                size={productSize}
+                size={productDetails.size}
                 nowSize={sizeState}
                 onClick={sizeSelected}
               />

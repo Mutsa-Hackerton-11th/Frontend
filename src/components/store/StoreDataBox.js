@@ -38,7 +38,8 @@ export default function StoreDataBox({ data }) {
             ? process.env.REACT_APP_SERVER_API + data.seller_image
             : data.image
             ? process.env.REACT_APP_SERVER_API + data.image
-            : process.env.PUBLIC_URL + "/img/preparing-image.png"
+            : data.images ? 
+            process.env.REACT_APP_SERVER_API + data.images[0] : process.env.PUBLIC_URL + "/img/preparing-image.png"
         }
         onClick={dataBoxClicked}
       />
@@ -79,8 +80,11 @@ export default function StoreDataBox({ data }) {
           height: !data.like_counts ? "25%" : null,
         }}
       >
-        <span>{!data.like_counts ? data.company_name : data.name}</span>
-        <span>
+        <span>{!data.like_counts ? data.company_name : data.name ? data.name : data.product_name ? data.product_name : null}</span>
+        <div style={{
+          maxHeight:'4rem',
+          overflowY:'scroll'
+        }}><span>
           {!data.like_counts
             ? data.seller_detail
               ? data.seller_detail
@@ -88,7 +92,9 @@ export default function StoreDataBox({ data }) {
             : data.keyword
             ? data.keyword
             : "상품 키워드"}
-        </span>
+        </span></div>
+        
+        
         {data.like_counts ? (
           <div
             style={{
@@ -148,7 +154,7 @@ const DataBoxInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   > span:first-child {
     ${(props) => props.theme.fontStyles.text}
     color:#3A3A3A
