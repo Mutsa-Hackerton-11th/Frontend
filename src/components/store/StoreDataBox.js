@@ -144,7 +144,7 @@ const DataBoxWrapper = styled.div`
 
 const DataBoxInfo = styled.div`
   width: 100%;
-  height: 30%;
+  height: 35%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

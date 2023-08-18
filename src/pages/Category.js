@@ -15,17 +15,17 @@ export default function Category() {
       : categoryState === 1
       ? "best"
       : categoryState === 2
-      ? "outer"
+      ? "아우터"
       : categoryState === 3
-      ? "top"
+      ? "상의"
       : categoryState === 4
-      ? "pants"
+      ? "하의"
       : categoryState === 5
-      ? "shoes"
+      ? "신발"
       : categoryState === 6
-      ? "bags"
+      ? "가방"
       : categoryState === 7
-      ? "acc"
+      ? "악세서리"
       : null
   );
   console.log(categoryProducts);
