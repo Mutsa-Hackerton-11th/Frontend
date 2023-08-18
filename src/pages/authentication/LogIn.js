@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import KakaoLogin from "../../icons/socialLogin/KakaoLogin";
 
 import theme from "../../styles/theme";
 import { useNavigate } from "react-router-dom/dist";
