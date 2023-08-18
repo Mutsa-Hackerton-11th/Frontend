@@ -38,20 +38,20 @@ function BuyProduct() {
             {
               category: "이미지",
               detail:
-                "https://cdn.pixabay.com/photo/2023/05/13/14/35/white-flower-7990645_1280.jpg",
+              "/img/topImg.png",
             },
-            { category: "상품명", detail: "스트라이프 맨투맨" },
-            { category: "옵션", detail: "블루 / M" },
+            { category: "상품명", detail: "sea 레터링 맨투맨" },
+            { category: "옵션", detail: "화이트 / F" },
             { category: "수량", detail: 1 },
-            { category: "판매가", detail: "36,800" },
-            { category: "배송비", detail: "2.500" },
+            { category: "판매가", detail: "15,000" },
+            { category: "배송비", detail: "2,500" },
           ]}
           hasSelectBtn={true}
           onClick={selectBtnClicked}
         />
       </CategoryWrapper>
       <TotalPrice>
-        <span>총 결제금액: 36,900 원</span>
+        <span>총 결제금액: 17,500 원</span>
       </TotalPrice>
       <div
         style={{

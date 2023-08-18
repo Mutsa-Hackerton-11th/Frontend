@@ -61,7 +61,6 @@ export default function About() {
             <Link to="/serviceintroduction"><span>서비스 소개</span></Link>
             <Link to="/entryprocedure"><span>입점 절차</span></Link>
             <Link to="/feerating"><span>수수료 등급</span></Link>
-            <span>FAQ</span>
           </CategoryWrapper>
         </SideBarWrapper>
       </AboutBoxWrapper>

@@ -21,39 +21,16 @@ export default function ShoppingListModal({ handleIconClick }) {
   };
   const listData = [
     {
-      image:
-        "https://cdn.pixabay.com/photo/2016/11/22/22/25/groom-1850932_1280.jpg",
+      image: "/img/topImg.png",
       count: 1,
-      price: "30,000원",
-      productName: "스트라이프 맨투맨",
+      price: "15,000원",
+      productName: "sea 레터링 반팔티",
     },
     {
-      image:
-        "https://cdn.pixabay.com/photo/2016/11/22/22/25/groom-1850932_1280.jpg",
+      image: "/img/pantsImg.png",
       count: 1,
-      price: "30,000원",
-      productName: "스트라이프 맨투맨",
-    },
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2016/11/22/22/25/groom-1850932_1280.jpg",
-      count: 1,
-      price: "30,000원",
-      productName: "스트라이프 맨투맨",
-    },
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2016/11/22/22/25/groom-1850932_1280.jpg",
-      count: 1,
-      price: "30,000원",
-      productName: "스트라이프 맨투맨",
-    },
-    {
-      image:
-        "https://cdn.pixabay.com/photo/2016/11/22/22/25/groom-1850932_1280.jpg",
-      count: 1,
-      price: "30,000원",
-      productName: "스트라이프 맨투맨",
+      price: "24,500원",
+      productName: "와이드 데님 바지",
     },
   ];
   return (
@@ -83,7 +60,7 @@ export default function ShoppingListModal({ handleIconClick }) {
             color: "#B88E2F",
           }}
         >
-          120000원
+          39,500원
           {/* {calculateTotalShoppingPrice(getCart)} */}
         </span>
       </ModalBorder>

@@ -17,18 +17,18 @@ function ShoppingCart() {
   const listData = [
     {
       image: "/img/topImg.png",
-      productName: "sea 반팔티",
+      productName: "sea 레터링 반팔티",
       option: "화이트 / F",
       count: 1,
-      price: "30,000",
+      price: "15,000",
       delivery: "2,500",
     },
     {
       image: "/img/pantsImg.png",
-      productName: "와이드 데님 팬츠",
-      option: "블루 / S",
+      productName: "와이드 데님 바지",
+      option: "중청 / S",
       count: 1,
-      price: "30,000",
+      price: "24,500",
       delivery: "2,500",
     },
   ];
@@ -66,7 +66,7 @@ function ShoppingCart() {
             <SelectedProductList key={index} listInfo={listInfo} />
           ))}
           <TotalAmount>
-            <span>총 결제금액 : 65,000 원</span>
+            <span>총 결제금액 : 44,500 원</span>
           </TotalAmount>
         </div>
         <DeleteButton>
@@ -85,7 +85,7 @@ function ShoppingCart() {
         </DeleteButton>
         <FinalAmount>
           <span>최종 결제 금액</span>
-          <p>65,000 원</p>
+          <p>44,500 원</p>
         </FinalAmount>
         <OrderButton>
           <PrimaryButton
